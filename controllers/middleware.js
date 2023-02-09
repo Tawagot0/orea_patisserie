@@ -2,16 +2,13 @@ import {verifyToken} from "../config/token.js"
 import parseurl from 'parseurl'
 
 const ADMIN = 'admin'
-const USER = 'user'
 const PUBLIC = 'public'
 
 const protectedPath = (pathname) => {
     const adminPath = ['deleteArticle','deleteUser'];
-    const userPath = ['userPath'];
     
     const protectedAdmin = adminPath.includes(pathname)
-    const protectedUser = userPath.includes(pathname)
-    let type = protectedAdmin ? ADMIN : protectedUser ? USER : PUBLIC
+    let type = protectedAdmin ? ADMIN : PUBLIC
     
     return type
 }
@@ -22,13 +19,10 @@ const accesAutorized = (pathname, userData) => {
     // etre admin et accede a une route admin
     const adminAcess = userData && userData.admin ? typePath === ADMIN : false
     
-    // etre connecter et accede a une route user
-    const userAcess = userData && userData.user ? typePath === USER : false
-    
     // route public
     const publicAcess = typePath === PUBLIC 
     
-    return (publicAcess || adminAcess || userAcess) ? true : false 
+    return (publicAcess || adminAcess) ? true : false 
 
 }
 

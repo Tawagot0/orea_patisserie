@@ -1,8 +1,10 @@
-import {useState} from "react"
+import {Fragment, useState} from "react"
+import { NavLink} from "react-router-dom";
 import axios from "axios"
 import {BASE_URL} from "../tools/constante.js"
 
 const Login = () => {
+    const [openformLogin, setOpenformLogin] = useState(false);
     const initialState = {email:'',password:''}
     const [info, setInfo] = useState(initialState)
     
@@ -15,27 +17,49 @@ const Login = () => {
         e.preventDefault()
         axios.post(`${BASE_URL}/login`,{password:info.password, email:info.email})
             .then(res => {
-                console.log(res.data.response.response)
-                if(res.data.response.response) {
-                    localStorage.setItem('jwtToken', res.data.response.token)
-                    axios.defaults.headers.common['Authorization'] = 'Bearer '+res.data.response.token
-                    setInfo(initialState)
-                    alert("Vous êtes connecter")
+                console.log(res.data.data.response)
+                if(res.data.data.response) {
+                    const token = res.data.data.token
+                    if(token){
+                        localStorage.setItem('jwtToken', token.token)
+                        axios.defaults.headers.common['Authorization'] = 'Bearer '+token.token
+                        setInfo(initialState)
+                        alert("Vous êtes connecter")
+                    } 
+                    else {
+                        alert("Identifiant ou mot de passe incorrect");
+                    }
                 }
                 else{
                     alert("Identifiant ou mot de passe incorrect")
                 }
             })
-
     }
     
     
     return(
-        <form onSubmit={submit}>
-            <input type='text' name='email' value={info.email} onChange={handleChange} placeholder='email' />
-            <input type='password' name='password' value={info.password} onChange={handleChange} placeholder='password' />
-            <input type="submit" />
-        </form>
+        <Fragment>
+            <i onClick={() => setOpenformLogin(true)} id = "login" className = "fa-regular fa-user"> Se connecter</i>
+            <div className="login" style={{display: openformLogin ? "block" : "none"}}>
+                <h2>Connexion</h2>
+                <form className="login-form" onSubmit={submit}>
+                    <div className="form-item">
+                        <i className="fa-regular fa-user"></i>
+                        <input id="email" type="email" name="email" value={info.email} onChange={handleChange} placeholder="E-mail" />
+                    </div>
+                    <div className="form-item">
+                        <i className="fa-solid fa-lock"></i>
+                        <input id="password" type="password" name="password" value={info.password} onChange={handleChange} placeholder="Mot de passe" />
+                    </div>
+                    <button className="submit" type="submit">VALIDER</button>
+                    <div className="create-count">
+                        <p>Nouvel utilisateur ? </p>
+                        <NavLink to="/createAccount" onClick={() => setOpenformLogin(false)} >Créer votre compte</NavLink>
+                    </div>
+                    <span onClick={() => setOpenformLogin(false)} id = "close-form-button">Fermer X</span>
+                </form>
+            </div>
+         </Fragment >
     )
 }
 

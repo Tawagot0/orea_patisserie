@@ -1,8 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import {useEffect} from 'react'
 import axios from 'axios'
+import menuBurger from '../images/menu-btn.png';
+import {useState} from "react"
 
 const Nav = () => {
+  
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  /*etat à false quand le menu est fermé*/
+  const location = useLocation()
   
   useEffect(() => {
     if(!axios.defaults.headers.common['Authorization']){
@@ -14,60 +20,45 @@ const Nav = () => {
   },[])
   
     return(
-        <nav>
-      <ul>
-        <li>
-          <NavLink to="/">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/test">
-            Test
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/addUser">
-            Ajouter utilisateur
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/addArticles">
-            Ajouter un article
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/addCommentaires">
-            Ajouter un commentaire
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/listArticles">
-            Liste des articles
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/users">
-            Liste utilisateurs
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/listCommentaires">
-            Liste des commentaires
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login">
-            Connexion
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/upload">
-            Upload
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
+       <nav className = "navbar">
+         {/*La classe mobile-menu est ajoutée à la div nav-links au click*/}
+          <div className={`nav-links ${mobileMenuOpen ? 'mobile-menu' : ''}`} >
+            <ul>
+              <li>
+                <NavLink onClick={() => setMobileMenuOpen(false)} to="/" className={location.pathname === '/' ? 'active-link' : ''}>
+                  Accueil
+                </NavLink>
+              </li>
+              <li>
+                <NavLink onClick={() => setMobileMenuOpen(false)} to="/boutique" className={location.pathname === '/boutique' ? 'active-link' : ''}>
+                  Boutique
+                </NavLink>
+              </li>
+              <li>
+                <NavLink onClick={() => setMobileMenuOpen(false)} to="/services" className={location.pathname === '/services' ? 'active-link' : ''}>
+                  Nos services entreprises
+                </NavLink>
+              </li>
+              <li>
+                <NavLink onClick={() => setMobileMenuOpen(false)} to="/origine" className={location.pathname === '/origine' ? 'active-link' : ''}>
+                  Origines des matières premières
+                </NavLink>
+              </li>
+              <li>
+                <NavLink onClick={() => setMobileMenuOpen(false)} to="/actualites" className={location.pathname === '/actualites' ? 'active-link' : ''}>
+                  Actualités
+                </NavLink>
+              </li>
+              <li>
+                <NavLink onClick={() => setMobileMenuOpen(false)} to="/contact" className={location.pathname === '/contact' ? 'active-link' : ''}>
+                  Contact
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+          {/*changer la valeur du state au click*/}
+          <img onClick={() => setMobileMenuOpen(!mobileMenuOpen)} src={menuBurger} alt="menu burger" className="menu-burger"/>
+        </nav>
     )
 }
 

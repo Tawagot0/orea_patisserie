@@ -1,0 +1,308 @@
+body {
+    font-family: 'Coneria Script Demo', cursive;
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 1%, rgba(255,238,217,1) 100%);
+    list-style:none;
+    margin:0;
+}
+body a , a:visited{
+    text-decoration:none;
+    color:#fff;
+}
+.container{
+    margin:1em;
+}
+input::placeholder {
+    font-weight: bold;
+    
+    color: #fff;
+}
+h1,h2,h3,h4{
+    margin:0;
+}
+/****************************header***************************************/
+header {
+    background-image: url("../images/dessert-fraise.jpg");
+    background-size: cover;
+    background-position: center;
+    padding:1em;
+    margin-bottom:2em;
+}
+.logo{
+    display:flex;
+    justify-content:space-around;
+    margin-bottom:1em;
+}
+.logo img{
+    width:20%;
+}
+.navbar {
+    width: 100%;
+    box-sizing: border-box; 
+    z-index: 999; 
+}
+.navbar .nav-links ul {
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+}
+.navbar .nav-links ul li {
+    font-size: 1.2em; 
+    font-weight: bold; 
+}
+.active-link{
+    background-color:#00e5ff;
+    padding:10px 20px 5px;
+    color:#bc2ef4;
+    border-radius:1.2em;
+    transition:1s;
+}
+.navbar .nav-links ul li a{
+    color:#fff;
+    text-shadow: #001e62 1px 0 10px;
+}
+.navbar .nav-links ul li a:hover{
+    background-color:#fff;
+    padding:10px 20px 5px;
+    color:#001e62;
+    border-radius:1.2em;
+    text-shadow: #fff 1px 0 10px;
+    transition:1s;
+}
+.menu-burger {
+    display: none;
+    width: 30px;
+    position: absolute; 
+    right: 40px; 
+    top: 30px; 
+    cursor: pointer;
+}/**************************form login********************************/
+#login, #close-form-button, .submit{
+    cursor:pointer;
+}
+.login {
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 40%;
+  margin: 0.5em auto;
+  box-shadow: 0 0 0.7em rgb(255, 255, 255);
+  border-radius: 2em;
+  display:none;
+}
+#close-form-button{
+    color:#fff;
+    font-size:1.3em;
+    font-weight:bold;
+    margin:0.5em;
+}
+.login h2 {
+  font-size: 2em;
+  color:#fff;
+  margin:1em 0;
+  padding-top:1em;
+}
+.login-form {
+  padding: 0.5em;
+  margin:auto;
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+.form-item {
+  display: flex;
+  width: 90%;
+  margin: 0.5em auto;
+  border-radius: 1.5em;
+  align-items: center;
+  border: 1px solid #fff;
+}
+.login input {
+  background: transparent;
+  width: 80%;
+  height: 2em;
+  outline: none;
+  border: none;
+  margin: auto;
+  color: #fff;
+  font-size: 1em;
+}
+.login button{
+  width:60%;
+  font-size: 1.2em;
+  margin: 0.5em auto;
+  padding: 0.4em;
+  background: rgba(122, 123, 116, 0.72);
+  border: none;
+  color: #fff;
+}
+.fa-user,.fa-lock{
+    color:#fff;
+    font-size:1.2em;
+    margin-left:0.6em;
+}
+.create-count{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+}
+.create-count a{
+    margin-left:1em;
+    color:#00e5ff;
+    text-decoration: underline;
+}
+/*************************************formulaire de contact************************************************/
+.contact{
+    background-image: url("../images/coffee.jpg");
+    display:block;
+}
+.fa-location-dot{
+    color:#fff;
+    margin-left:0.7em;
+}
+.contact textarea::placeholder{
+    color:#fff;
+    font-size:1.3em;
+    font-weight:bold;
+}
+.contact textarea{
+  background: transparent;
+  width: 80%;
+  height: 70px;
+  outline: none;
+  border: none;
+  margin: auto;
+  color: #fff;
+  font-size: 1em;
+  padding:0.5em;
+}
+/******************************home presentation******************************************/
+.presentation h2{
+    text-align:center;
+}
+/******************************carousel******************************************/
+/*.owl-stage{*/
+/*    display:flex;*/
+/*    align-items:center;*/
+/*    cursor:pointer;*/
+/*    padding-bottom:0.5em*/
+/*}*/
+/*.owl-stage img{*/
+/*    box-shadow: */
+/*    rgba(103, 145, 252, 0.4) 5px 5px, */
+/*    rgba(103, 145, 252, 0.3) 10px 10px, */
+/*    rgba(103, 145, 252, 0.4) -5px 5px, */
+/*    rgba(103, 145, 252, 0.3) -10px 10px;*/
+/*}*/
+/******************************FOOTER****************************************************/
+footer{
+    padding:0.5em;
+    margin-top:2em;
+    background-image: url("../images/cookies.jpg");
+    background-size: cover;
+    background-position:center;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    color:#fff;
+    text-shadow: #001e62 1px 0 10px;
+}
+.foot{
+    backdrop-filter: blur(5px); /* blur effect to the backdrop */
+	  background-color: rgba(255, 255, 255, 0.2);
+	  border-radius:1em;
+	  padding:1em;
+	  font-size:0.7em;
+	  margin:0.2em;
+}
+.foot h3{
+    text-align:center;
+}
+.foot h3{
+    color:#6791fc;
+    font-weight:bold;
+}
+.first-word{
+    color:#aabdff;
+    font-weight:bold;
+}
+.networks{
+    display:flex;
+    justify-content:space-around;
+    margin-top:0.5em;
+}
+.fa-brands{
+    font-size:2em;color:#fff;
+}
+.fa-facebook-f{
+    text-shadow:blue;
+    color:blue;
+}
+.fa-instagram{
+    text-shadow:#ff008c;
+    color:#ff008c;
+}
+@media screen and (max-width:950px){
+.navbar {
+    padding: 0;
+    
+}
+.menu-burger {
+display: block;
+z-index:99;
+}
+.nav-links {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-left: -100%; 
+    transition: all 0.5s ease;
+    background-image: url("../images/testmenu.jpg");
+    background-size: cover;
+    background-position:center;
+    z-index:99;
+}
+.mobile-menu {
+    margin-left: 0;
+    z-index:99;
+}
+.nav-links ul {
+    flex-direction: column; 
+    align-items: center; 
+}
+.nav-links ul li {
+    margin: 25px 0; 
+    font-size: 1.2em;
+}
+.navbar .nav-links ul li a{
+    color:#fff;
+    text-shadow: #001e62 1px 0 10px;
+}
+.logo{
+    margin:0;
+}
+.logo img{
+    width:40%;
+}
+.market {
+    display:none;
+}
+/*****************login************************/
+.login{
+    width:90%;
+}
+#login{
+    font-size:0.8em;
+}
+}
