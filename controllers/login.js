@@ -6,7 +6,7 @@ import {generateToken} from "../config/token.js"
 
 
 export default async (req, res) => {
-    const {password, email} = req.body
+    const {email, password} = req.body
     try {
         const myBDD = new BDD()
         const admin = new Users(myBDD)

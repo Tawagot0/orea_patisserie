@@ -14,10 +14,17 @@ const Login = () => {
     }
     
     const submit = (e) => {
+        if(info.password === "" || info.email === ""){
+            console.log("Veuillez remplir tous les champs")
+        }
         e.preventDefault()
-        axios.post(`${BASE_URL}/login`,{password:info.password, email:info.email})
+        axios.post(`${BASE_URL}/login`,{
+            password:info.password.trim(), 
+            email:info.email.trim()
+            
+        })
             .then(res => {
-                console.log(res.data.data.response)
+                console.log(res.data)
                 if(res.data.data.response) {
                     const token = res.data.data.token
                     if(token){
@@ -45,11 +52,11 @@ const Login = () => {
                 <form className="login-form" onSubmit={submit}>
                     <div className="form-item">
                         <i className="fa-regular fa-user"></i>
-                        <input id="email" type="email" name="email" value={info.email} onChange={handleChange} placeholder="E-mail" />
+                        <input id="email" type="email" name="email" value={info.email} onChange={handleChange} placeholder="E-mail" maxLength="100" required="required"/>
                     </div>
                     <div className="form-item">
                         <i className="fa-solid fa-lock"></i>
-                        <input id="password" type="password" name="password" value={info.password} onChange={handleChange} placeholder="Mot de passe" />
+                        <input id="password" type="password" name="password" value={info.password} onChange={handleChange} placeholder="Mot de passe" maxLength="100" required="required"/>
                     </div>
                     <button className="submit" type="submit">VALIDER</button>
                     <div className="create-count">

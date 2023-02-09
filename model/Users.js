@@ -32,9 +32,14 @@ class Users {
             const dataBDD = await this._emailExist(email) 
             console.log(dataBDD)
             if(!dataBDD[0]){
-                return {response: "email ou mot de passe invalide"}
+                return {response: "1 email ou mot de passe invalide"}
             }
-            
+            else if(email.length > 255 || password.length > 255){
+            return {response:'Utiliser moins de 250 caractères'}
+            }
+            else if(email.length <= 0 || password.length <= 0){
+            return {response:"Vous n'avez pas rempli tous les champs"}
+            }
             const passwordIsValide = await bcrypt.compare(password,dataBDD[0].password)
             
             const token = await this.generateResponse(dataBDD[0], generateToken)
@@ -68,21 +73,26 @@ class Users {
         if(password.length <= 8){
             return {response:'mot de passe trop court'}
         }
-        
+        else if(last_name.length > 255 || first_name.length > 255 || email.length > 255 || password.length > 255){
+            return {response:'Utiliser moins de 250 caractères'}
+        }
+        else if(last_name.length <= 0 || first_name.length <= 0 || email.length <= 0 || password.length <= 0){
+            return {response:"Vous n'avez pas rempli tous les champs"}
+        }
         try {
             // on verrifie si l'email existe en BDD
             const emailPresent = await this._emailExist(email)
-        
+            
             // error a la verrification de l'email
             if(emailPresent === undefined){
                 return
             }
             
             // Email deja present en BDD 
-            if(emailPresent === true) {
+            if(emailPresent.length > 0) {
                 return {response:'email déjà présent'}
             }
-            
+            console.log(emailPresent)
             // On hash le password
             const mpdHash = await bcrypt.hash(password,this.saltRounds)
             
@@ -93,7 +103,7 @@ class Users {
             const createUser = await this.asyncQuery(sql,paramsSql)
             
             // on retourn la reponse
-            return {response:createUser}
+            return {response:'Votre compte est bien créer'}
         }catch(err){
             console.log(err)
             return

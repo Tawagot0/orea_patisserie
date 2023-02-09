@@ -18,15 +18,18 @@ const CreateAccount = () => {
     }
     
     const submit = (e) => {
+        if(userData.nom === "" || userData.prenom === "" || userData.email === "" || userData.password === ""){
+            console.log("Veuillez remplir tous les champs")
+        }
         e.preventDefault()
         axios.post(`${BASE_URL}/addAdmin`,{
-          last_name : userData.nom,
-          first_name: userData.prenom,
-          email: userData.email,
-          password:userData.password,
+          last_name : userData.nom.trim(),
+          first_name: userData.prenom.trim(),
+          email: userData.email.trim(),
+          password:userData.password.trim(),
           
       })
-        .then(res => alert(res.data.response))
+        .then(res => alert(res.data.data.response))
         setUserData(initialValue)
 
     }
@@ -36,18 +39,18 @@ const CreateAccount = () => {
             <h2>Inscription</h2>
             <form className="login-form" onSubmit={submit} method="post">
                 <div className="form-item">
-                    <input type="text" name="nom" placeholder="Nom" onChange={handleChange} value={userData.nom} />
+                    <input type="text" name="nom" placeholder="Nom" onChange={handleChange} value={userData.nom} maxLength="100"/>
                 </div>
                 <div className = "form-item">
-                    <input type="text" name="prenom" placeholder="Prénom" onChange={handleChange} value={userData.prenom} />
+                    <input type="text" name="prenom" placeholder="Prénom" onChange={handleChange} value={userData.prenom} maxLength="100"/>
                 </div>
                 <div className="form-item">
                     <i className="fa-regular fa-user"></i>
-                    <input type="email" name="email" placeholder="E-mail" onChange={handleChange} value={userData.email} />
+                    <input type="email" name="email" placeholder="E-mail" onChange={handleChange} value={userData.email} maxLength="100"/>
                 </div>
                 <div className="form-item">
                     <i className="fa-solid fa-lock"></i>
-                    <input type="password" name="password" placeholder="Mot de passe" onChange={handleChange} value={userData.password} />
+                    <input type="password" name="password" placeholder="Mot de passe" onChange={handleChange} value={userData.password} maxLength="250"/>
                 </div>
                 <button className="submit" type="submit">VALIDER</button>
             </form>
