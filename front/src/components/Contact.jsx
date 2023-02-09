@@ -22,20 +22,23 @@ const Contact = () => {
     }
     
     const submit = (e) => {
+        if(userData.last_name === "" || userData.first_name === "" || userData.address === "" || userData.city === "" || userData.code_postal === "" || userData.telephone === "" || userData.mail === ""){
+            console.log("Veuillez remplir tous les champs")
+        }
         e.preventDefault()
         axios.post(`${BASE_URL}/contactInfo`,{
-          last_name : userData.last_name,
-          first_name: userData.first_name,
-          address: userData.address,
-          city:userData.city,
-          code_postal:userData.code_postal,
-          telephone:userData.telephone,
-          mail:userData.mail,
-          message:userData.message,
+          last_name : userData.last_name.trim(),
+          first_name: userData.first_name.trim(),
+          address: userData.address.trim(),
+          city:userData.city.trim(),
+          code_postal:userData.code_postal.trim(),
+          telephone:userData.telephone.trim(),
+          mail:userData.mail.trim(),
+          message:userData.message.trim(),
           
       })
         // .then(res => alert(res.data.response))
-        .then(res => console.log(res.data))
+        .then(res => alert(res.data.data.response))
         setUserData(initialValue)
 
     }
@@ -45,29 +48,29 @@ const Contact = () => {
             <h2>Nous contacter</h2>
             <form className="login-form" onSubmit={submit} method="post" action="">
                 <div className="form-item">
-                    <input type="text" placeholder="Nom" name="last_name" onChange={handleChange} value={userData.last_name}/>
+                    <input type="text" placeholder="Nom" name="last_name" onChange={handleChange} value={userData.last_name} />
                 </div>
                 <div className="form-item">
-                    <input type="text"  placeholder="Prénom" name="first_name" onChange={handleChange} value={userData.first_name} />
-                </div>
-                <div className="form-item">
-                    <i className="fa-solid fa-location-dot"></i>
-                    <input type="text"  placeholder="Adresse" name="address" onChange={handleChange} value={userData.address} />
+                    <input type="text"  placeholder="Prénom" name="first_name" onChange={handleChange} value={userData.first_name} maxLength="100"/>
                 </div>
                 <div className="form-item">
                     <i className="fa-solid fa-location-dot"></i>
-                    <input type="text"  placeholder="Ville" name="city" onChange={handleChange} value={userData.city} />
+                    <input type="text"  placeholder="Adresse" name="address" onChange={handleChange} value={userData.address} maxLength="255"/>
                 </div>
                 <div className="form-item">
                     <i className="fa-solid fa-location-dot"></i>
-                    <input type="text"  placeholder="Code postal" name="code_postal" onChange={handleChange} value={userData.code_postal} />
+                    <input type="text"  placeholder="Ville" name="city" onChange={handleChange} value={userData.city} maxLength="100"/>
                 </div>
                 <div className="form-item">
-                    <input type="tel"  placeholder="Votre numéro de téléphone" name="telephone" onChange={handleChange} value={userData.telephone} />
+                    <i className="fa-solid fa-location-dot"></i>
+                    <input type="text"  placeholder="Code postal" name="code_postal" onChange={handleChange} value={userData.code_postal} maxLength="100"/>
+                </div>
+                <div className="form-item">
+                    <input type="tel"  placeholder="Votre numéro de téléphone" name="telephone" onChange={handleChange} value={userData.telephone} maxLength="100"/>
                 </div>
                 <div className="form-item">
                     <i className="fa-regular fa-user"></i>
-                    <input type="email"  placeholder="E-mail" name="mail" onChange={handleChange} value={userData.mail} />
+                    <input type="email"  placeholder="E-mail" name="mail" onChange={handleChange} value={userData.mail} maxLength="100"/>
                 </div>
                 <div className="form-item">
                     <textarea type="text"  placeholder="Votre message.." name="message" onChange={handleChange} value={userData.message} />
