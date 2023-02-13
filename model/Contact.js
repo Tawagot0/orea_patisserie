@@ -16,8 +16,8 @@ class Contact {
             return {response:"Vous n'avez pas rempli tous les champs"}
         }
         try{
-            await this.asyncQuery(sql,paramsSql)
-            return {response:"message envoyé"}
+            const data = await this.asyncQuery(sql,paramsSql)
+            return {data:data, response:"message envoyé"}
         } catch(err){
             console.log(err)
             return err

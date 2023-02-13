@@ -9,6 +9,8 @@ const AddProduct = () => {
         description:'',
         price:'',
     }
+    // let productId = ""
+    
     const [userData, setUserData] = useState(initialValue)
     
     const handleChange = (e) => {
@@ -32,7 +34,14 @@ const AddProduct = () => {
           price: userData.price.trim(),
 
       })
-        .then(res => alert(res.data.data.response))
+        .then(res => {
+            alert(res.data.data.response)
+            // productId = res.data.data.data.insertId
+            // console.log(productId)
+        })
+        // .then()
+            
+        
         setUserData(initialValue)
 
     }

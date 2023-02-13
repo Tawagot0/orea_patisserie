@@ -1,10 +1,8 @@
 import {BASE_URL} from "../tools/constante.js"
 import axios from 'axios'
-// import {AppContext} from './reducer/reducer.js'
 
 const UploadFile = () => {
-    // const [state, dispatch] = useContext(AppContext)
-    
+
     const submit = (e) => {
         e.preventDefault()
         // const username = "Pseudo"
@@ -35,6 +33,7 @@ const UploadFile = () => {
             <form className="login-form" onSubmit={submit} encType="multipart/form-data" >
                 <div className="form-item">
                     <input type='file' name='img'/>
+                    <input type='text' name='caption'/>
                 </div>
                 <button className="submit" type="submit">VALIDER</button>
             </form>

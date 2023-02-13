@@ -2,10 +2,11 @@ import BDD from "../model/BDD.js"
 
 export default async (req, res) => {
     const {files} = req.body
-    const sqlPicture = 'INSERT INTO pictures (url) VALUES (?)'
+    const sqlPicture = 'INSERT INTO pictures (product_id,url,caption) VALUES (?)'
     
     try {
-        const data = await (sqlPicture,[files])
+        const database = new BDD()
+        const data = await database.asyncQuery(sqlPicture,[files])
         res.json({data})
         console.log(data)
     }catch(err) {
