@@ -29,10 +29,10 @@ const Products = () => {
         <div>
             {products.map((product,i) => {
                 return(
-                    <div key={i}>
+                    <div key={i} className="modif">
                         <p>Nom du produit:{product.name}</p>
                         <p>description:{product.description}</p>
-                        <p>prix:{product.price}</p>
+                        <p>prix:{product.price} euros</p>
                         <p><NavLink to={`/updateProduct/${product.id}`}>Modifier votre produit</NavLink></p>
                         <button onClick={() => deleteProduct(product.id)}>supprimer le produit</button>
                     </div>

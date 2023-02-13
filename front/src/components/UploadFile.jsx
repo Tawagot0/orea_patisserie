@@ -1,4 +1,3 @@
-import {Fragment} from 'react'
 import {BASE_URL} from "../tools/constante.js"
 import axios from 'axios'
 // import {AppContext} from './reducer/reducer.js'
@@ -8,14 +7,14 @@ const UploadFile = () => {
     
     const submit = (e) => {
         e.preventDefault()
-        const username = "Pseudo"
+        // const username = "Pseudo"
         const dataFile = new FormData();
-        const files = {...e.target.avatar.files};
+        const files = {...e.target.img.files};
         
         console.log(files)
         
         // ajouter d'autre input au formulaire
-        dataFile.append('username', username)
+        // dataFile.append('username', username)
         
         // L'image
         dataFile.append('files', files[0], files[0].name)
@@ -31,15 +30,15 @@ const UploadFile = () => {
     } 
     
     return (
-        <Fragment>
-            <h1>Ajouter/Modifier l'avatar</h1>
-            <form onSubmit={submit} encType="multipart/form-data">
-                <label name='avatar'>
-                    <input type='file' name='avatar'/>
-                    <input type='submit' value='Submit'/>
-                </label>
+        <div className = "login contact createAccount" >
+            <h2>Ajouter une image</h2>
+            <form className="login-form" onSubmit={submit} encType="multipart/form-data" >
+                <div className="form-item">
+                    <input type='file' name='img'/>
+                </div>
+                <button className="submit" type="submit">VALIDER</button>
             </form>
-        </Fragment>
+        </div>
     )
 }
 
