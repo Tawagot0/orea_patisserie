@@ -5,12 +5,18 @@ class Product {
     }
     
     async create({name, description, price}){
-        const sql = "INSERT INTO products (name, description, price) VALUES (?,?)"
+        const sql = "INSERT INTO products (name, description, price) VALUES (?,?,?)"
         const paramsSql = [name, description, price]
         
         try{
-            const result = await this.asyncQuery(sql,paramsSql)
-            return {result}
+            if (name.length > 255){
+              return {response:'Utiliser moins de 250 caractères pour le titre'}
+            }
+            else if (isNaN(price)){
+              return {response:'Mettre un nombre pour le prix'}  
+            }
+            await this.asyncQuery(sql,paramsSql)
+            return {response:'Votre produit à bien été ajouter'}
         } catch(err){
             console.log(err)
             return err
@@ -45,8 +51,8 @@ class Product {
         const sql = "UPDATE products SET name = ?, description = ?, price = ? WHERE id = ?"
         
         try{
-            const result = await this.asyncQuery(sql,[name, description, price, id])
-            return {result}
+            await this.asyncQuery(sql,[name, description, price, id])
+            return {response:"Modification effectuée"}
         } catch(err){
             console.log(err)
             return err
@@ -54,7 +60,7 @@ class Product {
     }
     
     async deleted({id}){
-        const sql = "DELETE products WHERE id = ?"
+        const sql = "DELETE FROM products WHERE id = ?"
         
         try{
             const result = await this.asyncQuery(sql,[id])

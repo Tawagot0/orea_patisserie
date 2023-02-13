@@ -56,7 +56,7 @@ class Articles_pictures {
     }
     
     async update({url,caption,article_id,id}){
-        const sql = "UPDATE articles_pictures SET url=?,caption=?,article_id=? WHERE id = ?"
+        const sql = "UPDATE  articles_pictures SET url=?,caption=?,article_id=? WHERE id = ?"
         const paramsSql = [url,caption,article_id,id]
         
         try{
@@ -69,7 +69,7 @@ class Articles_pictures {
     }
     
     async deletedById({id}){
-        const sql = "DELETE articles_pictures WHERE id = ?"
+        const sql = "DELETE FROM articles_pictures WHERE id = ?"
         
         try{
             const result = await this.asyncQuery(sql,[id])
@@ -81,7 +81,7 @@ class Articles_pictures {
     }
     
     async deletedByArticleId({article_id}){
-        const sql = "DELETE articles_pictures WHERE article_id = ?"
+        const sql = "DELETE FROM articles_pictures WHERE article_id = ?"
         
         try{
             const result = await this.asyncQuery(sql,[article_id])

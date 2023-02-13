@@ -5,6 +5,10 @@ import Header from "./components/Header.jsx"
 import Footer from "./components/Footer.jsx"
 import CreateAccount from "./components/CreateAccount.jsx"
 import Contact from "./components/Contact.jsx"
+import AddProduct from "./components/AddProduct.jsx"
+import Products from "./components/Products.jsx"
+import UpdateProduct from "./components/UpdateProduct.jsx"
+import UploadFile from "./components/UploadFile.jsx"
 import Error404 from "./components/Error404.jsx"
 import './App.css';
 import './css/style.css';
@@ -18,12 +22,11 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/createAccount" element={<CreateAccount />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/addProduct" element={<AddProduct />} />
+                <Route path="/boutique" element={<Products />} />
+                <Route path="/file" element={<UploadFile />} />
+                <Route path="/updateProduct/:id" element={<UpdateProduct />} />
                 <Route path="*" element={<Error404 />} />
-                {/*<Route path="/boutique" element={<Boutique />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/origine" element={<Origine />} />
-                <Route path="/actualités" element={<Actualite />} />
-                <Route path="/contact" element={<Contact />} />*/}
             </Routes>
             <Footer />
         </BrowserRouter>

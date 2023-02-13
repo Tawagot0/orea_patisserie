@@ -16,8 +16,8 @@ class Contact {
             return {response:"Vous n'avez pas rempli tous les champs"}
         }
         try{
-            // const result = await this.asyncQuery(sql,paramsSql)
-            return {response:'Votre message a bien été envoyer'}
+            await this.asyncQuery(sql,paramsSql)
+            return {response:"message envoyé"}
         } catch(err){
             console.log(err)
             return err
@@ -49,7 +49,7 @@ class Contact {
     }
     
     async deleted({id}){
-        const sql = "DELETE contact WHERE id = ?"
+        const sql = "DELETE FROM contact WHERE id = ?"
         
         try{
             const result = await this.asyncQuery(sql,[id])

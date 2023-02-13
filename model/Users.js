@@ -23,34 +23,32 @@ class Users {
             return {response:true, admin, token}
         } catch(err){
             console.log(err)
-            return
+            return err
         }
     }
     
     async login({email, password, generateToken}){
         try{
             const dataBDD = await this._emailExist(email) 
-            console.log(dataBDD)
-            if(!dataBDD[0]){
-                return {response: "1 email ou mot de passe invalide"}
-            }
-            else if(email.length > 255 || password.length > 255){
-            return {response:'Utiliser moins de 250 caractères'}
-            }
-            else if(email.length <= 0 || password.length <= 0){
-            return {response:"Vous n'avez pas rempli tous les champs"}
-            }
-            const passwordIsValide = await bcrypt.compare(password,dataBDD[0].password)
             
+            if(!dataBDD[0]){
+                return {response: "E-mail ou mot de passe invalide"}
+            } else if(email.length > 255 || password.length > 255){
+                return {response:'Utiliser moins de 250 caractères'}
+            } else if(email.length <= 0 || password.length <= 0){
+                return {response:"Veuillez remplir tous les champs"}
+            }
+            
+            const passwordIsValide = await bcrypt.compare(password,dataBDD[0].password)
             const token = await this.generateResponse(dataBDD[0], generateToken)
             
             if(passwordIsValide){
                 return{response:passwordIsValide, token}
             }
             
-            return{response:"email ou mot de passe invalide"}
+            return{response:"E-mail ou mot de passe invalide"}
         } catch (err){
-            return {error: err}
+            return err
         }
             
     }
@@ -59,10 +57,15 @@ class Users {
         try {
             const sql = "SELECT * FROM admin WHERE email = ?"
             const response  = await this.asyncQuery(sql,[email])
-            if(response.length > 0) return response
-            return false
+            
+            if(response.length > 0){
+               return response 
+            } else{
+               return false
+            }
+            
         } catch(err){
-            return
+            return err
         }
     }
     
@@ -100,13 +103,13 @@ class Users {
             const paramsSql = [last_name, first_name, email, mpdHash]
             
             // on fait la requete
-            const createUser = await this.asyncQuery(sql,paramsSql)
+            await this.asyncQuery(sql,paramsSql)
             
             // on retourn la reponse
-            return {response:'Votre compte est bien créer'}
+            return {response:'Votre compte est bien créé, vous pouvez désormais vous connecter'}
         }catch(err){
             console.log(err)
-            return
+            return err
         }
         
     }
@@ -120,7 +123,7 @@ class Users {
             return result
         } catch(err){
             console.log(err)
-            if(err) throw err
+            return err
             
         }
     }
@@ -134,7 +137,7 @@ class Users {
             return result
         } catch(err){
             console.log(err)
-            if(err) throw err
+            return err
             
         }
     }
@@ -143,11 +146,11 @@ class Users {
         const sql = "SELECT * FROM admin WHERE id = ?"
         
         try {
-            const result = await this.asyncQuery(sql, [0])
+            const result = await this.asyncQuery(sql, [id])
             return result
         } catch(err){
             console.log(err)
-            if(err) throw err
+            return err
             
         }
     }

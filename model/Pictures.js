@@ -69,7 +69,7 @@ class Pictures {
     }
     
     async deletedById({id}){
-        const sql = "DELETE pictures WHERE id = ?"
+        const sql = "DELETE FROM pictures WHERE id = ?"
         
         try{
             const result = await this.asyncQuery(sql,[id])
@@ -81,7 +81,7 @@ class Pictures {
     }
     
     async deletedByProductId({product_id}){
-        const sql = "DELETE pictures WHERE product_id = ?"
+        const sql = "DELETE FROM pictures WHERE product_id = ?"
         
         try{
             const result = await this.asyncQuery(sql,[product_id])

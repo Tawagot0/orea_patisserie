@@ -54,7 +54,7 @@ class Article {
     }
     
     async deleted({id}){
-        const sql = "DELETE articles WHERE id = ?"
+        const sql = "DELETE FROM articles WHERE id = ?"
         
         try{
             const result = await this.asyncQuery(sql,[id])

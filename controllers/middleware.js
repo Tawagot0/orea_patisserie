@@ -5,7 +5,7 @@ const ADMIN = 'admin'
 const PUBLIC = 'public'
 
 const protectedPath = (pathname) => {
-    const adminPath = ['deleteArticle','deleteUser'];
+    const adminPath = ['addblabla','deleteblabla'];
     
     const protectedAdmin = adminPath.includes(pathname)
     let type = protectedAdmin ? ADMIN : PUBLIC
