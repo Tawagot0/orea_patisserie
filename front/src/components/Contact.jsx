@@ -26,7 +26,7 @@ const Contact = () => {
             console.log("Veuillez remplir tous les champs")
         }
         e.preventDefault()
-        axios.post(`${BASE_URL}/contactInfo`,{
+        axios.post(`${BASE_URL}/contactForm`,{
           last_name : userData.last_name.trim(),
           first_name: userData.first_name.trim(),
           address: userData.address.trim(),

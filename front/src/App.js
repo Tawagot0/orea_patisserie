@@ -9,6 +9,7 @@ import AddProduct from "./components/AddProduct.jsx"
 import Products from "./components/Products.jsx"
 import UpdateProduct from "./components/UpdateProduct.jsx"
 import UploadFile from "./components/UploadFile.jsx"
+import ListContact from "./components/ListContact.jsx"
 import Error404 from "./components/Error404.jsx"
 import './App.css';
 import './css/style.css';
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/boutique" element={<Products />} />
                 <Route path="/file" element={<UploadFile />} />
                 <Route path="/updateProduct/:id" element={<UpdateProduct />} />
+                <Route path="/listContact" element={<ListContact />} />
                 <Route path="*" element={<Error404 />} />
             </Routes>
             <Footer />

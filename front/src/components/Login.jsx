@@ -1,4 +1,4 @@
-import {Fragment, useState} from "react"
+import {Fragment, useState, useEffect} from "react"
 import { NavLink} from "react-router-dom";
 import axios from "axios"
 import {BASE_URL} from "../tools/constante.js"
@@ -7,10 +7,24 @@ const Login = () => {
     const [openformLogin, setOpenformLogin] = useState(false);
     const initialState = {email:'',password:''}
     const [info, setInfo] = useState(initialState)
+    const [isLogged, setIsLogged] = useState(false)
     
     const handleChange = (e) => {
         const {name,value} = e.target
         setInfo({...info, [name]:value})
+    }
+    
+    useEffect(() => { 
+        const token = localStorage.getItem('jwtToken')
+        if(token) {
+            setIsLogged(true)
+        }
+    }, [])
+
+    const handleLogout = () => {
+        localStorage.removeItem('jwtToken')
+        delete axios.defaults.headers.common['Authorization']
+        setIsLogged(false)
     }
     
     const submit = (e) => {
@@ -31,6 +45,7 @@ const Login = () => {
                         localStorage.setItem('jwtToken', token.token)
                         axios.defaults.headers.common['Authorization'] = 'Bearer '+token.token
                         setInfo(initialState)
+                        setIsLogged(true)
                         alert("Vous êtes connecter")
                     } 
                     else {
@@ -46,7 +61,11 @@ const Login = () => {
     
     return(
         <Fragment>
-            <i onClick={() => setOpenformLogin(true)} id = "login" className = "fa-regular fa-user"> Se connecter</i>
+            {isLogged ? (
+                <i onClick={handleLogout} id="login" className="fa-regular fa-user">Deconnexion</i>
+            ) : ( 
+                <i onClick={() => setOpenformLogin(true)} id="login" className="fa-regular fa-user"> Se connecter</i>
+            )}
             <div className="login" style={{display: openformLogin ? "block" : "none"}}>
                 <h2>Connexion</h2>
                 <form className="login-form" onSubmit={submit}>

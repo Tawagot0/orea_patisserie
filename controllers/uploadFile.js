@@ -2,7 +2,7 @@ import BDD from "../model/BDD.js"
 
 export default async (req, res) => {
     const {files} = req.body
-    const sqlPicture = 'INSERT INTO pictures (product_id,url,caption) VALUES (?)'
+    const sqlPicture = 'INSERT INTO pictures (product_id,url,caption) VALUES (?,?,?)'
     
     try {
         const database = new BDD()
