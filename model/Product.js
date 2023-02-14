@@ -36,7 +36,7 @@ class Product {
     }
     
     async getAll(){
-        const sql = "SELECT * FROM products"
+        const sql = "SELECT * FROM pictures JOIN products ON products.id = pictures.product_id"
         
         try{
             const result = await this.asyncQuery(sql)

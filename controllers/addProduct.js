@@ -4,7 +4,6 @@ import Pictures from "../model/Pictures.js"
 
 export default async (req, res) => {
     
-    const sqlPicture = 'INSERT INTO pictures (product_id,url,caption) VALUES (?,?,?)'
     const {name, description, price, files} = req.body
     console.log(req.body)
     try {

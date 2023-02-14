@@ -1,5 +1,6 @@
 import axios from "axios"
 import {BASE_URL} from "../tools/constante.js"
+import {BASE_IMG} from "../tools/constante.js"
 import {useState, useEffect} from "react"
 import {NavLink} from "react-router-dom"
 
@@ -30,6 +31,7 @@ const Products = () => {
             {products.map((product,i) => {
                 return(
                     <div key={i} className="modif">
+                        <img src={`${BASE_IMG}/${product.url}`}/>
                         <p>Nom du produit:{product.name}</p>
                         <p>description:{product.description}</p>
                         <p>prix:{product.price} euros</p>
