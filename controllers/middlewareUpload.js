@@ -21,6 +21,7 @@ const checkAcceptedExtensions = (file) => {
 
 export default async (req, res, next) => {
     form.parse(req, async (err, fields, files) => {
+        console.log("ici2")
         if (err) {
             // si le fichier est trop lourd
             if (err.code === 'LIMIT_FIELD_SIZE') {
@@ -53,7 +54,6 @@ export default async (req, res, next) => {
         } catch (e) {
             return res.status(500).json({ error: 'Le fichier ne peut pas être enregistré.' });
         }
-        
         req.body = fields;
         req.body.files = files.files.newFilename;
         next();

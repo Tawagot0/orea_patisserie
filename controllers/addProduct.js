@@ -11,9 +11,6 @@ export default async (req, res) => {
         const pictures = new Pictures(myBDD)
         const product = new Product(myBDD)
         const data = await product.create ({name, description, price})
-        
-
-        
         const product_id = data.data.insertId
         const dataPicture = await pictures.create({url:files,caption:name,product_id})
         res.json({data, dataPicture})

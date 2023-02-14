@@ -103,10 +103,10 @@ class Users {
             const paramsSql = [last_name, first_name, email, mpdHash]
             
             // on fait la requete
-            const data = await this.asyncQuery(sql,paramsSql)
+            const result = await this.asyncQuery(sql,paramsSql)
             
             // on retourn la reponse
-            return {data:data, response:'Votre compte est bien créé, vous pouvez désormais vous connecter'}
+            return {result:result, response:'Votre compte est bien créé, vous pouvez désormais vous connecter'}
         }catch(err){
             console.log(err)
             return err

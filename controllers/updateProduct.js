@@ -2,7 +2,7 @@ import BDD from "../model/BDD.js"
 import Product from "../model/Product.js"
 
 export default async (req, res) => {
-    const {name, description, price, id} = req.body
+    const {name, description, price, id,} = req.body
     try {
         const myBDD = new BDD()
         const product = new Product(myBDD)

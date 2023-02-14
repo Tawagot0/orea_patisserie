@@ -15,8 +15,8 @@ class Product {
             else if (isNaN(price)){
               return {response:'Mettre un nombre pour le prix'}  
             }
-            const data = await this.asyncQuery(sql,paramsSql)
-            return {data:data, response:'Votre produit à bien été ajouter'}
+            const result = await this.asyncQuery(sql,paramsSql)
+            return {result:result, response:'Votre produit à bien été ajouter'}
         } catch(err){
             console.log(err)
             return err
@@ -51,8 +51,8 @@ class Product {
         const sql = "UPDATE products SET name = ?, description = ?, price = ? WHERE id = ?"
         
         try{
-            const data = await this.asyncQuery(sql,[name, description, price, id])
-            return {data:data, response:"Modification effectuée"}
+            const result = await this.asyncQuery(sql,[name, description, price, id])
+            return {result:result, response:"Modification effectuée"}
         } catch(err){
             console.log(err)
             return err
@@ -64,7 +64,7 @@ class Product {
         
         try{
             const result = await this.asyncQuery(sql,[id])
-            return {result}
+            return {result:result, response:"Elément supprimé"}
         } catch(err){
             console.log(err)
             return err

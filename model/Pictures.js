@@ -31,10 +31,12 @@ class Pictures {
     }
     
     async getByProductId({product_id}){
-        const sql = "SELECT * FROM pictures WHERE product_id = ?"
+        console.log(product_id)
+        const sql = "SELECT * FROM pictures WHERE pictures.product_id = ?"
         
         try{
             const result = await this.asyncQuery(sql,[product_id])
+            console.log(result)
             return {result}
         } catch(err){
             console.log(err)
@@ -61,7 +63,7 @@ class Pictures {
         
         try{
             const result = await this.asyncQuery(sql,paramsSql)
-            return {result}
+            return {result:result, response:"Modification effectuée"}
         } catch(err){
             console.log(err)
             return err
@@ -73,7 +75,7 @@ class Pictures {
         
         try{
             const result = await this.asyncQuery(sql,[id])
-            return {result}
+            return {result:result, response:"Elément supprimé"}
         } catch(err){
             console.log(err)
             return err

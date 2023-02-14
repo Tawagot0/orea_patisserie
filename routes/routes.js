@@ -12,6 +12,8 @@ import getProductById from "../controllers/getProductById.js"
 import addPictures from "../controllers/addPictures.js"
 import listContact from "../controllers/listContact.js"
 import deleteContact from "../controllers/deleteContact.js"
+import getPictureProductById from "../controllers/getPictureProductById.js"
+import updatePictureProduct from "../controllers/updatePictureProduct.js"
 
 const router = express.Router()
 
@@ -27,7 +29,8 @@ const routesPOST = [
     {route:"/updateProduct", controller:updateProduct},
     {route:"/getProductById", controller:getProductById},
     {route:"/addPictures", controller:addPictures},
-    {route:"/deleteContact", controller:deleteContact}
+    {route:"/deleteContact", controller:deleteContact},
+    {route:"/getPictureProductById", controller:getPictureProductById},
 ]
 
 routesGET.map((item) =>{
@@ -36,6 +39,8 @@ routesGET.map((item) =>{
 })
 
 router.post("/addProduct", middlewareUpload, addProduct);
+router.post("/updatePictureProduct", middlewareUpload, updatePictureProduct);
+
 
 routesPOST.map((item) =>{
         router.post(item.route, middleware, item.controller);

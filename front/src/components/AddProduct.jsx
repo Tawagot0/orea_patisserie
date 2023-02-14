@@ -40,7 +40,7 @@ const AddProduct = () => {
         axios.post(`${BASE_URL}/addProduct`, dataFile)
         .then((res)=> {
             console.log(res)
-            res.data.response && console.log('succesfully upload');
+            alert(res.data.data.response) && console.log('succesfully upload');
         })
         .catch((err) => {
             console.log(err)
