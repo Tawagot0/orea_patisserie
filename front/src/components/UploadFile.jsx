@@ -1,6 +1,7 @@
 import {BASE_URL} from "../tools/constante.js"
 import axios from 'axios'
 
+
 const UploadFile = () => {
 
     const submit = (e) => {
@@ -10,9 +11,6 @@ const UploadFile = () => {
         const files = {...e.target.img.files};
         
         console.log(files)
-        
-        // ajouter d'autre input au formulaire
-        // dataFile.append('username', username)
         
         // L'image
         dataFile.append('files', files[0], files[0].name)

@@ -9,8 +9,11 @@ class Article {
         const paramsSql = [title, description]
         
         try{
+            if (title.length > 255 || description.length > 2000){
+              return {response:'Utiliser moins de 250 caractères pour le titre'}
+            }
             const result = await this.asyncQuery(sql,paramsSql)
-            return {result}
+            return {result:result, response:'Votre produit à bien été ajouter'}
         } catch(err){
             console.log(err)
             return err
@@ -30,7 +33,7 @@ class Article {
     }
     
     async getAll(){
-        const sql = "SELECT * FROM articles"
+        const sql = "SELECT * FROM articles_pictures JOIN articles ON articles.id = articles_pictures.article_id"
         
         try{
             const result = await this.asyncQuery(sql)
@@ -46,7 +49,7 @@ class Article {
         
         try{
             const result = await this.asyncQuery(sql,[title, description, id])
-            return {result}
+            return {result:result, response:"Modification effectuée"}
         } catch(err){
             console.log(err)
             return err
@@ -58,7 +61,7 @@ class Article {
         
         try{
             const result = await this.asyncQuery(sql,[id])
-            return {result}
+            return {result:result, response:"Elément supprimé"}
         } catch(err){
             console.log(err)
             return err

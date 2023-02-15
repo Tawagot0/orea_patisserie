@@ -1,33 +1,33 @@
 import axios from "axios"
-import {BASE_URL} from '../tools/constante.js'
+import {BASE_URL, BASE_IMG} from '../tools/constante.js'
 import {useState, useEffect} from "react"
 import {useParams} from "react-router-dom"
 import {Fragment} from "react"
 
-const UpdatePictureProduct = () => {
+const UpdatePictureArticle = () => {
     
     const [picture, setPicture] = useState(null)
     const {id} = useParams()
     
     useEffect(() => {
-        axios.post(`${BASE_URL}/getPictureProductById`,{id})
+        axios.post(`${BASE_URL}/getPictureArticleById`,{id})
             .then(res => setPicture(res.data.data.result[0]))
             .catch(err => console.log(err))
     },[id])
     
     const submit = (e) =>{
         e.preventDefault()
-        
         const dataFile = new FormData();
+        
         const files = {...e.target.img.files};
-        console.log(files)
+        
         dataFile.append('files', files[0], files[0].name)
         dataFile.append('caption', picture.name)
-        dataFile.append('product_id', picture.product_id)
+        dataFile.append('article_id', picture.article_id)
         dataFile.append('id', picture.id)
         
         
-        axios.post(`${BASE_URL}/updatePictureProduct`,dataFile)
+        axios.post(`${BASE_URL}/updatePictureArticle`,dataFile)
         .then(res => {
             console.log(res)
             alert(res.data.data.response)
@@ -53,4 +53,4 @@ const UpdatePictureProduct = () => {
     )
 }
 
-export default UpdatePictureProduct
+export default UpdatePictureArticle

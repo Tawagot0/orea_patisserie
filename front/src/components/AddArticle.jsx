@@ -2,12 +2,11 @@ import axios from "axios"
 import {BASE_URL} from '../tools/constante.js'
 import {useState} from "react"
 
-const AddProduct = () => {
+const AddArticle = () => {
     
     const initialValue = {
-        name:'',
+        title:'',
         description:'',
-        price:'',
     }
     const [userData, setUserData] = useState(initialValue)
 
@@ -23,20 +22,16 @@ const AddProduct = () => {
         const files = {...e.target.img.files};
         console.log(files)
         
-        if(userData.name === "" || userData.description === "" || userData.price === ""){
+        if(userData.name === "" || userData.description === ""){
             console.log("Veuillez remplir tous les champs")
         }
-        else if(isNaN(userData.price)){
-            console.log("Veuillez mettre un chiffre au prix svp")
-        }
         
-
         dataFile.append('files', files[0], files[0].name)
+        
+        dataFile.append('title', userData.title)
         dataFile.append('description', userData.description)
-        dataFile.append('price', userData.price)
-        dataFile.append('name', userData.name)
 
-        axios.post(`${BASE_URL}/addProduct`, dataFile)
+        axios.post(`${BASE_URL}/addArticle`, dataFile)
         .then((res)=> {
             console.log(res)
             alert(res.data.data.response) && console.log('succesfully upload');
@@ -51,17 +46,13 @@ const AddProduct = () => {
    
     return(
         <div className = "login contact createAccount" >
-            <h2>Ajouter vos produits</h2>
+            <h2>Ajouter vos articles</h2>
             <form className="login-form" onSubmit={submit} encType="multipart/form-data" >
                 <div className="form-item">
-                    <input type="text" name="name" placeholder="Nom" onChange={handleChange} value={userData.name} maxLength="255"/>
+                    <input type="text" name="title" placeholder="titre" onChange={handleChange} value={userData.title} maxLength="255"/>
                 </div>
                 <div className = "form-item">
                     <input type="text" name="description" placeholder="Description" onChange={handleChange} value={userData.description} />
-                </div>
-                <div className="form-item">
-                    <i className="fa-regular fa-user"></i>
-                    <input type="number" name="price" placeholder="Prix" onChange={handleChange} value={userData.price} />
                 </div>
                 <div className="form-item">
                     <input type='file' name='img'/>
@@ -72,4 +63,4 @@ const AddProduct = () => {
     )
 }
 
-export default AddProduct
+export default AddArticle

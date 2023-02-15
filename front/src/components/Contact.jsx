@@ -22,10 +22,15 @@ const Contact = () => {
     }
     
     const submit = (e) => {
-        if(userData.last_name === "" || userData.first_name === "" || userData.address === "" || userData.city === "" || userData.code_postal === "" || userData.telephone === "" || userData.mail === ""){
-            console.log("Veuillez remplir tous les champs")
-        }
         e.preventDefault()
+        
+        if(userData.last_name === "" || userData.first_name === "" || userData.address === "" || userData.city === "" || userData.code_postal === "" || userData.telephone === "" || userData.mail === ""){
+            alert("Veuillez remplir tous les champs")
+        }
+        else if(isNaN(userData.code_postal) || isNaN(userData.telephone)){
+            alert("Format incorrect pour le code_postal ou le telephone")
+        }
+        
         axios.post(`${BASE_URL}/contactForm`,{
           last_name : userData.last_name.trim(),
           first_name: userData.first_name.trim(),
@@ -48,7 +53,7 @@ const Contact = () => {
             <h2>Nous contacter</h2>
             <form className="login-form" onSubmit={submit} method="post" action="">
                 <div className="form-item">
-                    <input type="text" placeholder="Nom" name="last_name" onChange={handleChange} value={userData.last_name} />
+                    <input type="text" placeholder="Nom" name="last_name" onChange={handleChange} value={userData.last_name} maxLength="100"/>
                 </div>
                 <div className="form-item">
                     <input type="text"  placeholder="Prénom" name="first_name" onChange={handleChange} value={userData.first_name} maxLength="100"/>
@@ -63,7 +68,7 @@ const Contact = () => {
                 </div>
                 <div className="form-item">
                     <i className="fa-solid fa-location-dot"></i>
-                    <input type="text"  placeholder="Code postal" name="code_postal" onChange={handleChange} value={userData.code_postal} maxLength="100"/>
+                    <input type="number"  placeholder="Code postal" name="code_postal" onChange={handleChange} value={userData.code_postal} maxLength="100"/>
                 </div>
                 <div className="form-item">
                     <input type="tel"  placeholder="Votre numéro de téléphone" name="telephone" onChange={handleChange} value={userData.telephone} maxLength="100"/>
@@ -73,7 +78,7 @@ const Contact = () => {
                     <input type="email"  placeholder="E-mail" name="mail" onChange={handleChange} value={userData.mail} maxLength="100"/>
                 </div>
                 <div className="form-item">
-                    <textarea type="text"  placeholder="Votre message.." name="message" onChange={handleChange} value={userData.message} />
+                    <textarea type="text"  placeholder="Votre message.." name="message" onChange={handleChange} value={userData.message} maxLength="2000"/>
                 </div>
                 <button className="submit" type="submit">VALIDER</button>
             </form>

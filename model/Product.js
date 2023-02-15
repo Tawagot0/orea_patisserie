@@ -9,7 +9,7 @@ class Product {
         const paramsSql = [name, description, price]
         
         try{
-            if (name.length > 255){
+            if (name.length > 255 || description.length > 2000){
               return {response:'Utiliser moins de 250 caractères pour le titre'}
             }
             else if (isNaN(price)){
