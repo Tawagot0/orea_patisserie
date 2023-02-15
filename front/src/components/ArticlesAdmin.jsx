@@ -2,8 +2,9 @@ import axios from "axios"
 import {BASE_URL} from "../tools/constante.js"
 import {BASE_IMG} from "../tools/constante.js"
 import {useState, useEffect} from "react"
+import {NavLink} from "react-router-dom"
 
-const Articles = () => {
+const ArticlesAdmin = () => {
     
     const [articles, setArticles] = useState([])
     
@@ -15,14 +16,27 @@ const Articles = () => {
         }
     },[articles])
     
+    const deleteArticle = (id) => {
+        axios.post(`${BASE_URL}/deleteArticle`,{id})
+        .then(res => {
+            setArticles(articles.filter((e) => e.id !== id))
+            console.log(res)
+        })
+        .catch(err => console.log(err))
+    }
+    
+        
         return(
         <div>
             {articles.map((article,i) => {
                 return(
                     <div key={i} className="modif">
+                        <img src={`${BASE_IMG}/${article.url}`} alt={article.caption}/>
+                        <p><NavLink to={`/updatePictureArticle/${article.article_id}`}>Modifier votre image</NavLink></p>
                         <p>Titre de l'article:{article.title}</p>
                         <p>description:{article.description}</p>
-                        <img src={`${BASE_IMG}/${article.url}`} alt={article.caption}/>
+                        <p><NavLink to={`/updateArticle/${article.id}`}>Modifier votre article</NavLink></p>
+                        <button onClick={() => deleteArticle(article.id)}>supprimer l'article</button>
                     </div>
                 )
             })}
@@ -30,4 +44,4 @@ const Articles = () => {
     )
 }
 
-export default Articles
+export default ArticlesAdmin

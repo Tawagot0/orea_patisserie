@@ -57,7 +57,7 @@ const AddProduct = () => {
                     <input type="text" name="name" placeholder="Nom" onChange={handleChange} value={userData.name} maxLength="255"/>
                 </div>
                 <div className = "form-item">
-                    <input type="text" name="description" placeholder="Description" onChange={handleChange} value={userData.description} />
+                    <input type="text" name="description" placeholder="Description" onChange={handleChange} value={userData.description} maxLength="2000"/>
                 </div>
                 <div className="form-item">
                     <i className="fa-regular fa-user"></i>

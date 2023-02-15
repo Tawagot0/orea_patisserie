@@ -12,6 +12,7 @@ import AddProduct from "./components/AddProduct.jsx"
 import UpdateProduct from "./components/UpdateProduct.jsx"
 import UpdatePictureProduct from "./components/UpdatePictureProduct.jsx"
 import Articles from "./components/Articles.jsx"
+import ArticlesAdmin from "./components/ArticlesAdmin.jsx"
 import AddArticle from "./components/AddArticle.jsx"
 import UpdateArticle from "./components/UpdateArticle.jsx"
 import UpdatePictureArticle from "./components/UpdatePictureArticle.jsx"
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/updateProduct/:id" element={<UpdateProduct />} />
                 <Route path="/updatePictureProduct/:id" element={<UpdatePictureProduct />} />
                 <Route path="/actualites" element={<Articles />} />
+                <Route path="/actualitesAdmin" element={<ArticlesAdmin />} />
                 <Route path="/addArticle" element={<AddArticle />} />
                 <Route path="/updateArticle/:id" element={<UpdateArticle />} />
                 <Route path="/updatePictureArticle/:id" element={<UpdatePictureArticle />} />

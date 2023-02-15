@@ -52,7 +52,7 @@ const AddArticle = () => {
                     <input type="text" name="title" placeholder="titre" onChange={handleChange} value={userData.title} maxLength="255"/>
                 </div>
                 <div className = "form-item">
-                    <input type="text" name="description" placeholder="Description" onChange={handleChange} value={userData.description} />
+                    <input type="text" name="description" placeholder="Description" onChange={handleChange} value={userData.description} maxLength="2000"/>
                 </div>
                 <div className="form-item">
                     <input type='file' name='img'/>

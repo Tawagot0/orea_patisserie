@@ -46,6 +46,7 @@ const Login = () => {
                         axios.defaults.headers.common['Authorization'] = 'Bearer '+token.token
                         setInfo(initialState)
                         setIsLogged(true)
+                        setOpenformLogin(false)
                         alert("Vous êtes connecter")
                     } 
                     else {
@@ -66,12 +67,14 @@ const Login = () => {
             ) : ( 
                 <i onClick={() => setOpenformLogin(true)} id="login" className="fa-regular fa-user"> Se connecter</i>
             )}
+            
             {isLogged  && (
             <li>
                 <NavLink to="/admin">
                   Espace admin
                 </NavLink>
             </li>)}
+        
             <div className="login" style={{display: openformLogin ? "block" : "none"}}>
                 <h2>Connexion</h2>
                 <form className="login-form" onSubmit={submit}>

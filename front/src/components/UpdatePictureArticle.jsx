@@ -1,5 +1,5 @@
 import axios from "axios"
-import {BASE_URL, BASE_IMG} from '../tools/constante.js'
+import {BASE_URL} from '../tools/constante.js'
 import {useState, useEffect} from "react"
 import {useParams} from "react-router-dom"
 import {Fragment} from "react"
