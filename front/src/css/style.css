@@ -191,6 +191,11 @@ header {
 .presentation h2{
     text-align:center;
 }
+
+.admin a {
+    color:#006eff;
+    font-size:1.5em;
+}
 /******************************carousel******************************************/
 /*.owl-stage{*/
 /*    display:flex;*/

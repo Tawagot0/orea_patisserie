@@ -25,6 +25,7 @@ const Login = () => {
         localStorage.removeItem('jwtToken')
         delete axios.defaults.headers.common['Authorization']
         setIsLogged(false)
+        alert("Vous êtes déconnecter")
     }
     
     const submit = (e) => {

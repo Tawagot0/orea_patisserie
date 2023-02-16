@@ -19,7 +19,7 @@ const CreateAccount = () => {
     
     const submit = (e) => {
         if(userData.nom === "" || userData.prenom === "" || userData.email === "" || userData.password === ""){
-            console.log("Veuillez remplir tous les champs")
+            alert("Veuillez remplir tous les champs")
         }
         e.preventDefault()
         axios.post(`${BASE_URL}/addAdmin`,{
@@ -29,9 +29,12 @@ const CreateAccount = () => {
           password:userData.password.trim(),
           
       })
-        .then(res => alert(res.data.data.response))
+        .then(res => {
+            if(res.data && res.data.data && res.data.data.response) alert(res.data.data.response)
+            if(res.data.msg) alert(res.data.msg)
+        })
+        .catch(err => console.log(err))
         setUserData(initialValue)
-
     }
    
     return(

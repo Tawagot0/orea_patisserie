@@ -9,7 +9,14 @@ const ListContact = () => {
     useEffect(() => {
         if(contacts.length === 0){
             axios.get(`${BASE_URL}/listContact`)
-                .then(res => setContacts(res.data.data.result))
+                .then(res => {
+                    if(res.data && res.data.data && res.data.data.response){
+                        setContacts(res.data.data.result)
+                        alert(res.data.data.response)
+                    } 
+                    if(res.data.msg) alert(res.data.msg)
+            
+            })
                 .catch(err => console.log(err))
         }
     },[contacts])

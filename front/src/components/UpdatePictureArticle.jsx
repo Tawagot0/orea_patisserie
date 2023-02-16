@@ -29,8 +29,8 @@ const UpdatePictureArticle = () => {
         
         axios.post(`${BASE_URL}/updatePictureArticle`,dataFile)
         .then(res => {
-            console.log(res)
-            alert(res.data.data.response)
+            if(res.data && res.data.data && res.data.data.response) alert(res.data.data.response)
+            if(res.data.msg) alert(res.data.msg)
         })
         .catch(err => console.log(err))
     } 

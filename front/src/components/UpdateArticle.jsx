@@ -23,7 +23,10 @@ const UpdateArticle = () => {
     const submit = (e) =>{
         e.preventDefault()
         axios.post(`${BASE_URL}/updateArticle`,{...article})
-        .then(res => alert(res.data.data.response))
+        .then(res => {
+            if(res.data && res.data.data && res.data.data.response) alert(res.data.data.response)
+            if(res.data.msg) alert(res.data.msg)
+        })
         .catch(err => console.log(err))
     } 
    

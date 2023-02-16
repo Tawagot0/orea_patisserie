@@ -38,8 +38,8 @@ const AddProduct = () => {
 
         axios.post(`${BASE_URL}/addProduct`, dataFile)
         .then((res)=> {
-            console.log(res)
-            alert(res.data.data.response) && console.log('succesfully upload');
+            if(res.data && res.data.data && res.data.data.response) alert(res.data.data.response)
+            if(res.data.msg) alert(res.data.msg)
         })
         .catch((err) => {
             console.log(err)

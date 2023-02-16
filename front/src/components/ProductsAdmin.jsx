@@ -19,8 +19,12 @@ const ProductsAdmin = () => {
     const deleteProduct = (id) => {
         axios.post(`${BASE_URL}/deleteProduct`,{id})
         .then(res => {
-            setProducts(products.filter((e) => e.id !== id))
-            console.log(res)
+            if(res.data && res.data.data && res.data.data.response){
+                setProducts(products.filter((e) => e.id !== id))
+                alert(res.data.data.response)
+            } 
+            if(res.data.msg) alert(res.data.msg)
+            
         })
         .catch(err => console.log(err))
     }

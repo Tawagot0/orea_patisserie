@@ -18,6 +18,7 @@ import UpdateArticle from "./components/UpdateArticle.jsx"
 import UpdatePictureArticle from "./components/UpdatePictureArticle.jsx"
 import Contact from "./components/Contact.jsx"
 import ListContact from "./components/ListContact.jsx"
+import Admin from "./components/Admin.jsx"
 import Error404 from "./components/Error404.jsx"
 
 
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/updatePictureArticle/:id" element={<UpdatePictureArticle />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/listContact" element={<ListContact />} />
+                <Route path="/admin" element={<Admin />} />
                 <Route path="*" element={<Error404 />} />
             </Routes>
             <Footer />

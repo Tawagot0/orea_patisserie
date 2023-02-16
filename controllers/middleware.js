@@ -5,7 +5,22 @@ const ADMIN = 'admin'
 const PUBLIC = 'public'
 
 const protectedPath = (pathname) => {
-    const adminPath = ['addblabla','deleteblabla'];
+    const adminPath = 
+    ['addAdmin',
+    'deleteProduct',
+    'updateProduct',
+    'getProductById',
+    'updateArticle',
+    'deleteArticle',
+    'getArticleById',
+    'getPictureProductById',
+    'getPictureArticleById',
+    'addProduct',
+    'addArticle',
+    'updatePictureProduct',
+    'updatePictureArticle',
+    'deleteContact',
+    'listContact'];
     
     const protectedAdmin = adminPath.includes(pathname)
     let type = protectedAdmin ? ADMIN : PUBLIC
@@ -45,8 +60,8 @@ export default async(req, res, next) => {
         // on verrifie si la route est autoriser
         const acces = accesAutorized(pathname,userData)
         // la reponse dans le cas ou la route n'est pas autoriser
-        const response = {response:false, msg:'acces refuser'}
-        
+        const response = {response:false, msg:'accès refusé'}
+        console.log(response)
         return acces ? next() : res.json(response)
     }catch(err) {
         console.log(err)

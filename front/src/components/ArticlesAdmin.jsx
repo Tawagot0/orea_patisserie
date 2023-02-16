@@ -19,8 +19,12 @@ const ArticlesAdmin = () => {
     const deleteArticle = (id) => {
         axios.post(`${BASE_URL}/deleteArticle`,{id})
         .then(res => {
-            setArticles(articles.filter((e) => e.id !== id))
-            console.log(res)
+            if(res.data && res.data.data && res.data.data.response){
+                setArticles(articles.filter((e) => e.id !== id))
+                alert(res.data.data.response)
+            } 
+            if(res.data.msg) alert(res.data.msg)
+            
         })
         .catch(err => console.log(err))
     }
