@@ -6,8 +6,16 @@ import {Fragment} from "react"
 
 const UpdatePictureArticle = () => {
     
+    const [messageLogin, setMessagelogin] = useState("")
     const [picture, setPicture] = useState(null)
     const {id} = useParams()
+    
+    const messageFn = (msg) => {
+        setMessagelogin(msg)
+        setTimeout(() => {
+            setMessagelogin("")
+        },2000)
+    }
     
     useEffect(() => {
         axios.post(`${BASE_URL}/getPictureArticleById`,{id})
@@ -17,8 +25,8 @@ const UpdatePictureArticle = () => {
     
     const submit = (e) =>{
         e.preventDefault()
-        const dataFile = new FormData();
         
+        const dataFile = new FormData();
         const files = {...e.target.img.files};
         
         dataFile.append('files', files[0], files[0].name)
@@ -26,12 +34,8 @@ const UpdatePictureArticle = () => {
         dataFile.append('article_id', picture.article_id)
         dataFile.append('id', picture.id)
         
-        
         axios.post(`${BASE_URL}/updatePictureArticle`,dataFile)
-        .then(res => {
-            if(res.data && res.data.data && res.data.data.response) alert(res.data.data.response)
-            if(res.data.msg) alert(res.data.msg)
-        })
+        .then(res => messageFn(res.data.data.response))
         .catch(err => console.log(err))
     } 
    
@@ -41,6 +45,7 @@ const UpdatePictureArticle = () => {
             {picture !== null && (
                 <div className = "login contact createAccount" >
                     <h2>Modifier votre image</h2>
+                    <div className="msgAlert"><h3>{messageLogin}</h3></div>
                     <form className="login-form" onSubmit={submit} encType="multipart/form-data" >
                         <div className="form-item">
                             <input type='file' name='img'/>

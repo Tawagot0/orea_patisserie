@@ -14,7 +14,6 @@ body a , a:visited{
 }
 input::placeholder {
     font-weight: bold;
-    
     color: #fff;
 }
 h1,h2,h3,h4{
@@ -83,7 +82,24 @@ header {
     right: 40px; 
     top: 30px; 
     cursor: pointer;
-}/**************************form login********************************/
+}   
+.link-admin{
+    display:flex;
+    margin-top:1em;
+    margin-left:0.5em;
+    font-size:1.2em;
+}
+.msgAlert{
+    display:flex;
+    justify-content:center;
+}
+.msgAlert h3{
+    background-color:transparent;
+    color:#fff;
+    text-shadow:#ff2626 1px 0 8px;
+
+}
+/**************************form login********************************/
 #login, #close-form-button, .submit{
     cursor:pointer;
 }
@@ -192,24 +208,15 @@ header {
     text-align:center;
 }
 
-.admin a {
-    color:#006eff;
+.admin li {
+    margin:1em;
     font-size:1.5em;
 }
+.admin a {
+    color:black;
+}
 /******************************carousel******************************************/
-/*.owl-stage{*/
-/*    display:flex;*/
-/*    align-items:center;*/
-/*    cursor:pointer;*/
-/*    padding-bottom:0.5em*/
-/*}*/
-/*.owl-stage img{*/
-/*    box-shadow: */
-/*    rgba(103, 145, 252, 0.4) 5px 5px, */
-/*    rgba(103, 145, 252, 0.3) 10px 10px, */
-/*    rgba(103, 145, 252, 0.4) -5px 5px, */
-/*    rgba(103, 145, 252, 0.3) -10px 10px;*/
-/*}*/
+
 /******************************FOOTER****************************************************/
 footer{
     padding:0.5em;

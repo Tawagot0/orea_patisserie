@@ -4,6 +4,15 @@ import {useState} from "react"
 
 const Contact = () => {
     
+    const [messageLogin, setMessagelogin] = useState("")
+    
+    const messageFn = (msg) => {
+        setMessagelogin(msg)
+        setTimeout(() => {
+            setMessagelogin("")
+        },2000)
+    }
+    
     const initialValue = {
         last_name:'',
         first_name:'',
@@ -25,10 +34,12 @@ const Contact = () => {
         e.preventDefault()
         
         if(userData.last_name === "" || userData.first_name === "" || userData.address === "" || userData.city === "" || userData.code_postal === "" || userData.telephone === "" || userData.mail === ""){
-            alert("Veuillez remplir tous les champs")
+            messageFn("Veuillez remplir tous les champs")
+            return
         }
         else if(isNaN(userData.code_postal) || isNaN(userData.telephone)){
-            alert("Format incorrect pour le code_postal ou le telephone")
+            messageFn("Format incorrect pour le code_postal ou le telephone")
+            return
         }
         
         axios.post(`${BASE_URL}/contactForm`,{
@@ -42,15 +53,15 @@ const Contact = () => {
           message:userData.message.trim(),
           
       })
-        // .then(res => alert(res.data.response))
-        .then(res => alert(res.data.data.response))
+        .then(res => messageFn(res.data.data.response))
+        .catch(err => console.log(err))
         setUserData(initialValue)
-
     }
     
     return(
         <div className = "login contact">
             <h2>Nous contacter</h2>
+            <div className="msgAlert"><h3>{messageLogin}</h3></div>
             <form className="login-form" onSubmit={submit} method="post" action="">
                 <div className="form-item">
                     <input type="text" placeholder="Nom" name="last_name" onChange={handleChange} value={userData.last_name} maxLength="100"/>

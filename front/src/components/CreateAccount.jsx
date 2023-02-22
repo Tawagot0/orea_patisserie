@@ -3,6 +3,14 @@ import {BASE_URL} from '../tools/constante.js'
 import {useState} from "react"
 
 const CreateAccount = () => {
+    const [messageLogin, setMessagelogin] = useState("")
+    
+    const messageFn = (msg) => {
+        setMessagelogin(msg)
+        setTimeout(() => {
+            setMessagelogin("")
+        },2000)
+    }
     
     const initialValue = {
         nom:'',
@@ -10,6 +18,7 @@ const CreateAccount = () => {
         email:'',
         password:''
     }
+    
     const [userData, setUserData] = useState(initialValue)
     
     const handleChange = (e) => {
@@ -19,7 +28,8 @@ const CreateAccount = () => {
     
     const submit = (e) => {
         if(userData.nom === "" || userData.prenom === "" || userData.email === "" || userData.password === ""){
-            alert("Veuillez remplir tous les champs")
+            messageFn("Veuillez remplir tous les champs")
+            return
         }
         e.preventDefault()
         axios.post(`${BASE_URL}/addAdmin`,{
@@ -29,10 +39,7 @@ const CreateAccount = () => {
           password:userData.password.trim(),
           
       })
-        .then(res => {
-            if(res.data && res.data.data && res.data.data.response) alert(res.data.data.response)
-            if(res.data.msg) alert(res.data.msg)
-        })
+        .then(res => messageFn(res.data.data.response))
         .catch(err => console.log(err))
         setUserData(initialValue)
     }
@@ -40,6 +47,7 @@ const CreateAccount = () => {
     return(
         <div className = "login contact createAccount" >
             <h2>Inscription</h2>
+            <div className="msgAlert"><h3>{messageLogin}</h3></div>
             <form className="login-form" onSubmit={submit} method="post">
                 <div className="form-item">
                     <input type="text" name="nom" placeholder="Nom" onChange={handleChange} value={userData.nom} maxLength="100"/>

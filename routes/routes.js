@@ -20,6 +20,7 @@ import updatePictureArticle from "../controllers/updatePictureArticle.js"
 import contactForm from "../controllers/contactForm.js"
 import listContact from "../controllers/listContact.js"
 import deleteContact from "../controllers/deleteContact.js"
+import checkToken from '../controllers/checkToken.js'
 
 const router = express.Router()
 
@@ -27,6 +28,7 @@ const routesGET = [
     {route:"/products", controller:products},
     {route:"/articles", controller:articles},
     {route:"/listContact", controller:listContact},
+    {route:"/relogged", controller:checkToken},
 ]
 const routesPOST = [
     {route:"/addAdmin", controller:addAdmin},

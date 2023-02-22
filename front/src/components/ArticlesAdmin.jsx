@@ -5,7 +5,7 @@ import {useState, useEffect} from "react"
 import {NavLink} from "react-router-dom"
 
 const ArticlesAdmin = () => {
-    
+
     const [articles, setArticles] = useState([])
     
     useEffect(() => {
@@ -19,12 +19,8 @@ const ArticlesAdmin = () => {
     const deleteArticle = (id) => {
         axios.post(`${BASE_URL}/deleteArticle`,{id})
         .then(res => {
-            if(res.data && res.data.data && res.data.data.response){
                 setArticles(articles.filter((e) => e.id !== id))
-                alert(res.data.data.response)
-            } 
-            if(res.data.msg) alert(res.data.msg)
-            
+                console.log(res.data.data.response)
         })
         .catch(err => console.log(err))
     }

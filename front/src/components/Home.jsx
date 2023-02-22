@@ -1,4 +1,4 @@
-// import HomeCarousel from "./HomeCarousel.jsx"
+import HomeCarousel from "./HomeCarousel.jsx"
 import {Fragment} from "react"
 const Home = () => {
 
@@ -12,7 +12,7 @@ const Home = () => {
                 	</div>
                 </article>
             </main>
-            {/*<HomeCarousel />*/}
+            <HomeCarousel />
         </Fragment>
     )
 }

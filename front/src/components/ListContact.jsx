@@ -9,14 +9,7 @@ const ListContact = () => {
     useEffect(() => {
         if(contacts.length === 0){
             axios.get(`${BASE_URL}/listContact`)
-                .then(res => {
-                    if(res.data && res.data.data && res.data.data.response){
-                        setContacts(res.data.data.result)
-                        alert(res.data.data.response)
-                    } 
-                    if(res.data.msg) alert(res.data.msg)
-            
-            })
+                .then(res => setContacts(res.data.data.result))
                 .catch(err => console.log(err))
         }
     },[contacts])
@@ -25,13 +18,12 @@ const ListContact = () => {
         axios.post(`${BASE_URL}/deleteContact`,{id})
         .then(res => {
             setContacts(contacts.filter((e) => e.id !== id))
-            console.log(res)
+            console.log(res.data.data.response)
         })
         .catch(err => console.log(err))
     }
     
-        
-        return(
+    return(
         <div>
             {contacts.map((contact,i) => {
                 return(

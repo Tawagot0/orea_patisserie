@@ -6,8 +6,16 @@ import {Fragment} from "react"
 
 const UpdateArticle = () => {
     
+    const [messageLogin, setMessagelogin] = useState("")
     const [article, setArticle] = useState(null)
     const {id} = useParams()
+    
+    const messageFn = (msg) => {
+        setMessagelogin(msg)
+        setTimeout(() => {
+            setMessagelogin("")
+        },2000)
+    }
     
     useEffect(() => {
         axios.post(`${BASE_URL}/getArticleById`,{id})
@@ -22,11 +30,14 @@ const UpdateArticle = () => {
     
     const submit = (e) =>{
         e.preventDefault()
+        
+        if(article.title === "" || article.description === ""){
+            messageFn("Veuillez remplir tous les champs")
+            return
+        }
+        
         axios.post(`${BASE_URL}/updateArticle`,{...article})
-        .then(res => {
-            if(res.data && res.data.data && res.data.data.response) alert(res.data.data.response)
-            if(res.data.msg) alert(res.data.msg)
-        })
+        .then(res => messageFn(res.data.data.response))
         .catch(err => console.log(err))
     } 
    
@@ -36,6 +47,7 @@ const UpdateArticle = () => {
             {article !== null && (
                 <div className = "login contact createAccount" >
                     <h2>Mettre à jour votre article</h2>
+                    <div className="msgAlert"><h3>{messageLogin}</h3></div>
                     <form className="login-form" onSubmit={submit} >
                         <div className="form-item">
                             <input type="text" name="title" placeholder="Titre" onChange={handleChange} value={article.title} maxLength="100"/>

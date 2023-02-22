@@ -13,23 +13,11 @@ class Contact {
             return {response:'Utiliser moins de 250 caractères'}
         }
         else if(last_name.length <= 0 || first_name.length <= 0 || address.length <= 0 || city.length <= 0 || code_postal.length <= 0 || telephone.length <= 0 || mail.length <= 0){
-            return {response:"Vous n'avez pas rempli tous les champs"}
+            return {response:"Veuillez remplir tous les champs"}
         }
         try{
-            const data = await this.asyncQuery(sql,paramsSql)
-            return {data:data, response:"message envoyé"}
-        } catch(err){
-            console.log(err)
-            return err
-        }
-    }
-    
-    async getById({id}){
-        const sql = "SELECT * FROM contact WHERE id = ?"
-        
-        try{
-            const result = await this.asyncQuery(sql,[id])
-            return {result}
+            const result = await this.asyncQuery(sql,paramsSql)
+            return {result:result, response:"Message envoyé"}
         } catch(err){
             console.log(err)
             return err
@@ -53,13 +41,12 @@ class Contact {
         
         try{
             const result = await this.asyncQuery(sql,[id])
-            return {result}
+            return {result:result, response:"Elément supprimé"}
         } catch(err){
             console.log(err)
             return err
         }
     }
-    
 }
 
 export default Contact

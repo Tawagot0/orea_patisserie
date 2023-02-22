@@ -3,12 +3,20 @@ import {BASE_URL} from '../tools/constante.js'
 import {useState} from "react"
 
 const AddArticle = () => {
+    const [messageLogin, setMessagelogin] = useState("")
     
     const initialValue = {
         title:'',
         description:'',
     }
     const [userData, setUserData] = useState(initialValue)
+    
+    const messageFn = (msg) => {
+        setMessagelogin(msg)
+        setTimeout(() => {
+            setMessagelogin("")
+        },2000)
+    }
 
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -20,10 +28,10 @@ const AddArticle = () => {
         
         const dataFile = new FormData();
         const files = {...e.target.img.files};
-        console.log(files)
-        
+
         if(userData.name === "" || userData.description === ""){
-            console.log("Veuillez remplir tous les champs")
+            messageFn("Veuillez remplir tous les champs")
+            return
         }
         
         dataFile.append('files', files[0], files[0].name)
@@ -32,13 +40,8 @@ const AddArticle = () => {
         dataFile.append('description', userData.description)
 
         axios.post(`${BASE_URL}/addArticle`, dataFile)
-        .then((res)=> {
-            if(res.data && res.data.data && res.data.data.response) alert(res.data.data.response)
-            if(res.data.msg) alert(res.data.msg)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+        .then(res => messageFn(res.data.data.response))
+        .catch(err => console.log(err))
             
         setUserData(initialValue)
 
@@ -47,6 +50,7 @@ const AddArticle = () => {
     return(
         <div className = "login contact createAccount" >
             <h2>Ajouter vos articles</h2>
+            <div className="msgAlert"><h3>{messageLogin}</h3></div>
             <form className="login-form" onSubmit={submit} encType="multipart/form-data" >
                 <div className="form-item">
                     <input type="text" name="title" placeholder="titre" onChange={handleChange} value={userData.title} maxLength="255"/>

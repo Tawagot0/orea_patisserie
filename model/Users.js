@@ -20,7 +20,7 @@ class Users {
         
         try {
             const token = await generateToken(userData)
-            return {response:true, admin, token}
+            return {response:userData, admin, token}
         } catch(err){
             console.log(err)
             return err
@@ -74,13 +74,13 @@ class Users {
         const sql = "INSERT INTO admin (last_name, first_name, email, password) VALUES (?,?,?,?)"
         
         if(password.length <= 8){
-            return {response:'mot de passe trop court'}
+            return {response:'Le mot de passe doit contenir au moins 8 caractères'}
         }
         else if(last_name.length > 255 || first_name.length > 255 || email.length > 255 || password.length > 255){
             return {response:'Utiliser moins de 250 caractères'}
         }
         else if(last_name.length <= 0 || first_name.length <= 0 || email.length <= 0 || password.length <= 0){
-            return {response:"Vous n'avez pas rempli tous les champs"}
+            return {response:"Veuillez remplir tous les champs"}
         }
         try {
             // on verrifie si l'email existe en BDD
@@ -93,7 +93,7 @@ class Users {
             
             // Email deja present en BDD 
             if(emailPresent.length > 0) {
-                return {response:'email déjà présent'}
+                return {response:'E-mail déjà présent'}
             }
             console.log(emailPresent)
             // On hash le password
@@ -114,46 +114,6 @@ class Users {
         
     }
     
-    async deleteAccount({id}){
-        const sql = "DELETE FROM admin WHERE id = ?"
-        const paramsSql = [id]
-        
-        try {
-            const result = await this.asyncQuery(sql, paramsSql)
-            return result
-        } catch(err){
-            console.log(err)
-            return err
-            
-        }
-    }
-    
-    
-    async getAllUser(){
-        const sql = "SELECT * FROM admin"
-        
-        try {
-            const result = await this.asyncQuery(sql)
-            return result
-        } catch(err){
-            console.log(err)
-            return err
-            
-        }
-    }
-    
-    async getById({id}){
-        const sql = "SELECT * FROM admin WHERE id = ?"
-        
-        try {
-            const result = await this.asyncQuery(sql, [id])
-            return result
-        } catch(err){
-            console.log(err)
-            return err
-            
-        }
-    }
 }
 
 export default Users
