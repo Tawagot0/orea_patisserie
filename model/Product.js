@@ -70,7 +70,6 @@ class Product {
             return err
         }
     }
-    
 }
 
 export default Product

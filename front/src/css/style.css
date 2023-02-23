@@ -216,17 +216,17 @@ header {
     color:black;
 }
 /******************************carousel******************************************/
+.swiper{
+    background-color:black;
+}
+
 .swiper-slide {
   background-position: center;
   background-size: cover;
-  width: 300px;
-  height: 400px;
+  /*width: 350px;*/
+  /*height: 450px;*/
+  padding:1.2em 0 1.7em
 }
-.swiper{
-    background-color:black;
-    padding:1.5em 0.7em 2em;
-}
-
 .swiper-slide img {
   display: block;
   /*box-shadow: 5px -5px 10px white;*/
@@ -253,7 +253,7 @@ header {
   bottom: 0;
 }
 
-.swiper-pagination-bullet {
+.swiper .swiper-pagination-bullet {
   width: 25px;
   height: 5px;
   border-radius: 5px;

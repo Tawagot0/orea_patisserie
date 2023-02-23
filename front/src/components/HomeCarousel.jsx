@@ -11,7 +11,6 @@ import img3 from "../images/des3.jpg";
 const HomeCarousel =() => {
     return (
         <Swiper
-            className="mySwiper"
             modules={[EffectCoverflow, Pagination, Autoplay]}
             speed={1500}
             autoplay={{
@@ -20,10 +19,6 @@ const HomeCarousel =() => {
             }}
             effect={"coverflow"}
             breakpoints={{
-            // 640: {
-            //     slidesPerView: 1,
-            //     spaceBetween: 20,
-            //     },
             768: {
                 slidesPerView: 1,
                 spaceBetween: 40,
@@ -45,6 +40,7 @@ const HomeCarousel =() => {
             pagination={{
                 clickable: true
             }}
+            className="mySwiper"
             >
             <SwiperSlide>
                 <img src={img} alt="dessert"/>
