@@ -1,43 +1,43 @@
-import axios from "axios"
-import {BASE_URL} from '../tools/constante.js'
-import {useState, useEffect} from "react"
-import {useParams} from "react-router-dom"
-import {Fragment} from "react"
+import axios from "axios";
+import {BASE_URL} from '../tools/constante.js';
+import {useState, useEffect} from "react";
+import {useParams} from "react-router-dom";
+import {Fragment} from "react";
 
 const UpdatePictureArticle = () => {
     
-    const [messageLogin, setMessagelogin] = useState("")
-    const [picture, setPicture] = useState(null)
-    const {id} = useParams()
+    const [messageLogin, setMessagelogin] = useState("");
+    const [picture, setPicture] = useState(null);
+    const {id} = useParams();
     
     const messageFn = (msg) => {
-        setMessagelogin(msg)
+        setMessagelogin(msg);
         setTimeout(() => {
-            setMessagelogin("")
-        },2000)
-    }
+            setMessagelogin("");
+        },2000);
+    };
     
     useEffect(() => {
         axios.post(`${BASE_URL}/getPictureArticleById`,{id})
             .then(res => setPicture(res.data.data.result[0]))
-            .catch(err => console.log(err))
-    },[id])
+            .catch(err => console.log(err));
+    },[id]);
     
     const submit = (e) =>{
-        e.preventDefault()
+        e.preventDefault();
         
         const dataFile = new FormData();
         const files = {...e.target.img.files};
         
-        dataFile.append('files', files[0], files[0].name)
-        dataFile.append('caption', picture.name)
-        dataFile.append('article_id', picture.article_id)
-        dataFile.append('id', picture.id)
+        dataFile.append('files', files[0], files[0].name);
+        dataFile.append('caption', picture.caption);
+        dataFile.append('article_id', picture.article_id);
+        dataFile.append('id', picture.id);
         
         axios.post(`${BASE_URL}/updatePictureArticle`,dataFile)
         .then(res => messageFn(res.data.data.response))
-        .catch(err => console.log(err))
-    } 
+        .catch(err => console.log(err));
+    };
    
     return(
         <Fragment>
@@ -55,7 +55,7 @@ const UpdatePictureArticle = () => {
                 </div>
             )}
         </Fragment>
-    )
-}
+    );
+};
 
-export default UpdatePictureArticle
+export default UpdatePictureArticle;

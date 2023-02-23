@@ -1,37 +1,37 @@
-import axios from "axios"
-import {BASE_URL} from '../tools/constante.js'
-import {useState} from "react"
+import axios from "axios";
+import {BASE_URL} from '../tools/constante.js';
+import {useState} from "react";
 
 const CreateAccount = () => {
-    const [messageLogin, setMessagelogin] = useState("")
+    const [messageLogin, setMessagelogin] = useState("");
     
     const messageFn = (msg) => {
-        setMessagelogin(msg)
+        setMessagelogin(msg);
         setTimeout(() => {
-            setMessagelogin("")
-        },2000)
-    }
+            setMessagelogin("");
+        },2000);
+    };
     
     const initialValue = {
         nom:'',
         prenom:'',
         email:'',
         password:''
-    }
+    };
     
-    const [userData, setUserData] = useState(initialValue)
+    const [userData, setUserData] = useState(initialValue);
     
     const handleChange = (e) => {
-        const {name, value} = e.target
-        setUserData({...userData,[name]:value})
-    }
+        const {name, value} = e.target;
+        setUserData({...userData,[name]:value});
+    };
     
     const submit = (e) => {
         if(userData.nom === "" || userData.prenom === "" || userData.email === "" || userData.password === ""){
-            messageFn("Veuillez remplir tous les champs")
-            return
+            messageFn("Veuillez remplir tous les champs");
+            return;
         }
-        e.preventDefault()
+        e.preventDefault();
         axios.post(`${BASE_URL}/addAdmin`,{
           last_name : userData.nom.trim(),
           first_name: userData.prenom.trim(),
@@ -40,9 +40,9 @@ const CreateAccount = () => {
           
       })
         .then(res => messageFn(res.data.data.response))
-        .catch(err => console.log(err))
-        setUserData(initialValue)
-    }
+        .catch(err => console.log(err));
+        setUserData(initialValue);
+    };
    
     return(
         <div className = "login contact createAccount" >
@@ -66,7 +66,7 @@ const CreateAccount = () => {
                 <button className="submit" type="submit">VALIDER</button>
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default CreateAccount
+export default CreateAccount;

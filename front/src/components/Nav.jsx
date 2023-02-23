@@ -1,23 +1,23 @@
 import { NavLink, useLocation } from "react-router-dom";
-import {useEffect} from 'react'
-import axios from 'axios'
+import {useEffect} from 'react';
+import axios from 'axios';
 import menuBurger from '../images/menu-btn.png';
-import {useState} from "react"
+import {useState} from "react";
 
 const Nav = () => {
   
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   /*etat à false quand le menu est fermé*/
-  const location = useLocation()
+  const location = useLocation();
   
   useEffect(() => {
     if(!axios.defaults.headers.common['Authorization']){
-      const token = localStorage.getItem("jwtToken")
+      const token = window.localStorage.getItem("jwtToken");
       if(token){
-        axios.defaults.headers.common['Authorization'] = 'Bearer '+token
+        axios.defaults.headers.common['Authorization'] = 'Bearer '+token;
       }
     }
-  },[])
+  },[]);
   
     return(
        <nav className = "navbar">
@@ -59,7 +59,7 @@ const Nav = () => {
           {/*changer la valeur du state au click*/}
           <img onClick={() => setMobileMenuOpen(!mobileMenuOpen)} src={menuBurger} alt="menu burger" className="menu-burger"/>
         </nav>
-    )
-}
+    );
+};
 
-export default Nav
+export default Nav;

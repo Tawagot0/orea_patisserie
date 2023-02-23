@@ -1,6 +1,6 @@
 import {Route, Routes} from "react-router-dom";
-import routes from '../tools/routes.js'
-import PrivateRoute from "./PrivateRoute"
+import routes from '../tools/routes.js';
+import PrivateRoute from "./PrivateRoute";
 
 const Router = () => {
     return (
@@ -17,10 +17,10 @@ const Router = () => {
                             </PrivateRoute>
                         } 
                     />
-                )
+                );
             })}
         </Routes>
-    )
-}
+    );
+};
 
-export default Router
+export default Router;

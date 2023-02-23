@@ -1,17 +1,17 @@
-import axios from "axios"
-import {BASE_URL} from '../tools/constante.js'
-import {useState} from "react"
+import axios from "axios";
+import {BASE_URL} from '../tools/constante.js';
+import {useState} from "react";
 
 const Contact = () => {
     
-    const [messageLogin, setMessagelogin] = useState("")
+    const [messageLogin, setMessagelogin] = useState("");
     
     const messageFn = (msg) => {
-        setMessagelogin(msg)
+        setMessagelogin(msg);
         setTimeout(() => {
-            setMessagelogin("")
-        },2000)
-    }
+            setMessagelogin("");
+        },2000);
+    };
     
     const initialValue = {
         last_name:'',
@@ -22,24 +22,24 @@ const Contact = () => {
         telephone:'',
         mail:'',
         message:''
-    }
-    const [userData, setUserData] = useState(initialValue)
+    };
+    const [userData, setUserData] = useState(initialValue);
     
     const handleChange = (e) => {
-        const {name, value} = e.target
-        setUserData({...userData,[name]:value})
-    }
+        const {name, value} = e.target;
+        setUserData({...userData,[name]:value});
+    };
     
     const submit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         
         if(userData.last_name === "" || userData.first_name === "" || userData.address === "" || userData.city === "" || userData.code_postal === "" || userData.telephone === "" || userData.mail === ""){
-            messageFn("Veuillez remplir tous les champs")
-            return
+            messageFn("Veuillez remplir tous les champs");
+            return;
         }
         else if(isNaN(userData.code_postal) || isNaN(userData.telephone)){
-            messageFn("Format incorrect pour le code_postal ou le telephone")
-            return
+            messageFn("Format incorrect pour le code_postal ou le telephone");
+            return;
         }
         
         axios.post(`${BASE_URL}/contactForm`,{
@@ -54,9 +54,9 @@ const Contact = () => {
           
       })
         .then(res => messageFn(res.data.data.response))
-        .catch(err => console.log(err))
-        setUserData(initialValue)
-    }
+        .catch(err => console.log(err));
+        setUserData(initialValue);
+    };
     
     return(
         <div className = "login contact">
@@ -94,7 +94,7 @@ const Contact = () => {
                 <button className="submit" type="submit">VALIDER</button>
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default Contact
+export default Contact;

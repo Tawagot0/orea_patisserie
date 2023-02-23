@@ -33,7 +33,7 @@ const Admin = () => {
                 </li>
             </ul>
         </main>
-    )
-}
+    );
+};
 
-export default Admin
+export default Admin;

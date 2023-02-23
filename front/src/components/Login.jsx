@@ -1,64 +1,62 @@
-import {Fragment, useState, useContext} from "react"
+import {Fragment, useState, useContext} from "react";
 import { NavLink} from "react-router-dom";
-import axios from "axios"
-import {BASE_URL} from "../tools/constante.js"
-import {StoreContext} from "../tools/context.js"
+import axios from "axios";
+import {BASE_URL} from "../tools/constante.js";
+import {StoreContext} from "../tools/context.js";
 
 const Login = () => {
     const [openformLogin, setOpenformLogin] = useState(false);
-    const initialState = {email:'',password:''}
-    const [info, setInfo] = useState(initialState)
-    const [messageLogin, setMessagelogin] = useState("")
-    const [state, dispatch] = useContext(StoreContext)
+    const initialState = {email:'',password:''};
+    const [info, setInfo] = useState(initialState);
+    const [messageLogin, setMessagelogin] = useState("");
+    const [state, dispatch] = useContext(StoreContext);
 
     const handleChange = (e) => {
-        const {name,value} = e.target
-        setInfo({...info, [name]:value})
-    }
+        const {name,value} = e.target;
+        setInfo({...info, [name]:value});
+    };
     
     const messageFn = (msg) => {
-        setMessagelogin(msg)
+        setMessagelogin(msg);
         setTimeout(() => {
-            setMessagelogin("")
-        },2000)
-    }
+            setMessagelogin("");
+        },2000);
+    };
 
     const handleLogout = () => {
-        localStorage.removeItem('jwtToken')
-        delete axios.defaults.headers.common['Authorization']
-        dispatch({type:"LOGOUT"})
-        messageFn("Vous êtes déconnecter")
-    }
+        window.localStorage.removeItem('jwtToken');
+        delete axios.defaults.headers.common['Authorization'];
+        dispatch({type:"LOGOUT"});
+        messageFn("Vous êtes déconnecter");
+    };
     
     const submit = (e) => {
         if(info.password === "" || info.email === ""){
-            messageFn("Veuillez remplir tous les champs")
+            messageFn("Veuillez remplir tous les champs");
         }
-        e.preventDefault()
+        e.preventDefault();
         axios.post(`${BASE_URL}/login`,{
             password:info.password.trim(), 
             email:info.email.trim()
-            
         })
         .then(res => {
             if(res.data.data.response) {
-                const {token} = res.data.data
+                const {token} = res.data.data;
                 if(token){
-                    localStorage.setItem('jwtToken', token.token)
-                    axios.defaults.headers.common['Authorization'] = 'Bearer '+token.token
-                    setInfo(initialState)
-                    dispatch({type:"LOGIN",payload:token.response})
-                    setOpenformLogin(false)
-                    messageFn("Vous êtes connecter")
+                    window.localStorage.setItem('jwtToken', token.token);
+                    axios.defaults.headers.common['Authorization'] = 'Bearer '+token.token;
+                    setInfo(initialState);
+                    dispatch({type:"LOGIN",payload:token.response});
+                    setOpenformLogin(false);
+                    messageFn("Vous êtes connecter");
                 } 
                 else {
                     messageFn("Identifiant ou mot de passe incorrect");
                 }
             }
         })
-        .catch(err => console.log(err))
-    }
-    
+        .catch(err => console.log(err));
+    };
     
     return(
         <Fragment>
@@ -95,7 +93,7 @@ const Login = () => {
                 </form>
             </div>
          </Fragment >
-    )
-}
+    );
+};
 
-export default Login
+export default Login;

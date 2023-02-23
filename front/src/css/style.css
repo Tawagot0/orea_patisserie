@@ -216,7 +216,49 @@ header {
     color:black;
 }
 /******************************carousel******************************************/
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 400px;
+}
+.swiper{
+    background-color:black;
+    padding:1.5em 0.7em 2em;
+}
 
+.swiper-slide img {
+  display: block;
+  /*box-shadow: 5px -5px 10px white;*/
+  box-shadow: 8px 0px 8px -2px white,
+  -8px 0px 8px -2px white;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.swiper-container {
+  width: 70%;
+  position: absolute;
+  left: 50%;
+  bottom: -16vw;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 2;
+  padding-bottom: 3vw;
+}
+
+.swiper-pagination-fraction {
+  bottom: 0;
+}
+
+.swiper-pagination-bullet {
+  width: 25px;
+  height: 5px;
+  border-radius: 5px;
+  background-color:white;
+}
 /******************************FOOTER****************************************************/
 footer{
     padding:0.5em;

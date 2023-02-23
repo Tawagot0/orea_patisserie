@@ -1,31 +1,31 @@
-import axios from "axios"
-import {BASE_URL} from "../tools/constante.js"
-import {BASE_IMG} from "../tools/constante.js"
-import {useState, useEffect} from "react"
-import {NavLink} from "react-router-dom"
+import axios from "axios";
+import {BASE_URL} from "../tools/constante.js";
+import {BASE_IMG} from "../tools/constante.js";
+import {useState, useEffect} from "react";
+import {NavLink} from "react-router-dom";
 
 const ProductsAdmin = () => {
     
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([]);
     
     useEffect(() => {
         if(products.length === 0){
             axios.get(`${BASE_URL}/products`)
                 .then(res => setProducts(res.data.data.result))
-                .catch(err => console.log(err))
+                .catch(err => console.log(err));
         }
-    },[products])
+    },[products]);
     
     const deleteProduct = (id) => {
         axios.post(`${BASE_URL}/deleteProduct`,{id})
         .then(res => {
-                setProducts(products.filter((e) => e.id !== id))
-                console.log(res.data.data.response)
+                setProducts(products.filter((e) => e.id !== id));
+                console.log(res.data.data.response);
         })
-        .catch(err => console.log(err))
-    }
+        .catch(err => console.log(err));
+    };
         
-        return(
+    return(
         <div>
             {products.map((product,i) => {
                 return(
@@ -38,10 +38,10 @@ const ProductsAdmin = () => {
                         <p><NavLink to={`/updateProduct/${product.id}`}>Modifier votre produit</NavLink></p>
                         <button onClick={() => deleteProduct(product.id)}>supprimer le produit</button>
                     </div>
-                )
+                );
             })}
         </div>      
-    )
-}
+    );
+};
 
-export default ProductsAdmin
+export default ProductsAdmin;

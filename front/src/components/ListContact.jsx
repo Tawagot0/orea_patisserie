@@ -1,27 +1,27 @@
-import axios from "axios"
-import {BASE_URL} from "../tools/constante.js"
-import {useState, useEffect} from "react"
+import axios from "axios";
+import {BASE_URL} from "../tools/constante.js";
+import {useState, useEffect} from "react";
 
 const ListContact = () => {
     
-    const [contacts, setContacts] = useState([])
+    const [contacts, setContacts] = useState([]);
     
     useEffect(() => {
         if(contacts.length === 0){
             axios.get(`${BASE_URL}/listContact`)
                 .then(res => setContacts(res.data.data.result))
-                .catch(err => console.log(err))
+                .catch(err => console.log(err));
         }
-    },[contacts])
+    },[contacts]);
     
     const deleteContact = (id) => {
         axios.post(`${BASE_URL}/deleteContact`,{id})
         .then(res => {
-            setContacts(contacts.filter((e) => e.id !== id))
-            console.log(res.data.data.response)
+            setContacts(contacts.filter((e) => e.id !== id));
+            console.log(res.data.data.response);
         })
-        .catch(err => console.log(err))
-    }
+        .catch(err => console.log(err));
+    };
     
     return(
         <div>
@@ -38,10 +38,10 @@ const ListContact = () => {
                         <p>message:{contact.message} </p>
                         <button onClick={() => deleteContact(contact.id)}>supprimer le contact</button>
                     </div>
-                )
+                );
             })}
         </div>      
-    )
-}
+    );
+};
 
-export default ListContact
+export default ListContact;

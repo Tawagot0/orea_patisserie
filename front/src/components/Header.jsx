@@ -1,7 +1,7 @@
 import {useLocation} from "react-router-dom";
-import Nav from "./Nav.jsx"
-import imgLogo from '../images/logo-orea-white.png'
-import Login from "./Login.jsx"
+import Nav from "./Nav.jsx";
+import imgLogo from '../images/logo-orea-white.png';
+import Login from "./Login.jsx";
 
 const Header = () => {
     
@@ -9,7 +9,7 @@ const Header = () => {
 
     const handleClick = () => {
         if (location.pathname !== '/') {
-            window.location.href = '/'
+            window.location.href = '/';
         }
     };
 
@@ -21,7 +21,7 @@ const Header = () => {
             </div>
             <Nav />
         </header>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;

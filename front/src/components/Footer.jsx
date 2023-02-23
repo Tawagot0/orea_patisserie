@@ -1,6 +1,4 @@
-
 const Footer = () => {
-
     return(
         <footer>
 		    <div className="foot">
@@ -26,8 +24,8 @@ const Footer = () => {
                     <a href="https://www.instagram.com/orea.patisserie/?hl=fr" target="_blank" rel="noreferrer"><i className="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
-    </footer>
-    )
-}
+        </footer>
+    );
+};
 
-export default Footer
+export default Footer;

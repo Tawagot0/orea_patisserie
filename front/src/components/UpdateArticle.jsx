@@ -1,45 +1,45 @@
-import axios from "axios"
-import {BASE_URL} from '../tools/constante.js'
-import {useState, useEffect} from "react"
-import {useParams} from "react-router-dom"
-import {Fragment} from "react"
+import axios from "axios";
+import {BASE_URL} from '../tools/constante.js';
+import {useState, useEffect} from "react";
+import {useParams} from "react-router-dom";
+import {Fragment} from "react";
 
 const UpdateArticle = () => {
     
-    const [messageLogin, setMessagelogin] = useState("")
-    const [article, setArticle] = useState(null)
-    const {id} = useParams()
+    const [messageLogin, setMessagelogin] = useState("");
+    const [article, setArticle] = useState(null);
+    const {id} = useParams();
     
     const messageFn = (msg) => {
-        setMessagelogin(msg)
+        setMessagelogin(msg);
         setTimeout(() => {
-            setMessagelogin("")
-        },2000)
-    }
+            setMessagelogin("");
+        },2000);
+    };
     
     useEffect(() => {
         axios.post(`${BASE_URL}/getArticleById`,{id})
             .then(res => setArticle(res.data.data.result[0]))
-            .catch(err => console.log(err))
-    },[id])
+            .catch(err => console.log(err));
+    },[id]);
     
     const handleChange = (e) => {
-        const {name, value} = e.target
-        setArticle({...article, [name]: value})
-    }
+        const {name, value} = e.target;
+        setArticle({...article, [name]: value});
+    };
     
     const submit = (e) =>{
-        e.preventDefault()
+        e.preventDefault();
         
         if(article.title === "" || article.description === ""){
-            messageFn("Veuillez remplir tous les champs")
-            return
+            messageFn("Veuillez remplir tous les champs");
+            return;
         }
         
         axios.post(`${BASE_URL}/updateArticle`,{...article})
         .then(res => messageFn(res.data.data.response))
-        .catch(err => console.log(err))
-    } 
+        .catch(err => console.log(err));
+    };
    
     return(
         <Fragment>
@@ -53,14 +53,14 @@ const UpdateArticle = () => {
                             <input type="text" name="title" placeholder="Titre" onChange={handleChange} value={article.title} maxLength="100"/>
                         </div>
                         <div className = "form-item">
-                            <input type="text" name="description" placeholder="Description" onChange={handleChange} value={article.description} />
+                            <input type="text" name="description" placeholder="Description" onChange={handleChange} value={article.description} maxLength="2000" />
                         </div>
                         <button className="submit" type="submit">VALIDER</button>
                     </form>
                 </div>
             )}
         </Fragment>
-    )
-}
+    );
+};
 
-export default UpdateArticle
+export default UpdateArticle;

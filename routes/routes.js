@@ -50,14 +50,13 @@ routesGET.map((item) =>{
 
 })
 
+routesPOST.map((item) =>{
+        router.post(item.route, middleware, item.controller);
+})
+
 router.post("/addProduct", middleware, middlewareUpload, addProduct);
 router.post("/addArticle", middleware, middlewareUpload, addArticle);
 router.post("/updatePictureProduct", middleware, middlewareUpload, updatePictureProduct);
 router.post("/updatePictureArticle", middleware, middlewareUpload, updatePictureArticle);
-
-
-routesPOST.map((item) =>{
-        router.post(item.route, middleware, item.controller);
-})
 
 export default router

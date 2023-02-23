@@ -1,21 +1,21 @@
-import axios from "axios"
-import {BASE_URL} from "../tools/constante.js"
-import {BASE_IMG} from "../tools/constante.js"
-import {useState, useEffect} from "react"
+import axios from "axios";
+import {BASE_URL} from "../tools/constante.js";
+import {BASE_IMG} from "../tools/constante.js";
+import {useState, useEffect} from "react";
 
 const Products = () => {
     
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([]);
     
     useEffect(() => {
         if(products.length === 0){
             axios.get(`${BASE_URL}/products`)
                 .then(res => setProducts(res.data.data.result))
-                .catch(err => console.log(err))
+                .catch(err => console.log(err));
         }
-    },[products])
+    },[products]);
         
-        return(
+    return(
         <div>
             {products.map((product,i) => {
                 return(
@@ -25,10 +25,10 @@ const Products = () => {
                         <p>description:{product.description}</p>
                         <p>prix:{product.price} euros</p>
                     </div>
-                )
+                );
             })}
         </div>      
-    )
-}
+    );
+};
 
-export default Products
+export default Products;

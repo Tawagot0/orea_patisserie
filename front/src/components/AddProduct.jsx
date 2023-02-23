@@ -1,55 +1,55 @@
-import axios from "axios"
-import {BASE_URL} from '../tools/constante.js'
-import {useState} from "react"
+import axios from "axios";
+import {BASE_URL} from '../tools/constante.js';
+import {useState} from "react";
 
 const AddProduct = () => {
-    const [messageLogin, setMessagelogin] = useState("")
+    const [messageLogin, setMessagelogin] = useState("");
     
     const initialValue = {
         name:'',
         description:'',
         price:'',
-    }
-    const [userData, setUserData] = useState(initialValue)
+    };
+    const [userData, setUserData] = useState(initialValue);
     
     const messageFn = (msg) => {
-        setMessagelogin(msg)
+        setMessagelogin(msg);
         setTimeout(() => {
-            setMessagelogin("")
-        },2000)
-    }
+            setMessagelogin("");
+        },2000);
+    };
     
     const handleChange = (e) => {
-        const {name, value} = e.target
-        setUserData({...userData,[name]:value})
-    }
+        const {name, value} = e.target;
+        setUserData({...userData,[name]:value});
+    };
     
     const submit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         
         const dataFile = new FormData();
         const files = {...e.target.img.files};
 
         if(userData.name === "" || userData.description === "" || userData.price === ""){
-            messageFn("Veuillez remplir tous les champs")
-            return
+            messageFn("Veuillez remplir tous les champs");
+            return;
         }
         else if(isNaN(userData.price)){
-            messageFn("Veuillez mettre un chiffre au prix svp")
-            return
+            messageFn("Veuillez mettre un chiffre au prix svp");
+            return;
         }
         
-        dataFile.append('files', files[0], files[0].name)
-        dataFile.append('description', userData.description)
-        dataFile.append('price', userData.price)
-        dataFile.append('name', userData.name)
+        dataFile.append('files', files[0], files[0].name);
+        dataFile.append('description', userData.description);
+        dataFile.append('price', userData.price);
+        dataFile.append('name', userData.name);
 
         axios.post(`${BASE_URL}/addProduct`, dataFile)
         .then(res => messageFn(res.data.data.response))
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
         
-        setUserData(initialValue)
-    }
+        setUserData(initialValue);
+    };
    
     return(
         <div className = "login contact createAccount" >
@@ -72,7 +72,7 @@ const AddProduct = () => {
                 <button className="submit" type="submit">VALIDER</button>
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default AddProduct
+export default AddProduct;

@@ -1,5 +1,6 @@
-import HomeCarousel from "./HomeCarousel.jsx"
-import {Fragment} from "react"
+import HomeCarousel from "./HomeCarousel.jsx";
+import {Fragment} from "react";
+
 const Home = () => {
 
     return(
@@ -14,7 +15,7 @@ const Home = () => {
             </main>
             <HomeCarousel />
         </Fragment>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;
