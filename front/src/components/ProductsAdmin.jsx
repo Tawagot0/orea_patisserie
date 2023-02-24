@@ -7,6 +7,8 @@ import {NavLink} from "react-router-dom";
 const ProductsAdmin = () => {
     
     const [products, setProducts] = useState([]);
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const [productToDelete, setProductToDelete] = useState(null);
     
     useEffect(() => {
         if(products.length === 0){
@@ -16,13 +18,25 @@ const ProductsAdmin = () => {
         }
     },[products]);
     
-    const deleteProduct = (id) => {
+    const deleteProduct = () => {
+        const id = productToDelete.id;
         axios.post(`${BASE_URL}/deleteProduct`,{id})
         .then(res => {
                 setProducts(products.filter((e) => e.id !== id));
                 console.log(res.data.data.response);
+                setShowConfirmModal(false);
         })
         .catch(err => console.log(err));
+    };
+    
+    const confirmDeleteProduct = (product) => {
+        setProductToDelete(product);
+        setShowConfirmModal(true);
+    };
+    
+    const closeModal = () => {
+        setShowConfirmModal(false);
+        setProductToDelete(null);
     };
         
     return(
@@ -36,10 +50,19 @@ const ProductsAdmin = () => {
                         <p>description:{product.description}</p>
                         <p>prix:{product.price} euros</p>
                         <p><NavLink to={`/updateProduct/${product.id}`}>Modifier votre produit</NavLink></p>
-                        <button onClick={() => deleteProduct(product.id)}>supprimer le produit</button>
+                        <button onClick={() => confirmDeleteProduct(product)}>supprimer le produit</button>
                     </div>
                 );
             })}
+            {showConfirmModal && (
+                <div>
+                    <h2>Êtes-vous sûr de vouloir supprimer cet admin ?</h2>
+                    <div>
+                        <button onClick={deleteProduct}>Oui</button>
+                        <button onClick={closeModal}>Non</button>
+                    </div>
+                </div>
+            )}
         </div>      
     );
 };
