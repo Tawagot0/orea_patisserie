@@ -16,7 +16,8 @@ const CreateAccount = () => {
         nom:'',
         prenom:'',
         email:'',
-        password:''
+        password:'',
+        confirmPassword:''
     };
     
     const [userData, setUserData] = useState(initialValue);
@@ -27,11 +28,15 @@ const CreateAccount = () => {
     };
     
     const submit = (e) => {
-        if(userData.nom === "" || userData.prenom === "" || userData.email === "" || userData.password === ""){
+        e.preventDefault();
+        if(userData.nom === "" || userData.prenom === "" || userData.email === "" || userData.password === "" || userData.confirmPassword === ""){
             messageFn("Veuillez remplir tous les champs");
             return;
         }
-        e.preventDefault();
+        if (userData.password !== userData.confirmPassword) {
+            messageFn("Les mots de passe ne correspondent pas");
+            return;
+        }
         axios.post(`${BASE_URL}/addAdmin`,{
           last_name : userData.nom.trim(),
           first_name: userData.prenom.trim(),
@@ -62,6 +67,10 @@ const CreateAccount = () => {
                 <div className="form-item">
                     <i className="fa-solid fa-lock"></i>
                     <input type="password" name="password" placeholder="Mot de passe" onChange={handleChange} value={userData.password} maxLength="250"/>
+                </div>
+                <div className="form-item">
+                    <i className="fa-solid fa-lock"></i>
+                    <input type="password" name="confirmPassword" placeholder="Confirmation mot de passe" onChange={handleChange} value={userData.confirmPassword} maxLength="250"/>
                 </div>
                 <button className="submit" type="submit">VALIDER</button>
             </form>

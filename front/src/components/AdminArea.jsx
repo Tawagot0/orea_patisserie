@@ -33,7 +33,12 @@ const AdminArea = () => {
                 </li>
                 <li>
                     <NavLink to="/listAdmin">
-                    Gérer vos administrateurs
+                    Modifier/supprimer vos administrateurs
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/createAccount">
+                    Créer un nouveau compte
                     </NavLink>
                 </li>
             </ul>
