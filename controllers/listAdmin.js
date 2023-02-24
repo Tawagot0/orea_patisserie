@@ -1,12 +1,11 @@
 import BDD from "../model/BDD.js";
-import Contact from "../model/Contact.js";
+import Users from "../model/Users.js";
 
 export default async (req, res) => {
-    const {id} = req.body;
     try {
         const myBDD = new BDD();
-        const contact = new Contact(myBDD);
-        const data = await contact.deleted({id});
+        const user = new Users(myBDD);
+        const data = await user.getAll();
         res.json({data});
         console.log(data);
     }catch(err) {

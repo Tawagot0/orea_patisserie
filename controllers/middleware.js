@@ -20,11 +20,14 @@ const protectedPath = (pathname) => {
     'updatePictureProduct',
     'updatePictureArticle',
     'deleteContact',
-    'listContact'];
+    'listContact',
+    'listAdmin',
+    'updateAdmin',
+    'getAdminById',
+    'deleteAdmin'];
     
     const protectedAdmin = adminPath.includes(pathname)
     let type = protectedAdmin ? ADMIN : PUBLIC
-    
     return type
 }
 
@@ -36,6 +39,9 @@ const accesAutorized = (pathname, userData) => {
     
     // route public
     const publicAcess = typePath === PUBLIC 
+    
+    
+    console.log((publicAcess || adminAcess))
     
     return (publicAcess || adminAcess) ? true : false 
 
@@ -61,7 +67,7 @@ export default async(req, res, next) => {
         const acces = accesAutorized(pathname,userData)
         // la reponse dans le cas ou la route n'est pas autoriser
         const response = {response:false, msg:'accès refusé'}
-        console.log(response)
+        
         return acces ? next() : res.json(response)
     }catch(err) {
         console.log(err)

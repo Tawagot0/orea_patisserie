@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom";
 
-const Admin = () => {
+const AdminArea = () => {
 
     return(
         <main className="container">
@@ -31,9 +31,14 @@ const Admin = () => {
                     Vos messages de la page contact
                     </NavLink>
                 </li>
+                <li>
+                    <NavLink to="/listAdmin">
+                    Gérer vos administrateurs
+                    </NavLink>
+                </li>
             </ul>
         </main>
     );
 };
 
-export default Admin;
+export default AdminArea;
