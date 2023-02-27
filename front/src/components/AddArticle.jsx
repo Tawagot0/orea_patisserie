@@ -46,17 +46,20 @@ const AddArticle = () => {
     };
    
     return(
-        <div className = "login contact createAccount" >
+        <div className = "login contact" >
             <h2>Ajouter vos articles</h2>
             <div className="msgAlert"><h3>{messageLogin}</h3></div>
             <form className="login-form" onSubmit={submit} encType="multipart/form-data" >
                 <div className="form-item">
-                    <input type="text" name="title" placeholder="titre" onChange={handleChange} value={userData.title} maxLength="255"/>
+                    <label htmlFor="title">Titre de votre article</label>
+                    <input type="text" name="title" placeholder="..." onChange={handleChange} value={userData.title} maxLength="255"/>
                 </div>
                 <div className = "form-item">
-                    <input type="text" name="description" placeholder="Description" onChange={handleChange} value={userData.description} maxLength="2000"/>
+                    <label htmlFor="description">Description de votre article</label>
+                    <input type="text" name="description" placeholder="..." onChange={handleChange} value={userData.description} maxLength="2000"/>
                 </div>
-                <div className="form-item">
+                <div className="form-item input-file">
+                    <button className="btn-upload">Choisir le fichier</button>
                     <input type='file' name='img'/>
                 </div>
                 <button className="submit" type="submit">VALIDER</button>

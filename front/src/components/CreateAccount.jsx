@@ -50,27 +50,29 @@ const CreateAccount = () => {
     };
    
     return(
-        <div className = "login contact createAccount" >
+        <div className = "login contact" >
             <h2>Inscription</h2>
             <div className="msgAlert"><h3>{messageLogin}</h3></div>
             <form className="login-form" onSubmit={submit} method="post">
                 <div className="form-item">
-                    <input type="text" name="nom" placeholder="Nom" onChange={handleChange} value={userData.nom} maxLength="100"/>
+                    <label htmlFor="nom">Nom</label>
+                    <input type="text" name="nom" placeholder="..." onChange={handleChange} value={userData.nom} maxLength="100"/>
                 </div>
                 <div className = "form-item">
-                    <input type="text" name="prenom" placeholder="Prénom" onChange={handleChange} value={userData.prenom} maxLength="100"/>
+                    <label htmlFor="prenom">Prénom</label>
+                    <input type="text" name="prenom" placeholder="..." onChange={handleChange} value={userData.prenom} maxLength="100"/>
                 </div>
                 <div className="form-item">
-                    <i className="fa-regular fa-user"></i>
-                    <input type="email" name="email" placeholder="E-mail" onChange={handleChange} value={userData.email} maxLength="100"/>
+                    <label htmlFor="email"><i className="fa-regular fa-user"></i>E-mail</label>
+                    <input type="email" name="email" placeholder="..." onChange={handleChange} value={userData.email} maxLength="100"/>
                 </div>
                 <div className="form-item">
-                    <i className="fa-solid fa-lock"></i>
-                    <input type="password" name="password" placeholder="Mot de passe" onChange={handleChange} value={userData.password} maxLength="250"/>
+                    <label htmlFor="password"><i className="fa-solid fa-lock"></i>Mot de passe</label>
+                    <input type="password" name="password" placeholder="..." onChange={handleChange} value={userData.password} maxLength="250"/>
                 </div>
                 <div className="form-item">
-                    <i className="fa-solid fa-lock"></i>
-                    <input type="password" name="confirmPassword" placeholder="Confirmation mot de passe" onChange={handleChange} value={userData.confirmPassword} maxLength="250"/>
+                    <label htmlFor="confirmPassword"><i className="fa-solid fa-lock"></i>Confirmation du mot de passe</label>
+                    <input type="password" name="confirmPassword" placeholder="..." onChange={handleChange} value={userData.confirmPassword} maxLength="250"/>
                 </div>
                 <button className="submit" type="submit">VALIDER</button>
             </form>

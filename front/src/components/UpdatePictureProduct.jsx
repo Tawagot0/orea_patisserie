@@ -43,11 +43,12 @@ const UpdatePictureProduct = () => {
         <Fragment>
             {/*si product contient quelque chose alors on affiche la page de modif */}
             {picture !== null && (
-                <div className = "login contact createAccount" >
+                <div className = "login contact" >
                     <h2>Modifier votre image</h2>
                     <div className="msgAlert"><h3>{messageLogin}</h3></div>
                     <form className="login-form" onSubmit={submit} encType="multipart/form-data" >
-                        <div className="form-item">
+                        <div className="form-item input-file">
+                            <button className="btn-upload">Choisir le fichier</button>
                             <input type='file' name='img'/>
                         </div>
                         <button className="submit" type="submit">VALIDER</button>

@@ -52,21 +52,24 @@ const AddProduct = () => {
     };
    
     return(
-        <div className = "login contact createAccount" >
+        <div className = "login contact" >
             <h2>Ajouter vos produits</h2>
             <div className="msgAlert"><h3>{messageLogin}</h3></div>
             <form className="login-form" onSubmit={submit} encType="multipart/form-data" >
                 <div className="form-item">
-                    <input type="text" name="name" placeholder="Nom" onChange={handleChange} value={userData.name} maxLength="255"/>
+                    <label htmlFor="name">Nom de votre produit</label>
+                    <input type="text" name="name" placeholder="..." onChange={handleChange} value={userData.name} maxLength="255"/>
                 </div>
                 <div className = "form-item">
-                    <input type="text" name="description" placeholder="Description" onChange={handleChange} value={userData.description} maxLength="2000"/>
+                    <label htmlFor="description">Description de votre produit</label>
+                    <input type="text" name="description" placeholder="..." onChange={handleChange} value={userData.description} maxLength="2000"/>
                 </div>
                 <div className="form-item">
-                    <i className="fa-regular fa-user"></i>
-                    <input type="number" name="price" placeholder="Prix" onChange={handleChange} value={userData.price} />
+                    <label htmlFor="price">Prix du produit</label>
+                    <input type="number" name="price" placeholder="..." onChange={handleChange} value={userData.price} />
                 </div>
-                <div className="form-item">
+                <div className="form-item input-file">
+                    <button className="btn-upload">Choisir le fichier</button>
                     <input type='file' name='img'/>
                 </div>
                 <button className="submit" type="submit">VALIDER</button>

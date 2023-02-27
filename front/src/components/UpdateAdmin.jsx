@@ -45,18 +45,21 @@ const UpdateAdmin = () => {
         <Fragment>
             {/*si product contient quelque chose alors on affiche la page de modif */}
             {admin !== null && (
-                <div className = "login contact createAccount" >
+                <div className = "login contact" >
                     <h2>Mettre à jour votre admin</h2>
                     <div className="msgAlert"><h3>{messageLogin}</h3></div>
                     <form className="login-form" onSubmit={submit} >
                         <div className="form-item">
-                            <input type="text" name="last_name" placeholder="Nom" onChange={handleChange} value={admin.last_name} maxLength="100"/>
+                            <label htmlFor="last_name">Nom</label>
+                            <input type="text" name="last_name" placeholder="..." onChange={handleChange} value={admin.last_name} maxLength="100"/>
                         </div>
                         <div className="form-item">
-                            <input type="text" name="first_name" placeholder="Nom" onChange={handleChange} value={admin.first_name} maxLength="100"/>
+                            <label htmlFor="first_name">Prénom</label>
+                            <input type="text" name="first_name" placeholder="..." onChange={handleChange} value={admin.first_name} maxLength="100"/>
                         </div>
                         <div className="form-item">
-                            <input type="email" name="email" placeholder="E-mail" onChange={handleChange} value={admin.email} maxLength="100"/>
+                            <label htmlFor="email">E-mail</label>
+                            <input type="email" name="email" placeholder="..." onChange={handleChange} value={admin.email} maxLength="100"/>
                         </div>
                         <button className="submit" type="submit">VALIDER</button>
                     </form>

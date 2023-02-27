@@ -61,9 +61,9 @@ const Login = () => {
     return(
         <Fragment>
             {state.user.isLogged ? (
-                <i onClick={handleLogout} id="login" className="fa-regular fa-user"> Deconnexion </i>
+                <i onClick={handleLogout} className=" fa-regular fa-user"> Deconnexion </i>
             ) : ( 
-                <i onClick={() => setOpenformLogin(true)} id="login" className="fa-regular fa-user"> Se connecter</i>
+                <i onClick={() => setOpenformLogin(true)} className="fa-regular fa-user"> Se connecter</i>
             )}
             
             {state.user.isLogged  && (
@@ -77,19 +77,15 @@ const Login = () => {
                 <div className="msgAlert"><h3>{messageLogin}</h3></div>
                 <form className="login-form" onSubmit={submit}>
                     <div className="form-item">
-                        <i className="fa-regular fa-user"></i>
-                        <input id="email" type="email" name="email" value={info.email} onChange={handleChange} placeholder="E-mail" maxLength="100" required="required"/>
+                        <label htmlFor="email"><i className="fa-regular fa-user"></i>E-mail</label>
+                        <input type="email" name="email" value={info.email} onChange={handleChange} placeholder="..." maxLength="100" required="required"/>
                     </div>
                     <div className="form-item">
-                        <i className="fa-solid fa-lock"></i>
-                        <input id="password" type="password" name="password" value={info.password} onChange={handleChange} placeholder="Mot de passe" maxLength="100" required="required"/>
+                        <label htmlFor="password"><i className="fa-solid fa-lock"></i>Mot de passe</label>
+                        <input type="password" name="password" value={info.password} onChange={handleChange} placeholder="..." maxLength="100" required="required"/>
                     </div>
                     <button className="submit" type="submit">VALIDER</button>
-                    <div className="create-count">
-                        <p>Nouvel utilisateur ? </p>
-                        <NavLink to="/createAccount" onClick={() => setOpenformLogin(false)} >Créer votre compte</NavLink>
-                    </div>
-                    <span onClick={() => setOpenformLogin(false)} id = "close-form-button">Fermer X</span>
+                    <span onClick={() => setOpenformLogin(false)} id = "close-button">Fermer X</span>
                 </form>
             </div>
          </Fragment >

@@ -64,32 +64,36 @@ const Contact = () => {
             <div className="msgAlert"><h3>{messageLogin}</h3></div>
             <form className="login-form" onSubmit={submit} method="post" action="">
                 <div className="form-item">
-                    <input type="text" placeholder="Nom" name="last_name" onChange={handleChange} value={userData.last_name} maxLength="100"/>
+                    <label htmlFor="last_name">Nom</label>
+                    <input type="text" placeholder="..." name="last_name" onChange={handleChange} value={userData.last_name} maxLength="100"/>
                 </div>
                 <div className="form-item">
-                    <input type="text"  placeholder="Prénom" name="first_name" onChange={handleChange} value={userData.first_name} maxLength="100"/>
+                    <label htmlFor="first_name">Prénom</label>
+                    <input type="text"  placeholder="..." name="first_name" onChange={handleChange} value={userData.first_name} maxLength="100"/>
                 </div>
                 <div className="form-item">
-                    <i className="fa-solid fa-location-dot"></i>
-                    <input type="text"  placeholder="Adresse" name="address" onChange={handleChange} value={userData.address} maxLength="255"/>
+                    <label htmlFor="address">Adresse</label>
+                    <input type="text"  placeholder="..." name="address" onChange={handleChange} value={userData.address} maxLength="255"/>
                 </div>
                 <div className="form-item">
-                    <i className="fa-solid fa-location-dot"></i>
-                    <input type="text"  placeholder="Ville" name="city" onChange={handleChange} value={userData.city} maxLength="100"/>
+                    <label htmlFor="city">Ville</label>
+                    <input type="text"  placeholder="..." name="city" onChange={handleChange} value={userData.city} maxLength="100"/>
                 </div>
                 <div className="form-item">
-                    <i className="fa-solid fa-location-dot"></i>
-                    <input type="number"  placeholder="Code postal" name="code_postal" onChange={handleChange} value={userData.code_postal} maxLength="100"/>
+                    <label htmlFor="code_postal">Code postal</label>
+                    <input type="number"  placeholder="..." name="code_postal" onChange={handleChange} value={userData.code_postal} maxLength="100"/>
                 </div>
                 <div className="form-item">
-                    <input type="tel"  placeholder="Votre numéro de téléphone" name="telephone" onChange={handleChange} value={userData.telephone} maxLength="100"/>
+                    <label htmlFor="telephone">Numéro de téléphone</label>
+                    <input type="tel"  placeholder="..." name="telephone" onChange={handleChange} value={userData.telephone} maxLength="100"/>
                 </div>
                 <div className="form-item">
-                    <i className="fa-regular fa-user"></i>
-                    <input type="email"  placeholder="E-mail" name="mail" onChange={handleChange} value={userData.mail} maxLength="100"/>
+                    <label htmlFor="mail">E-mail</label>
+                    <input type="email"  placeholder="..." name="mail" onChange={handleChange} value={userData.mail} maxLength="100"/>
                 </div>
                 <div className="form-item">
-                    <textarea type="text"  placeholder="Votre message.." name="message" onChange={handleChange} value={userData.message} maxLength="2000"/>
+                    <label htmlFor="message">Message</label>
+                    <textarea type="text"  placeholder="..." name="message" onChange={handleChange} value={userData.message} maxLength="2000"/>
                 </div>
                 <button className="submit" type="submit">VALIDER</button>
             </form>

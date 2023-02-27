@@ -49,18 +49,21 @@ const UpdateProduct = () => {
         <Fragment>
             {/*si product contient quelque chose alors on affiche la page de modif */}
             {product !== null && (
-                <div className = "login contact createAccount" >
+                <div className = "login contact" >
                     <h2>Mettre à jour votre produit</h2>
                     <div className="msgAlert"><h3>{messageLogin}</h3></div>
                     <form className="login-form" onSubmit={submit} >
                         <div className="form-item">
-                            <input type="text" name="name" placeholder="Nom" onChange={handleChange} value={product.name} maxLength="100"/>
+                            <label htmlFor="name">Nom</label>
+                            <input type="text" name="name" placeholder="..." onChange={handleChange} value={product.name} maxLength="100"/>
                         </div>
                         <div className = "form-item">
-                            <input type="text" name="description" placeholder="Description" onChange={handleChange} value={product.description} maxLength="2000" />
+                            <label htmlFor="description">Description</label>
+                            <input type="text" name="description" placeholder="..." onChange={handleChange} value={product.description} maxLength="2000" />
                         </div>
                         <div className="form-item">
-                            <input type="text" name="price" placeholder="Votre prix" onChange={handleChange} value={product.price} maxLength="100"/>
+                            <label htmlFor="price">Prix</label>
+                            <input type="text" name="price" placeholder="..." onChange={handleChange} value={product.price} maxLength="100"/>
                         </div>
                         <button className="submit" type="submit">VALIDER</button>
                     </form>
