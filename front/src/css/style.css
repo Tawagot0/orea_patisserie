@@ -1,7 +1,8 @@
 body {
     font-family: 'Prata', cursive;
     background: rgb(255,255,255);
-    background: radial-gradient(circle, rgba(255,255,255,1) 1%, rgba(255,238,217,1) 100%);
+    /*background: radial-gradient(circle, rgba(255,255,255,1) 1%, rgba(255,238,217,1) 100%);*/
+    background-image: linear-gradient(to right top, #b4b5fa, #bfbef7, #cac7f3, #d3d0f0, #dcdaec, #dcdaec, #dcdaec, #dcdaec, #d3d0f0, #cac7f3, #bfbef7, #b4b5fa);
     list-style:none;
     margin:0;
 }
@@ -35,7 +36,7 @@ header {
     background-size: cover;
     background-position: center;
     padding:1em;
-    margin-bottom:2em;
+    /*margin-bottom:2em;*/
 }
 .logo{
     display:flex;
@@ -192,10 +193,11 @@ i{
     color:#00e5ff;
     text-decoration: underline;
 }
-.input-file {
+.form-item .input-file {
   display: inline-block;
   position: relative;
   overflow: hidden;
+  cursor:pointer;
 }
 .input-file input[type=file] {
   left: 0;
@@ -209,11 +211,33 @@ i{
   background-color:transparent;
   font-size:1.2em;
   font-weight: bold;
+  border:1px solid #fff;
+  border-radius:1em;
+  width:80%;
+  height:2em;
 }
 /*************************************formulaire de contact************************************************/
 .contact{
-    background-image: url("../images/coffee.jpg");
+    /*background-image: url("../images/coffee.jpg");*/
+    background-image: radial-gradient(circle, #414141, #323234, #242428, #16171d, #000511);
     display:block;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+ 
+/* Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	margin:0;
+}
+ 
+/* Opéra*/
+input::-o-inner-spin-button,
+input::-o-outer-spin-button { 
+	-o-appearance: none;
+	margin:0
 }
 .fa-location-dot{
     color:#fff;
@@ -330,41 +354,107 @@ i{
     font-size:1.2em;
 }
 /********************************Products admin/actualites***********************************************/
-.admin-product{
+.admin-global-product{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
+}
+.admin-product{
+    display:flex;
+    flex-wrap:wrap;
+    width:30%;
+    justify-content:center;
     padding:0.5em;
     background-image: radial-gradient(circle, #414141, #323234, #242428, #16171d, #000511);
-    border:solid 1px #fff;
+    border:solid 2px #fff;
 }
 .admin-manage{
     display:flex;
     flex-wrap:wrap;
+    justify-content:center;
 }
 .admin-manage img{
     width:200px;
     height:200px;
     border:solid 1px #fff;
     margin-right:0.8em;
+    margin-bottom:0.8em;
 }
-.update-product, .update-product a{
+.update-product{
     display:flex;
-    color:#ba3232;
+    align-items:flex-end;
 }
-.update-product p{
+
+.update-product p:hover, .update-product a:hover{
+    color:#242428;
+    background-color:#ba3232;
+    transition:1s;
+}
+.update-product p, .update-product a{
     text-align:center;
+    color:#ba3232;
+    margin:0;
     padding:0.5em;
-    border:solid 2px #fff;
+    border:solid 2px #dda8a8;
     cursor:pointer;
 }
 .admin-product-info{
     display:flex;
+    flex-wrap:wrap;
     flex-direction:column;
 }
 .admin-product-info p{
     text-align:center;
     color:#fff;
+}
+/*****************************list contact********************************/
+.global-contact{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+.contact-list p span{
+    color:#3a4891;
+    font-weight:bold;
+    font-style:italic;
+}
+.contact-list{
+    background-image: radial-gradient(circle, #414141, #323234, #242428, #16171d, #000511);
+    border:solid 2px #fff;
+    color:#fff;
+    width:47%;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    border-radius:0.5em;
+    padding:0.8em;
+}
+.contact-name{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    width:100%;
+}
+.contact-address{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    width:100%;
+}
+.contact-address p:first-child, .contact-address p:nth-child(2){
+    margin-right:0.5em;
+}
+.contact-tel{
+    display:flex;
+    justify-content:space-around;
+    text-align:center;
+    width:100%;
+}
+.contact-message{
+    display:flex;
+    width:100%;
+    justify-content:center;
+    text-align:center;
 }
 /******************************carousel******************************************/
 .swiper{
@@ -421,7 +511,7 @@ footer{
     align-items:center;
     color:#fff;
     text-shadow: #001e62 1px 0 10px;
-    margin-top:2em;
+    /*margin-top:2em;*/
 }
 .foot{
     backdrop-filter: blur(5px); /* blur effect to the backdrop */
@@ -508,11 +598,21 @@ z-index:99;
 .market {
     display:none;
 }
+/******************admin products/actualite*********************/
+.admin-product{
+    width:45%;
+}
 /*****************login************************/
 .login{
     width:90%;
 }
 #login{
     font-size:0.8em;
+}
+}
+@media screen and (max-width:620px){
+   /******************admin products/actualite*********************/
+.admin-product{
+    width:95%;
 }
 }

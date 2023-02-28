@@ -40,21 +40,21 @@ const ArticlesAdmin = () => {
     };
     
     return(
-        <div>
+        <div className="admin-global-product">
             {articles.map((article,i) => {
                 return(
                     <div key={i} className="admin-product">
                         <div className="admin-manage">
                             <img src={`${BASE_IMG}/${article.url}`} alt={article.caption}/>
                             <div className="admin-product-info">
-                                <p>Titre de l'article:{article.title}</p>
-                                <p>description:{article.description}</p>
+                                <p>{article.title}</p>
+                                <p>{article.description}</p>
                             </div>
                         </div>
                         <div className="update-product">
-                            <p><NavLink to={`/updatePictureArticle/${article.article_id}`}>Modifier votre image</NavLink></p>
-                            <p><NavLink to={`/updateArticle/${article.id}`}>Modifier votre article</NavLink></p>
-                            <p onClick={() => confirmDeleteArticle(article)}>supprimer l'article</p>
+                            <NavLink to={`/updatePictureArticle/${article.article_id}`}>Modifier votre image</NavLink>
+                            <NavLink to={`/updateArticle/${article.id}`}>Modifier votre article</NavLink>
+                            <p onClick={() => confirmDeleteArticle(article)}>Supprimer votre article</p>
                         </div>
                     </div>
                 );

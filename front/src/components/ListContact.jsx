@@ -5,6 +5,8 @@ import {useState, useEffect} from "react";
 const ListContact = () => {
     
     const [contacts, setContacts] = useState([]);
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const [contactToDelete, setContactToDelete] = useState(null);
     
     useEffect(() => {
         if(contacts.length === 0){
@@ -14,7 +16,8 @@ const ListContact = () => {
         }
     },[contacts]);
     
-    const deleteContact = (id) => {
+    const deleteContact = () => {
+        const id = contactToDelete.id;
         axios.post(`${BASE_URL}/deleteContact`,{id})
         .then(res => {
             setContacts(contacts.filter((e) => e.id !== id));
@@ -23,23 +26,52 @@ const ListContact = () => {
         .catch(err => console.log(err));
     };
     
+    const confirmDeleteContact = (contact) => {
+        setContactToDelete(contact);
+        setShowConfirmModal(true);
+    };
+    
+    const closeModal = () => {
+        setShowConfirmModal(false);
+        setContactToDelete(null);
+    };
+    
     return(
-        <div>
+        <div className="global-contact">
             {contacts.map((contact,i) => {
                 return(
-                    <div key={i} className="modif">
-                        <p>Nom :{contact.last_name}</p>
-                        <p>prenom:{contact.first_name}</p>
-                        <p>adresse:{contact.address} </p>
-                        <p>ville:{contact.city} </p>
-                        <p>code postal:{contact.code_postal} </p>
-                        <p>telephone:<a href={`tel:${contact.telephone}`} rel="noreferrer" target="_blank">{contact.telephone}</a></p>
-                        <p>adresse mail:<a href={`mailto:${contact.mail}`} rel="noreferrer" target="_blank">{contact.mail}</a></p>
-                        <p>message:{contact.message} </p>
-                        <button onClick={() => deleteContact(contact.id)}>supprimer le contact</button>
+                    <div key={i} className="contact-list">
+                        <div className="contact-name">
+                            <p><span>Nom :</span> {contact.last_name}</p>
+                            <p><span>Prénom :</span> {contact.first_name}</p>
+                        </div>
+                        <div className="contact-address">
+                            <p><span>Adresse :</span> {contact.address} </p>
+                            <p>{contact.code_postal}</p>
+                            <p>{contact.city}</p>
+                        </div>
+                        <div className="contact-tel">
+                            <p><span>Téléphone :</span> <a href={`tel:${contact.telephone}`} rel="noreferrer" target="_blank">{contact.telephone}</a></p>
+                            <p><span>E-mail :</span> <a href={`mailto:${contact.mail}`} rel="noreferrer" target="_blank">{contact.mail}</a></p>
+                        </div>
+                        <div className="contact-message">
+                            <p><span>Message :</span> {contact.message} </p>
+                        </div>
+                        <div className="update-product">
+                        <p onClick={() => confirmDeleteContact(contact)}>Supprimer le contact</p>
+                        </div>
                     </div>
                 );
             })}
+            {showConfirmModal && (
+                <div>
+                    <h2>Êtes-vous sûr de vouloir supprimer cet admin ?</h2>
+                    <div>
+                        <button onClick={deleteContact}>Oui</button>
+                        <button onClick={closeModal}>Non</button>
+                    </div>
+                </div>
+            )}
         </div>      
     );
 };
