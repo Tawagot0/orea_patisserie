@@ -43,13 +43,19 @@ const ArticlesAdmin = () => {
         <div>
             {articles.map((article,i) => {
                 return(
-                    <div key={i} className="modif">
-                        <img src={`${BASE_IMG}/${article.url}`} alt={article.caption}/>
-                        <p><NavLink to={`/updatePictureArticle/${article.article_id}`}>Modifier votre image</NavLink></p>
-                        <p>Titre de l'article:{article.title}</p>
-                        <p>description:{article.description}</p>
-                        <p><NavLink to={`/updateArticle/${article.id}`}>Modifier votre article</NavLink></p>
-                        <button onClick={() => confirmDeleteArticle(article)}>supprimer l'article</button>
+                    <div key={i} className="admin-product">
+                        <div className="admin-manage">
+                            <img src={`${BASE_IMG}/${article.url}`} alt={article.caption}/>
+                            <div className="admin-product-info">
+                                <p>Titre de l'article:{article.title}</p>
+                                <p>description:{article.description}</p>
+                            </div>
+                        </div>
+                        <div className="update-product">
+                            <p><NavLink to={`/updatePictureArticle/${article.article_id}`}>Modifier votre image</NavLink></p>
+                            <p><NavLink to={`/updateArticle/${article.id}`}>Modifier votre article</NavLink></p>
+                            <p onClick={() => confirmDeleteArticle(article)}>supprimer l'article</p>
+                        </div>
                     </div>
                 );
             })}

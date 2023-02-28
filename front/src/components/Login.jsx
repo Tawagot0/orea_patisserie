@@ -85,7 +85,7 @@ const Login = () => {
                         <input type="password" name="password" value={info.password} onChange={handleChange} placeholder="..." maxLength="100" required="required"/>
                     </div>
                     <button className="submit" type="submit">VALIDER</button>
-                    <span onClick={() => setOpenformLogin(false)} id = "close-button">Fermer X</span>
+                    <span onClick={() => setOpenformLogin(false)} className = "close-button">Fermer X</span>
                 </form>
             </div>
          </Fragment >

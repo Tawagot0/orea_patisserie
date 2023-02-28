@@ -15,9 +15,6 @@ body a , a:visited{
 h1,h2,h3,h4{
     margin:0;
 }
-.modif a{
-    color:#bc0000;
-}
 h2{
     text-align:center;
     font-size:1.8em;
@@ -105,6 +102,9 @@ input::placeholder {
     font-style: italic;
     color: #fff;
 }
+i{
+    margin-right:0.5em;
+}
 .fa-user, .close-button, button{
     cursor:pointer;
 }
@@ -151,7 +151,6 @@ input::placeholder {
     color:#fff;
     font-size:1.2em;
     font-weight:bold;
-    text-shadow: #6791fc 1px 0 3px;
     margin-bottom:0.5em;
 }
 .login input {
@@ -294,14 +293,15 @@ input::placeholder {
 }
 .admin-area h2{
     background-color:#fff3e3;
+    color:#4c4b4b;
+    display:inline-block;
     border-radius:0.5em;
-    padding:0.2em 0;
+    padding:0.2em 0.5em;
 }
 .admin-area{
-    background-color:#ffe1ba;
+    background-image: radial-gradient(circle, #414141, #323234, #242428, #16171d, #000511);
     border-radius:1em;
     padding:1em;
-    display:inline-block;
     margin:auto;
 }
 .admin-area ul{
@@ -316,8 +316,8 @@ input::placeholder {
     margin:0.5em 0;
 }
 .admin-area ul a{
-    color:#898989;
-    text-shadow: #fff 1px 0 10px;
+    color:#d3d3d3;
+    /*text-shadow: #fff 1px 0 10px;*/
     font-weight:bold;
     font-style:italic;
 }
@@ -326,8 +326,45 @@ input::placeholder {
     text-shadow: #fff 1px 0 1px;
 }
 .admin-area li{
-    margin-bottom:1em;
+    margin-top:1em;
     font-size:1.2em;
+}
+/********************************Products admin/actualites***********************************************/
+.admin-product{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    padding:0.5em;
+    background-image: radial-gradient(circle, #414141, #323234, #242428, #16171d, #000511);
+    border:solid 1px #fff;
+}
+.admin-manage{
+    display:flex;
+    flex-wrap:wrap;
+}
+.admin-manage img{
+    width:200px;
+    height:200px;
+    border:solid 1px #fff;
+    margin-right:0.8em;
+}
+.update-product, .update-product a{
+    display:flex;
+    color:#ba3232;
+}
+.update-product p{
+    text-align:center;
+    padding:0.5em;
+    border:solid 2px #fff;
+    cursor:pointer;
+}
+.admin-product-info{
+    display:flex;
+    flex-direction:column;
+}
+.admin-product-info p{
+    text-align:center;
+    color:#fff;
 }
 /******************************carousel******************************************/
 .swiper{
@@ -376,7 +413,6 @@ input::placeholder {
 /******************************FOOTER****************************************************/
 footer{
     padding:0.5em;
-    margin-top:2em;
     background-image: url("../images/cookies.jpg");
     background-size: cover;
     background-position:center;
@@ -385,6 +421,7 @@ footer{
     align-items:center;
     color:#fff;
     text-shadow: #001e62 1px 0 10px;
+    margin-top:2em;
 }
 .foot{
     backdrop-filter: blur(5px); /* blur effect to the backdrop */

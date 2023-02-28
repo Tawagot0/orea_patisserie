@@ -33,8 +33,8 @@ const ListContact = () => {
                         <p>adresse:{contact.address} </p>
                         <p>ville:{contact.city} </p>
                         <p>code postal:{contact.code_postal} </p>
-                        <p>telephone:{contact.telephone} </p>
-                        <p>adresse mail:{contact.mail} </p>
+                        <p>telephone:<a href={`tel:${contact.telephone}`} rel="noreferrer" target="_blank">{contact.telephone}</a></p>
+                        <p>adresse mail:<a href={`mailto:${contact.mail}`} rel="noreferrer" target="_blank">{contact.mail}</a></p>
                         <p>message:{contact.message} </p>
                         <button onClick={() => deleteContact(contact.id)}>supprimer le contact</button>
                     </div>
