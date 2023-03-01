@@ -107,7 +107,6 @@ header {
     font-size:1em;
     padding:0.2em;
     position:absolute;
-    z-index:100;
     background-color:#000000;
     border-radius:0.5em;
     text-shadow: #ff0000 1px 0 5px;
@@ -178,17 +177,22 @@ i{
   color: #fff;
   font-size: 1em;
   text-align:center;
+  cursor:pointer;
 }
 .submit{
   width:60%;
   font-size: 1.2em;
   margin: 0.5em auto;
   padding: 0.4em;
-  background: rgb(141,156,255);
-  background: radial-gradient(circle, rgba(141,156,255,1) 0%, rgba(255,243,227,1) 100%);
   border-radius:0.5em;
-  color: #000000;
+  color: #fff;
   font-weight:bold;
+  background-image: linear-gradient(to right top, #000000, #050505, #0b0b0b, #0f0f0f, #131313, #131313, #131313, #131313, #0f0f0f, #0b0b0b, #050505, #000000);
+}
+.submit:hover{
+    color:#000000;
+    background-image: linear-gradient(to right bottom, #ffffff, #fbfbfb, #f8f8f8, #f4f4f4, #f1f1f1, #f1f1f1, #f1f1f1, #f1f1f1, #f4f4f4, #f8f8f8, #fbfbfb, #ffffff);
+    transition:1s;
 }
 .create-count{
     display:flex;
@@ -201,34 +205,41 @@ i{
     color:#00e5ff;
     text-decoration: underline;
 }
-.form-item .input-file {
-  display: inline-block;
+.form-item{
+  display: flex;
+  flex-direction:column;
   position: relative;
   overflow: hidden;
-  cursor:pointer;
 }
-.input-file input[type=file] {
-  left: 0;
-  top: 0;
-  opacity: 0;
-  position: absolute;
-  font-size: 90px;
+.input-file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+	width:80%;
 }
-.btn-upload {
-  color:#fff;
-  background-color:transparent;
-  font-size:1.2em;
-  font-weight: bold;
-  border:1px solid #fff;
-  border-radius:1em;
-  width:80%;
-  height:2em;
+.input-file + label {
+    color: white;
+    cursor:pointer;
+    padding:0.5em;
 }
-/*************************************formulaire de contact************************************************/
+.input-file:focus + label,
+.input-file + label:hover {
+    color:#000000;
+    background-color:#fff;
+    transition:1s;
+}
 .contact{
-    /*background-image: url("../images/coffee.jpg");*/
      background-image: linear-gradient(to right top, #000000, #050505, #0b0b0b, #0f0f0f, #131313, #131313, #131313, #131313, #0f0f0f, #0b0b0b, #050505, #000000);
     display:block;
+    width:100%;
+    margin:0;
+    border-radius:0;
+}
+.contact h2{
+   text-shadow:5px 1px 10px #606060;
 }
 input[type=number] {
     -moz-appearance: textfield;
@@ -380,7 +391,6 @@ input::-o-outer-spin-button {
 .admin-manage img{
     width:150px;
     height:150px;
-    border:solid 1px #fff;
     margin-right:0.8em;
     margin-bottom:0.8em;
 }
@@ -388,19 +398,18 @@ input::-o-outer-spin-button {
     display:flex;
     align-items:flex-end;
 }
-
-.update-product p:hover, .update-product a:hover{
-    color:#242428;
-    background-color:#ba3232;
-    transition:1s;
-}
 .update-product p, .update-product a{
     text-align:center;
-    color:#ba3232;
+    color:#ffffff;
     margin:0;
     padding:0.5em;
-    border:solid 2px #dda8a8;
+    border:solid 0.5px #fff;
     cursor:pointer;
+}
+.update-product p:hover, .update-product a:hover{
+    color:#000000;
+    background-color:#fff;
+    transition:1s;
 }
 .admin-product-info{
     display:flex;
@@ -499,7 +508,7 @@ input::-o-outer-spin-button {
     border-radius:0.5em;
     padding:0.5em;
     border:solid 1px #fff;
-    box-shadow:10px 5px 5px red;
+    box-shadow:10px 5px 5px #fff;
     
 }
 .confirm-delete .update-product{
@@ -655,6 +664,9 @@ z-index:99;
 /*****************login************************/
 .login{
     width:90%;
+}
+.contact{
+    width:100%;
 }
 #login{
     font-size:0.8em;

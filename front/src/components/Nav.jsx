@@ -21,7 +21,7 @@ const Nav = () => {
   
     return(
        <nav className = "navbar">
-         {/*La classe mobile-menu est ajoutée à la div nav-links au click*/}
+         {/*La classe mobile-menu est ajoutée à la div nav-links si true*/}
           <div className={`nav-links ${mobileMenuOpen ? 'mobile-menu' : ''}`} >
             <ul>
               <li>

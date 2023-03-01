@@ -58,9 +58,9 @@ const AddArticle = () => {
                     <label htmlFor="description">Description de votre article</label>
                     <input type="text" name="description" placeholder="..." onChange={handleChange} value={userData.description} maxLength="2000"/>
                 </div>
-                <div className="form-item input-file">
-                    <button className="btn-upload">Choisir le fichier</button>
-                    <input type='file' name='img'/>
+                <div className="form-item">
+                    <input className=" input-file" id="file-upload" type='file' name='img'/>
+                    <label htmlFor="file-upload"> Choisir le fichier</label>
                 </div>
                 <button className="submit" type="submit">VALIDER</button>
             </form>

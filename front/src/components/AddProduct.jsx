@@ -68,9 +68,9 @@ const AddProduct = () => {
                     <label htmlFor="price">Prix du produit</label>
                     <input type="number" name="price" placeholder="..." onChange={handleChange} value={userData.price} />
                 </div>
-                <div className="form-item input-file">
-                    <button className="btn-upload">Choisir le fichier</button>
-                    <input type='file' name='img'/>
+                <div className="form-item">
+                    <input className=" input-file" id="file-upload" type='file' name='img'/>
+                    <label htmlFor="file-upload"> Choisir le fichier</label>
                 </div>
                 <button className="submit" type="submit">VALIDER</button>
             </form>

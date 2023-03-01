@@ -48,7 +48,6 @@ const Login = () => {
                     setInfo(initialState);
                     dispatch({type:"LOGIN",payload:token.response});
                     setOpenformLogin(false);
-                    messageFn("Vous êtes connecter");
                 } 
                 else {
                     messageFn("Identifiant ou mot de passe incorrect");
