@@ -64,11 +64,11 @@ const ListContact = () => {
                 );
             })}
             {showConfirmModal && (
-                <div>
-                    <h2>Êtes-vous sûr de vouloir supprimer cet admin ?</h2>
-                    <div>
-                        <button onClick={deleteContact}>Oui</button>
-                        <button onClick={closeModal}>Non</button>
+                <div className="confirm-delete">
+                    <p>Êtes-vous sûr de vouloir supprimer ce contact ?</p>
+                    <div className="update-product">
+                        <p onClick={deleteContact}>Oui</p>
+                        <p onClick={closeModal}>Non</p>
                     </div>
                 </div>
             )}

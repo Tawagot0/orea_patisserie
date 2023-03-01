@@ -39,24 +39,28 @@ const ListAdmin = () => {
     };
     
     return(
-        <div>
+        <div className="global-list-admin">
             {admins.map((admin,i) => {
                 return(
-                    <div key={i} className="modif">
-                        <p>Nom :{admin.last_name}</p>
-                        <p>prenom:{admin.first_name}</p>
-                        <p>E-mail:{admin.email} </p>
-                        <p><NavLink to={`/updateAdmin/${admin.id}`}>Modifier votre admin</NavLink></p>
-                        <button onClick={() => confirmDeleteAdmin(admin)}>supprimer cet utilisateur</button>
+                    <div key={i} className="admin-list">
+                        <div className="admin-name">
+                            <p>{admin.last_name}</p>
+                            <p>{admin.first_name}</p>
+                        </div>
+                        <p>{admin.email} </p>
+                        <div className="update-product">
+                            <NavLink to={`/updateAdmin/${admin.id}`}>Modifier votre admin</NavLink>
+                            <p onClick={() => confirmDeleteAdmin(admin)}>supprimer cet utilisateur</p>
+                        </div>
                     </div>
                 );
             })}
             {showConfirmModal && (
-                <div>
-                    <h2>Êtes-vous sûr de vouloir supprimer cet admin ?</h2>
-                    <div>
-                        <button onClick={deleteAdmin}>Oui</button>
-                        <button onClick={closeModal}>Non</button>
+                <div className="confirm-delete">
+                    <p>Êtes-vous sûr de vouloir supprimer cet admin ?</p>
+                    <div className="update-product">
+                        <p onClick={deleteAdmin}>Oui</p>
+                        <p onClick={closeModal}>Non</p>
                     </div>
                 </div>
             )}

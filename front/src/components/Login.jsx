@@ -60,11 +60,9 @@ const Login = () => {
     
     return(
         <Fragment>
-            {state.user.isLogged ? (
-                <i onClick={handleLogout} className=" fa-regular fa-user"> Deconnexion </i>
-            ) : ( 
-                <i onClick={() => setOpenformLogin(true)} className="fa-regular fa-user"> Se connecter</i>
-            )}
+            <i className={`fa-regular fa-user ${state.user.isLogged ? 'logged-in' : 'logged-out'}`} onClick={state.user.isLogged ? handleLogout : () => setOpenformLogin(true)}>
+              {state.user.isLogged ? ' Deconnexion' : ' Se connecter'}
+            </i>
             
             {state.user.isLogged  && (
             <li className="link-admin">

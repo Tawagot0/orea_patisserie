@@ -93,7 +93,7 @@ const Contact = () => {
                 </div>
                 <div className="form-item">
                     <label htmlFor="message">Message</label>
-                    <textarea type="text"  placeholder="..." name="message" onChange={handleChange} value={userData.message} maxLength="2000"/>
+                    <textarea type="text" name="message" onChange={handleChange} value={userData.message} maxLength="2000"/>
                 </div>
                 <button className="submit" type="submit">VALIDER</button>
             </form>

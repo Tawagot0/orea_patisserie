@@ -1,7 +1,5 @@
 body {
     font-family: 'Prata', cursive;
-    background: rgb(255,255,255);
-    /*background: radial-gradient(circle, rgba(255,255,255,1) 1%, rgba(255,238,217,1) 100%);*/
     background-image: linear-gradient(to right top, #b4b5fa, #bfbef7, #cac7f3, #d3d0f0, #dcdaec, #dcdaec, #dcdaec, #dcdaec, #d3d0f0, #cac7f3, #bfbef7, #b4b5fa);
     list-style:none;
     margin:0;
@@ -72,6 +70,16 @@ header {
     border-radius:1.2em;
     transition:1s;
 }
+.logged-in {
+    margin-left:0.5em;
+    color: #fff;
+    text-shadow: #00e24b 1px 0 10px;
+}
+.logged-out {
+    margin-left:0.5em;
+    color: #fff;
+    text-shadow: #ff0000 1px 0 10px;
+}
 .navbar .nav-links ul li a{
     color:#fff;
     text-shadow: #001e62 1px 0 10px;
@@ -92,11 +100,17 @@ header {
     top: 30px; 
     cursor: pointer;
 }   
-.link-admin{
+.link-admin a{
     display:flex; 
-    margin-top:1em;
-    margin-left:0.5em;
-    font-size:1.2em;
+    margin-top:0.5em;
+    margin-left:0.4em;
+    font-size:1em;
+    padding:0.2em;
+    position:absolute;
+    z-index:100;
+    background-color:#000000;
+    border-radius:0.5em;
+    text-shadow: #ff0000 1px 0 5px;
 }
 /**************************formulaire********************************/
 input::placeholder {
@@ -130,8 +144,7 @@ i{
 .login h2 {
   font-size: 2em;
   color:#fff;
-  margin:1em 0;
-  padding-top:1em;
+  padding:1em;
 }
 .login-form {
   padding: 0.5em;
@@ -177,11 +190,6 @@ i{
   color: #000000;
   font-weight:bold;
 }
-.fa-user,.fa-lock{
-    color:#fff;
-    font-size:1.2em;
-    margin-left:0.6em;
-}
 .create-count{
     display:flex;
     align-items:center;
@@ -219,7 +227,7 @@ i{
 /*************************************formulaire de contact************************************************/
 .contact{
     /*background-image: url("../images/coffee.jpg");*/
-    background-image: radial-gradient(circle, #414141, #323234, #242428, #16171d, #000511);
+     background-image: linear-gradient(to right top, #000000, #050505, #0b0b0b, #0f0f0f, #131313, #131313, #131313, #131313, #0f0f0f, #0b0b0b, #050505, #000000);
     display:block;
 }
 input[type=number] {
@@ -312,21 +320,18 @@ input::-o-outer-spin-button {
     width:100%;
 }
 /*******************************admin area******************************************************/
-.admin-center{
-    text-align:center;
-}
 .admin-area h2{
-    background-color:#fff3e3;
-    color:#4c4b4b;
+    background-color:#000000;
+    color:#fff;
     display:inline-block;
     border-radius:0.5em;
     padding:0.2em 0.5em;
 }
 .admin-area{
-    background-image: radial-gradient(circle, #414141, #323234, #242428, #16171d, #000511);
-    border-radius:1em;
+    background-image: linear-gradient(to right top, #000000, #050505, #0b0b0b, #0f0f0f, #131313, #131313, #131313, #131313, #0f0f0f, #0b0b0b, #050505, #000000);
     padding:1em;
     margin:auto;
+    text-align:center;
 }
 .admin-area ul{
     list-style:none;
@@ -341,7 +346,6 @@ input::-o-outer-spin-button {
 }
 .admin-area ul a{
     color:#d3d3d3;
-    /*text-shadow: #fff 1px 0 10px;*/
     font-weight:bold;
     font-style:italic;
 }
@@ -358,6 +362,7 @@ input::-o-outer-spin-button {
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
+    background-image: linear-gradient(to right top, #000000, #050505, #0b0b0b, #0f0f0f, #131313, #131313, #131313, #131313, #0f0f0f, #0b0b0b, #050505, #000000);
 }
 .admin-product{
     display:flex;
@@ -365,7 +370,6 @@ input::-o-outer-spin-button {
     width:30%;
     justify-content:center;
     padding:0.5em;
-    background-image: radial-gradient(circle, #414141, #323234, #242428, #16171d, #000511);
     border:solid 2px #fff;
 }
 .admin-manage{
@@ -374,8 +378,8 @@ input::-o-outer-spin-button {
     justify-content:center;
 }
 .admin-manage img{
-    width:200px;
-    height:200px;
+    width:150px;
+    height:150px;
     border:solid 1px #fff;
     margin-right:0.8em;
     margin-bottom:0.8em;
@@ -410,16 +414,17 @@ input::-o-outer-spin-button {
 /*****************************list contact********************************/
 .global-contact{
     display:flex;
+    position:relative;
     justify-content:center;
     flex-wrap:wrap;
+    background-image: linear-gradient(to right top, #000000, #050505, #0b0b0b, #0f0f0f, #131313, #131313, #131313, #131313, #0f0f0f, #0b0b0b, #050505, #000000);
 }
 .contact-list p span{
-    color:#3a4891;
+    color:#a3a3a3;
     font-weight:bold;
     font-style:italic;
 }
 .contact-list{
-    background-image: radial-gradient(circle, #414141, #323234, #242428, #16171d, #000511);
     border:solid 2px #fff;
     color:#fff;
     width:47%;
@@ -432,13 +437,13 @@ input::-o-outer-spin-button {
 .contact-name{
     display:flex;
     flex-wrap:wrap;
-    justify-content:space-around;
+    justify-content:space-between;
     width:100%;
 }
 .contact-address{
     display:flex;
     flex-wrap:wrap;
-    justify-content:center;
+    justify-content:flex-start;
     width:100%;
 }
 .contact-address p:first-child, .contact-address p:nth-child(2){
@@ -446,8 +451,8 @@ input::-o-outer-spin-button {
 }
 .contact-tel{
     display:flex;
-    justify-content:space-around;
-    text-align:center;
+    flex-wrap:wrap;
+    justify-content:space-between;
     width:100%;
 }
 .contact-message{
@@ -455,6 +460,51 @@ input::-o-outer-spin-button {
     width:100%;
     justify-content:center;
     text-align:center;
+}
+/*****************list admin**********************************/
+.global-list-admin{
+    background-image: linear-gradient(to right top, #000000, #050505, #0b0b0b, #0f0f0f, #131313, #131313, #131313, #131313, #0f0f0f, #0b0b0b, #050505, #000000);
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    padding:0.5em;
+    text-align:center;
+}
+.admin-list p{
+    margin:0;
+}
+.admin-list{
+    border:solid 1px #fff;
+    padding:0.5em;
+}
+.admin-list .update-product{
+    margin-top:0.4em;
+}
+.admin-name{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    margin:0.4em;
+}
+/****************confirm delete modal*************************/
+.confirm-delete{
+    background-image: linear-gradient(to right top, #000000, #050505, #0b0b0b, #0f0f0f, #131313, #131313, #131313, #131313, #0f0f0f, #0b0b0b, #050505, #000000);
+    color:#fff;
+    position: fixed;
+    font-size:1.2em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius:0.5em;
+    padding:0.5em;
+    border:solid 1px #fff;
+    box-shadow:10px 5px 5px red;
+    
+}
+.confirm-delete .update-product{
+    display:flex;
+    justify-content:space-around;
 }
 /******************************carousel******************************************/
 .swiper{
@@ -470,7 +520,6 @@ input::-o-outer-spin-button {
 }
 .swiper-slide img {
   display: block;
-  /*box-shadow: 5px -5px 10px white;*/
   box-shadow: 8px 0px 8px -2px white,
   -8px 0px 8px -2px white;
   width: 100%;
@@ -514,7 +563,7 @@ footer{
     /*margin-top:2em;*/
 }
 .foot{
-    backdrop-filter: blur(5px); /* blur effect to the backdrop */
+    backdrop-filter: blur(5px);
 	  background-color: rgba(255, 255, 255, 0.2);
 	  border-radius:1em;
 	  padding:1em;
@@ -602,6 +651,7 @@ z-index:99;
 .admin-product{
     width:45%;
 }
+
 /*****************login************************/
 .login{
     width:90%;
@@ -612,7 +662,13 @@ z-index:99;
 }
 @media screen and (max-width:620px){
    /******************admin products/actualite*********************/
+.contact-list{
+    width:100%;
+}
 .admin-product{
-    width:95%;
+    width:100%;
+}
+.logo {
+    margin-top:2.2em;
 }
 }

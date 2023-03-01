@@ -3,8 +3,7 @@ import {NavLink} from "react-router-dom";
 const AdminArea = () => {
 
     return(
-        <section className="admin-center">
-        <main className="container admin-area">
+        <div className="container admin-area">
             <h2>Votre espace admin</h2>
             <ul>
                 <li>
@@ -43,8 +42,7 @@ const AdminArea = () => {
                     </NavLink>
                 </li>
             </ul>
-        </main>
-        </section>
+        </div>
     );
 };
 
