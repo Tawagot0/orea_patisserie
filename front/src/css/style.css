@@ -1,6 +1,6 @@
 body {
-    font-family: 'Prata', cursive;
-    background-image: linear-gradient(to right top, #b4b5fa, #bfbef7, #cac7f3, #d3d0f0, #dcdaec, #dcdaec, #dcdaec, #dcdaec, #d3d0f0, #cac7f3, #bfbef7, #b4b5fa);
+    font-family: 'Poppins', sans-serif;
+    background-image: linear-gradient(to right top, #ffffff, #ededed, #dbdbdb, #c9c9c9, #b8b8b8, #b8b8b8, #b8b8b8, #b8b8b8, #c9c9c9, #dbdbdb, #ededed, #ffffff);
     list-style:none;
     margin:0;
 }
@@ -34,7 +34,6 @@ header {
     background-size: cover;
     background-position: center;
     padding:1em;
-    /*margin-bottom:2em;*/
 }
 .logo{
     display:flex;
@@ -187,11 +186,11 @@ i{
   border-radius:0.5em;
   color: #fff;
   font-weight:bold;
-  background-image: linear-gradient(to right top, #000000, #050505, #0b0b0b, #0f0f0f, #131313, #131313, #131313, #131313, #0f0f0f, #0b0b0b, #050505, #000000);
+  background-color:#000000;
 }
 .submit:hover{
     color:#000000;
-    background-image: linear-gradient(to right bottom, #ffffff, #fbfbfb, #f8f8f8, #f4f4f4, #f1f1f1, #f1f1f1, #f1f1f1, #f1f1f1, #f4f4f4, #f8f8f8, #fbfbfb, #ffffff);
+    background-color:#fff;
     transition:1s;
 }
 .create-count{
@@ -280,28 +279,37 @@ input::-o-outer-spin-button {
   padding:0.5em;
 }
 /******************************boutique******************************************/
+.title-product{
+    color:#212121;
+    margin:1em 0.5em;
+    text-shadow:5px 1px 10px #5e5e5e
+}
 .container_products{
     display:flex;
-    justify-content:space-around;
+    justify-content:center;
     flex-wrap:wrap;
+    margin-bottom:2em;
 }
 .product{
-    margin:0 0.5em 0;
-    width:45%;
+    width:28%;
+    height:auto;
+    margin:0.5em;
     display:flex;
+    flex-wrap:wrap;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     position:relative;
 }
 .product:hover{
-    transition:1s;
-    transform: scale(1.1);
     z-index:100;
+    cursor:grab;
+    transform: scale(1.2);
+    transition:1s;
 }
 .product-info{
     position:absolute;
-    background-color:rgba(76,67,67,.9);
+    background-color:#000000;
     top: 0;
     bottom: 0;
     right: 0;
@@ -311,9 +319,20 @@ input::-o-outer-spin-button {
     flex-direction:column;
     justify-content:center;
     align-items:center;
+    font-size:1.2em;
+}
+.product-info p{
+    margin:0.4em;
+    font-size:0.7em;
+    text-align:center;
+}
+.product-info p:last-child{
+    font-weight:bold;
+    font-size:1em;
 }
 .product-info:hover{
     opacity:0.7;
+    transition:1s;
 }
 .product-info:after{
     content:"";
@@ -322,13 +341,18 @@ input::-o-outer-spin-button {
     bottom:0;
     right:0;
     left:0;
-    border: 4px solid #fff;
+    border: 6px solid #dedede;
 }
 .product-info{
     color:#fff;
 }
+.product-img{
+    width:100%;
+    height:100%;
+}
 .product-img img{
     width:100%;
+    height:100%;
 }
 /*******************************admin area******************************************************/
 .admin-area h2{
@@ -370,6 +394,7 @@ input::-o-outer-spin-button {
 }
 /********************************Products admin/actualites***********************************************/
 .admin-global-product{
+    padding:0.5em;
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
@@ -381,7 +406,7 @@ input::-o-outer-spin-button {
     width:30%;
     justify-content:center;
     padding:0.5em;
-    border:solid 2px #fff;
+    border:solid 2px #939393;
 }
 .admin-manage{
     display:flex;
@@ -399,16 +424,17 @@ input::-o-outer-spin-button {
     align-items:flex-end;
 }
 .update-product p, .update-product a{
+    font-weight:200;
     text-align:center;
     color:#ffffff;
     margin:0;
     padding:0.5em;
-    border:solid 0.5px #fff;
+    border:solid 0.5px #686868;
     cursor:pointer;
 }
 .update-product p:hover, .update-product a:hover{
     color:#000000;
-    background-color:#fff;
+    background-color:#686868;
     transition:1s;
 }
 .admin-product-info{
@@ -432,9 +458,10 @@ input::-o-outer-spin-button {
     color:#a3a3a3;
     font-weight:bold;
     font-style:italic;
+    text-decoration:underline;
 }
 .contact-list{
-    border:solid 2px #fff;
+    border:solid 2px #939393;
     color:#fff;
     width:47%;
     display:flex;
@@ -484,7 +511,7 @@ input::-o-outer-spin-button {
     margin:0;
 }
 .admin-list{
-    border:solid 1px #fff;
+    border:solid 1px #939393;
     padding:0.5em;
 }
 .admin-list .update-product{
@@ -508,7 +535,7 @@ input::-o-outer-spin-button {
     border-radius:0.5em;
     padding:0.5em;
     border:solid 1px #fff;
-    box-shadow:10px 5px 5px #fff;
+    box-shadow:10px 5px 5px #686868;
     
 }
 .confirm-delete .update-product{
@@ -569,7 +596,6 @@ footer{
     align-items:center;
     color:#fff;
     text-shadow: #001e62 1px 0 10px;
-    /*margin-top:2em;*/
 }
 .foot{
     backdrop-filter: blur(5px);
@@ -671,6 +697,56 @@ z-index:99;
 #login{
     font-size:0.8em;
 }
+/************boutique*******************************/
+.container_products{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    flex-wrap:wrap;
+}
+.product{
+    width:95%;
+    flex-direction:row;
+    position:static;
+    align-items:stretch;
+    margin-bottom:0.5em;
+}
+.product:hover{
+    z-index:0;
+    cursor:initial;
+    transform:scale(1);
+}
+.product-info{
+    position:static;
+    background-color:transparent;
+    opacity:1;
+    width:45%;
+    padding:0.5em;
+    border:solid 2px #808080;
+    border-radius:1em;
+}.product-info h3{
+    color:#212121;
+}
+.product-info p{
+    color:#404040;
+}
+.product-info:hover{
+    opacity:1;
+}
+.product-info:after{
+    position:static;
+    display:none;
+}
+.product-info{
+    color:#fff;
+}
+.product-img{
+    width:45%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+}
 }
 @media screen and (max-width:620px){
    /******************admin products/actualite*********************/
@@ -682,5 +758,14 @@ z-index:99;
 }
 .logo {
     margin-top:2.2em;
+}
+/************boutique*******************************/
+.product{
+    width:95%;
+    flex-direction:column;
+}
+.product-img,.product-info{
+    width:95%;
+    margin-bottom:0.5em;
 }
 }

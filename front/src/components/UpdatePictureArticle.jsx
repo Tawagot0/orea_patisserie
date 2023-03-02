@@ -27,7 +27,12 @@ const UpdatePictureArticle = () => {
         e.preventDefault();
         
         const dataFile = new FormData();
-        const files = {...e.target.img.files};
+        const files = Object.values(e.target.img.files);
+        
+        if (files.length === 0) {
+            messageFn("Veuillez sélectionner un fichier");
+            return;
+        }
         
         dataFile.append('files', files[0], files[0].name);
         dataFile.append('caption', picture.caption);

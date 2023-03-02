@@ -28,10 +28,14 @@ const AddProduct = () => {
         e.preventDefault();
         
         const dataFile = new FormData();
-        const files = {...e.target.img.files};
-
-        if(userData.name === "" || userData.description === "" || userData.price === ""){
+        /*object.values permet d'obtenir un tableau d'objets*/
+        const files = Object.values(e.target.img.files);
+        if(userData.name === "" || userData.description === "" || userData.price === "" ){
             messageFn("Veuillez remplir tous les champs");
+            return;
+        }
+        else if (files.length === 0) {
+            messageFn("Veuillez sélectionner un fichier");
             return;
         }
         else if(isNaN(userData.price)){

@@ -1,7 +1,7 @@
 import axios from "axios";
 import {BASE_URL} from "../tools/constante.js";
 import {BASE_IMG} from "../tools/constante.js";
-import {useState, useEffect} from "react";
+import {useState, useEffect,Fragment} from "react";
 
 const Products = () => {
     
@@ -16,22 +16,25 @@ const Products = () => {
     },[products]);
         
     return(
-        <div className="container_products">
-            {products.map((product,i) => {
-                return(
-                    <div key={i} className="product">
-                        <div className="product-img">
-                            <img src={`${BASE_IMG}/${product.url}`} alt={product.caption}/>
+        <Fragment>
+            <h2 className="title-product">Découvrer nos produits disponibles sur les marchés</h2>
+            <div className="container_products">
+                {products.map((product,i) => {
+                    return(
+                        <div key={i} className="product">
+                            <div className="product-img">
+                                <img src={`${BASE_IMG}/${product.url}`} alt={product.caption}/>
+                            </div>
+                            <div className="product-info">
+                                <h3>{product.name}</h3>
+                                <p>{product.description}</p>
+                                <p>{product.price} €</p>
+                            </div>
                         </div>
-                        <div className="product-info">
-                            <p>Nom du produit:{product.name}</p>
-                            <p>description:{product.description}</p>
-                            <p>prix:{product.price} euros</p>
-                        </div>
-                    </div>
-                );
-            })}
-        </div>      
+                    );
+                })}
+            </div>
+        </Fragment>
     );
 };
 
