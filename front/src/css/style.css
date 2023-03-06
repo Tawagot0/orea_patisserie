@@ -217,12 +217,19 @@ i{
 	overflow: hidden;
 	position: absolute;
 	z-index: -1;
-	width:80%;
+	/*width:80%;*/
 }
 .input-file + label {
     color: white;
     cursor:pointer;
     padding:0.5em;
+}
+.input-file:focus + label,
+.input-file + label {
+    color:#fff;
+    background-color:transparent;
+    border:solid 2px #fff;
+    border-radius:1em;
 }
 .input-file:focus + label,
 .input-file + label:hover {
@@ -277,6 +284,80 @@ input::-o-outer-spin-button {
   color: #fff;
   font-size: 1em;
   padding:0.5em;
+}
+.contact-us{
+    width:70vw;
+    margin:0 auto;
+    border-radius:1em;
+    margin-bottom:1em;
+}
+.contact-us .login-form{
+    background-size: 140%;
+    width:95%;
+    background-position:center;
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+    border-radius:1em;
+    font-size:0.8em;
+}
+.contact-us .form-item{
+    width:45%;
+}
+/*****************************emplacement marcher*********************************/
+.contact-page{
+    background-image: linear-gradient(to right top, #000000, #050505, #0b0b0b, #0f0f0f, #131313, #131313, #131313, #131313, #0f0f0f, #0b0b0b, #050505, #000000);
+    width:85vw;
+    padding:1em;
+    border-radius:1em;
+    margin:0 auto;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-items:start;
+    text-align:center;
+    color:#d3d3d3;
+    font-size:1.1em;
+}
+.contact-page i{
+    padding:0.5em;
+}
+.contact-page i:hover{
+    transform: rotateY(360deg);
+    transition:1s;
+}
+.contact-page h3{
+    margin-bottom:2em;
+    color:#171717;
+    font-size:1.2em;
+    background-color:#a4a4a4;
+    border-radius:1em;
+    padding:0.5em;
+}
+.location-market{
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:1em;
+    margin:0 auto;
+}
+.location-market ul{
+    color:#f5f3f4;
+    margin:0;
+    padding:0;
+    list-style:none;
+    backdrop-filter: blur(5px);
+}
+.location-market li{
+    padding:0.5em;
+    color:#d3d3d3;
+    text-align:center;
+    font-size:1em;
+}
+.days{
+    font-style:italic;
+    font-weight:bold;
 }
 /******************************boutique******************************************/
 .title-product{
@@ -585,6 +666,33 @@ input::-o-outer-spin-button {
   border-radius: 5px;
   background-color:white;
 }
+/******************origine des produits****************************/
+.origin-matter{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+}
+.origin-matter img{
+    width:50%;
+}
+.origin-matter div{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    margin:1.5em auto;
+    padding:0 1em;
+    background-color:#757575;
+    border-radius:1em;
+    width:45vw;
+}
+.origin-matter div div{
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    margin:1em 0.5em;
+}
 /******************************FOOTER****************************************************/
 footer{
     padding:0.5em;
@@ -703,10 +811,12 @@ z-index:99;
     flex-direction:column;
     align-items:center;
     flex-wrap:wrap;
+    margin:0 auto;
 }
 .product{
     width:95%;
     flex-direction:row;
+    flex-wrap:wrap;
     position:static;
     align-items:stretch;
     margin-bottom:0.5em;
@@ -747,6 +857,22 @@ z-index:99;
     align-items:center;
     margin:auto;
 }
+/**********************origine des produits**********************/
+.origin-matter{
+    flex-direction:column;
+}
+.origin-matter div{
+    width:90%;
+}
+/*************************formulaire contact*******************/
+.contact-page{
+    width:70%;
+    flex-direction:column;
+    align-items:center;
+}
+.contact-page h3{
+    margin-bottom:1em;
+}
 }
 @media screen and (max-width:620px){
    /******************admin products/actualite*********************/
@@ -767,5 +893,14 @@ z-index:99;
 .product-img,.product-info{
     width:95%;
     margin-bottom:0.5em;
+}
+.contact-us .form-item{
+    width:100%;
+}
+.location-market{
+    width:100%;
+}
+.origin-matter img{
+    width:40%;
 }
 }

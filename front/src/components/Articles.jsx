@@ -1,7 +1,7 @@
 import axios from "axios";
 import {BASE_URL} from "../tools/constante.js";
 import {BASE_IMG} from "../tools/constante.js";
-import {useState, useEffect} from "react";
+import {useState, useEffect, Fragment} from "react";
 
 const Articles = () => {
     
@@ -16,17 +16,20 @@ const Articles = () => {
     },[articles]);
     
         return(
-        <div>
-            {articles.map((article,i) => {
-                return(
-                    <div key={i} className="modif">
-                        <p>Titre de l'article:{article.title}</p>
-                        <p>description:{article.description}</p>
-                        <img src={`${BASE_IMG}/${article.url}`} alt={article.caption}/>
-                    </div>
-                );
-            })}
-        </div>      
+        <Fragment>    
+            <h2 className="title-product">Les dernières actualités d'OREA Pâtisserie</h2>    
+            <div>
+                {articles.map((article,i) => {
+                    return(
+                        <div key={i} className="modif">
+                            <p>Titre de l'article:{article.title}</p>
+                            <p>description:{article.description}</p>
+                            <img src={`${BASE_IMG}/${article.url}`} alt={article.caption}/>
+                        </div>
+                    );
+                })}
+            </div>
+        </Fragment>
     );
 };
 
