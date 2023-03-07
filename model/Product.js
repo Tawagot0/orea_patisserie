@@ -36,6 +36,7 @@ class Product {
     }
     
     async getAll(){
+        //sélectionne toutes les colonnes de deux tables : products et pictures.
         const sql = "SELECT * FROM pictures JOIN products ON products.id = pictures.product_id"
         
         try{

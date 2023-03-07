@@ -12,6 +12,7 @@ const AddProduct = () => {
     };
     const [userData, setUserData] = useState(initialValue);
     
+    // Fonction pour modifier l'état messageLogin et vider celui-ci après 2 secondes
     const messageFn = (msg) => {
         setMessagelogin(msg);
         setTimeout(() => {
@@ -19,16 +20,18 @@ const AddProduct = () => {
         },2000);
     };
     
+    // Fonction pour mettre à jour l'état userData lorsqu'un champ du formulaire est modifié
     const handleChange = (e) => {
         const {name, value} = e.target;
         setUserData({...userData,[name]:value});
     };
     
     const submit = (e) => {
-        e.preventDefault();
+        e.preventDefault();// empêche la soumission par défaut du formulaire
         
+        // Création d'un objet FormData pour envoyer les données
         const dataFile = new FormData();
-        /*object.values permet d'obtenir un tableau d'objets*/
+        //object.values permet d'obtenir un tableau d'objets et récupère le fichier sélectionné dans le formulaire
         const files = Object.values(e.target.img.files);
         if(userData.name === "" || userData.description === "" || userData.price === "" ){
             messageFn("Veuillez remplir tous les champs");
@@ -43,12 +46,12 @@ const AddProduct = () => {
             return;
         }
         
-        dataFile.append('files', files[0], files[0].name);
-        dataFile.append('description', userData.description);
+        dataFile.append('files', files[0], files[0].name);// ajoute le premier fichier sélectionné à l'instance FormData
+        dataFile.append('description', userData.description);// ajoute la description de l'article à l'instance FormData...
         dataFile.append('price', userData.price);
         dataFile.append('name', userData.name);
 
-        axios.post(`${BASE_URL}/addProduct`, dataFile)
+        axios.post(`${BASE_URL}/addProduct`, dataFile)// envoie une requête POST à l'URL BASE_URL/addArticle avec l'instance FormData en tant que données
         .then(res => messageFn(res.data.data.response))
         .catch(err => console.log(err));
         

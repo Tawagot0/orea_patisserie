@@ -7,7 +7,7 @@ const ListContact = () => {
     const [contacts, setContacts] = useState([]);
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const [contactToDelete, setContactToDelete] = useState(null);
-    
+    // Si notre tableau de contacts est vide, alors on fait une requête à l'API pour récupérer tous les contacts
     useEffect(() => {
         if(contacts.length === 0){
             axios.get(`${BASE_URL}/listContact`)
@@ -15,7 +15,7 @@ const ListContact = () => {
                 .catch(err => console.log(err));
         }
     },[contacts]);
-    
+    // Cette fonction est appelée lorsque l'utilisateur confirme la suppression d'un contact
     const deleteContact = () => {
         const id = contactToDelete.id;
         axios.post(`${BASE_URL}/deleteContact`,{id})
@@ -25,12 +25,12 @@ const ListContact = () => {
         })
         .catch(err => console.log(err));
     };
-    
+    // Cette fonction est appelée lorsque l'utilisateur clique sur le bouton supprimer
     const confirmDeleteContact = (contact) => {
         setContactToDelete(contact);
         setShowConfirmModal(true);
     };
-    
+    // Cette fonction est appelée lorsque l'utilisateur annule la suppression d'un produit
     const closeModal = () => {
         setShowConfirmModal(false);
         setContactToDelete(null);
@@ -63,6 +63,7 @@ const ListContact = () => {
                     </div>
                 );
             })}
+            {/*on affiche si c'est true*/}
             {showConfirmModal && (
                 <div className="confirm-delete">
                     <p>Êtes-vous sûr de vouloir supprimer ce contact ?</p>

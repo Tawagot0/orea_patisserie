@@ -5,7 +5,7 @@ import {useState,Fragment} from "react";
 const Contact = () => {
     
     const [messageLogin, setMessagelogin] = useState("");
-    
+    // Fonction pour modifier l'état messageLogin et vider celui-ci après 2 secondes
     const messageFn = (msg) => {
         setMessagelogin(msg);
         setTimeout(() => {
@@ -24,7 +24,7 @@ const Contact = () => {
         message:''
     };
     const [userData, setUserData] = useState(initialValue);
-    
+    // Fonction pour mettre à jour l'état userData lorsqu'un champ du formulaire est modifié
     const handleChange = (e) => {
         const {name, value} = e.target;
         setUserData({...userData,[name]:value});
@@ -41,7 +41,7 @@ const Contact = () => {
             messageFn("Format incorrect pour le code_postal ou le telephone");
             return;
         }
-        
+        // envoie une requête avec les données récupérées dans le formulaire
         axios.post(`${BASE_URL}/contactForm`,{
           last_name : userData.last_name.trim(),
           first_name: userData.first_name.trim(),
@@ -65,9 +65,9 @@ const Contact = () => {
                 <div>
                 	<address>
                 	    <h3>Nos coordonnées : </h3>
-                		<p><span className="">Mail : </span><a href="mailto:oreapatisserie@gmail.com" rel="noreferrer" target="_blank">oreapatisserie@gmail.com</a></p>
-                		<p><span className="">Téléphone : </span><a href="tel:+336675360419" rel="noreferrer" target="_blank">06 75 36 04 19</a></p>
-                		<p><span className="">Adresse : </span>La Verdinière 448810 HERIC</p>
+                		<p><span className="days">Mail : </span><a href="mailto:oreapatisserie@gmail.com" rel="noreferrer" target="_blank">oreapatisserie@gmail.com</a></p>
+                		<p><span className="days">Téléphone : </span><a href="tel:+336675360419" rel="noreferrer" target="_blank">06 75 36 04 19</a></p>
+                		<p><span className="days">Adresse : </span>La Verdinière 448810 HERIC</p>
                     </address>
                 </div>
                 <div className="location-market">
@@ -124,7 +124,7 @@ const Contact = () => {
                         <label htmlFor="message">Message</label>
                         <textarea type="text" name="message" onChange={handleChange} value={userData.message} maxLength="2000"/>
                     </div>
-                    <button className="submit" type="submit">VALIDER</button>
+                    <button className="submit" type="submit">ENVOYER</button>
                 </form>
             </div>
         </Fragment>

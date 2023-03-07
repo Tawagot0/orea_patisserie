@@ -8,7 +8,7 @@ const ListAdmin = () => {
     const [admins, setAdmins] = useState([]);
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const [adminToDelete, setAdminToDelete] = useState(null);
-    
+    // Si notre tableau d'admin est vide, alors on fait une requête à l'API pour récupérer tous les admin
     useEffect(() => {
         if(admins.length === 0){
             axios.get(`${BASE_URL}/listAdmin`)
@@ -17,6 +17,7 @@ const ListAdmin = () => {
         }
     },[admins]);
     
+    // Cette fonction est appelée lorsque l'utilisateur confirme la suppression d'un admin
     const deleteAdmin = () => {
         const id = adminToDelete.id;
         axios.post(`${BASE_URL}/deleteAdmin`,{id})
@@ -27,12 +28,12 @@ const ListAdmin = () => {
         })
         .catch(err => console.log(err));
     };
-    
+    // Cette fonction est appelée lorsque l'utilisateur clique sur le bouton supprimer
     const confirmDeleteAdmin = (admin) => {
         setAdminToDelete(admin);
         setShowConfirmModal(true);
     };
-    
+    // Cette fonction est appelée lorsque l'utilisateur annule la suppression d'un produit
     const closeModal = () => {
         setShowConfirmModal(false);
         setAdminToDelete(null);
@@ -55,6 +56,7 @@ const ListAdmin = () => {
                     </div>
                 );
             })}
+            {/*on affiche si c'est true*/}
             {showConfirmModal && (
                 <div className="confirm-delete">
                     <p>Êtes-vous sûr de vouloir supprimer cet admin ?</p>

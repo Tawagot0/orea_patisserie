@@ -6,7 +6,7 @@ import Login from "./Login.jsx";
 const Header = () => {
     
     const location = useLocation();
-
+    //fonction qui renvoie à la page d'accueil
     const handleClick = () => {
         if (location.pathname !== '/') {
             window.location.href = '/';

@@ -8,17 +8,19 @@ const Products = () => {
     const [products, setProducts] = useState([]);
     
     useEffect(() => {
+        // Si notre tableau d'articles est vide, alors on fait une requête à l'API pour récupérer tous les produits
         if(products.length === 0){
             axios.get(`${BASE_URL}/products`)
                 .then(res => setProducts(res.data.data.result))
                 .catch(err => console.log(err));
         }
-    },[products]);
+    },[products]);//on éxécute à chaque fois que products change
         
     return(
         <Fragment>
             <h2 className="title-product">Découvrer nos produits disponibles sur les marchés</h2>
             <div className="container_products">
+            {/* On utilise la méthode map() pour itérer sur chaque élément du tableau products et retourner un élément pour chaque produit */}
                 {products.map((product,i) => {
                     return(
                         <div key={i} className="product">

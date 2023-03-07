@@ -11,6 +11,7 @@ const ArticlesAdmin = () => {
     const [articleToDelete, setArticleToDelete] = useState(null);
     
     useEffect(() => {
+        // Si notre tableau d'articles est vide, alors on fait une requête à l'API pour récupérer tous les articles
         if(articles.length === 0){
             axios.get(`${BASE_URL}/articles`)
                 .then(res => setArticles(res.data.data.result))
@@ -18,7 +19,9 @@ const ArticlesAdmin = () => {
         }
     },[articles]);
     
+    // Cette fonction est appelée lorsque l'utilisateur confirme la suppression d'un article
     const deleteArticle = () => {
+        // On récupère l'id de l'article à supprimer
         const id = articleToDelete.id;
         axios.post(`${BASE_URL}/deleteArticle`,{id})
         .then(res => {
@@ -28,12 +31,14 @@ const ArticlesAdmin = () => {
         })
         .catch(err => console.log(err));
     };
-    
+    // Cette fonction est appelée lorsque l'utilisateur clique sur le bouton supprimer
     const confirmDeleteArticle = (article) => {
+        // On stocke l'article à supprimer dans notre état articleToDelete
         setArticleToDelete(article);
+        // On affiche la fenêtre de confirmation de suppression
         setShowConfirmModal(true);
     };
-    
+    // Cette fonction est appelée lorsque l'utilisateur annule la suppression d'un article
     const closeModal = () => {
         setShowConfirmModal(false);
         setArticleToDelete(null);
@@ -41,6 +46,7 @@ const ArticlesAdmin = () => {
     
     return(
         <div className="admin-global-product">
+        
             {articles.map((article,i) => {
                 return(
                     <div key={i} className="admin-product">
@@ -59,6 +65,7 @@ const ArticlesAdmin = () => {
                     </div>
                 );
             })}
+            {/*on affiche si c'est true*/}
             {showConfirmModal && (
                 <div className="confirm-delete">
                     <p>Êtes-vous sûr de vouloir supprimer cet article ?</p>

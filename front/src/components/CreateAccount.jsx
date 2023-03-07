@@ -4,7 +4,7 @@ import {useState} from "react";
 
 const CreateAccount = () => {
     const [messageLogin, setMessagelogin] = useState("");
-    
+    // Fonction pour modifier l'état messageLogin et vider celui-ci après 2 secondes
     const messageFn = (msg) => {
         setMessagelogin(msg);
         setTimeout(() => {
@@ -21,7 +21,7 @@ const CreateAccount = () => {
     };
     
     const [userData, setUserData] = useState(initialValue);
-    
+    // Fonction pour mettre à jour l'état userData lorsqu'un champ du formulaire est modifié
     const handleChange = (e) => {
         const {name, value} = e.target;
         setUserData({...userData,[name]:value});
@@ -37,6 +37,7 @@ const CreateAccount = () => {
             messageFn("Les mots de passe ne correspondent pas");
             return;
         }
+        // envoie une requête avec les données récupérées dans le formulaire
         axios.post(`${BASE_URL}/addAdmin`,{
           last_name : userData.nom.trim(),
           first_name: userData.prenom.trim(),

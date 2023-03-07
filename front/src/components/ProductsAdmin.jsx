@@ -11,6 +11,7 @@ const ProductsAdmin = () => {
     const [productToDelete, setProductToDelete] = useState(null);
     
     useEffect(() => {
+        // Si notre tableau de produits est vide, alors on fait une requête à l'API pour récupérer tous les produits
         if(products.length === 0){
             axios.get(`${BASE_URL}/products`)
                 .then(res => setProducts(res.data.data.result))
@@ -18,6 +19,7 @@ const ProductsAdmin = () => {
         }
     },[products]);
     
+    // Cette fonction est appelée lorsque l'utilisateur confirme la suppression d'un produit
     const deleteProduct = () => {
         const id = productToDelete.id;
         axios.post(`${BASE_URL}/deleteProduct`,{id})
@@ -29,11 +31,12 @@ const ProductsAdmin = () => {
         .catch(err => console.log(err));
     };
     
+    // Cette fonction est appelée lorsque l'utilisateur clique sur le bouton supprimer
     const confirmDeleteProduct = (product) => {
         setProductToDelete(product);
         setShowConfirmModal(true);
     };
-    
+    // Cette fonction est appelée lorsque l'utilisateur annule la suppression d'un produit
     const closeModal = () => {
         setShowConfirmModal(false);
         setProductToDelete(null);

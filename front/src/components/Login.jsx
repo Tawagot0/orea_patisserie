@@ -10,22 +10,25 @@ const Login = () => {
     const [info, setInfo] = useState(initialState);
     const [messageLogin, setMessagelogin] = useState("");
     const [state, dispatch] = useContext(StoreContext);
-
+    // Fonction pour mettre à jour l'état userData lorsqu'un champ du formulaire est modifié
     const handleChange = (e) => {
         const {name,value} = e.target;
         setInfo({...info, [name]:value});
     };
-    
+    // Fonction pour modifier l'état messageLogin et vider celui-ci après 2 secondes
     const messageFn = (msg) => {
         setMessagelogin(msg);
         setTimeout(() => {
             setMessagelogin("");
         },2000);
     };
-
+    //fonction pour la déconnexion
     const handleLogout = () => {
+        //on supprime le jeton du local storage
         window.localStorage.removeItem('jwtToken');
+        //on supprime le jeton de l'en-tête
         delete axios.defaults.headers.common['Authorization'];
+        //on passe à false l'état de connexion
         dispatch({type:"LOGOUT"});
     };
     
@@ -39,13 +42,16 @@ const Login = () => {
             email:info.email.trim()
         })
         .then(res => {
+            //si c'est true
             if(res.data.data.response) {
                 const {token} = res.data.data;
+                //si on a le token on le stock dans le local storage il défini également l'en-tête Authorization de la requête HTTP
                 if(token){
                     window.localStorage.setItem('jwtToken', token.token);
                     axios.defaults.headers.common['Authorization'] = 'Bearer '+token.token;
                     setInfo(initialState);
                     dispatch({type:"LOGIN",payload:token.response});
+                    //on ferme la fenetre de connexion
                     setOpenformLogin(false);
                 } 
                 else {
@@ -58,10 +64,11 @@ const Login = () => {
     
     return(
         <Fragment>
+            {/*si connecter classe logged-in sinon logged-out*/}
             <i className={`fa-regular fa-user ${state.user.isLogged ? 'logged-in' : 'logged-out'}`} onClick={state.user.isLogged ? handleLogout : () => setOpenformLogin(true)}>
               {state.user.isLogged ? ' Deconnexion' : ' Se connecter'}
             </i>
-            
+            {/*si connecter on affiche espace admin*/}
             {state.user.isLogged  && (
             <li className="link-admin">
                 <NavLink to="/admin">

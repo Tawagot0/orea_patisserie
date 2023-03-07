@@ -5,7 +5,7 @@ class Users {
         this.asyncQuery = bdd.asyncQuery ;
         this.saltRounds = 10;
     }   
-    
+    // Fonction qui génère un objet contenant les informations utilisateur ainsi qu'un jeton d'authentification
     async generateResponse(userDataSQL, generateToken) {
         const admin = true;
         
@@ -26,7 +26,7 @@ class Users {
             return err;
         }
     }
-    
+    // Fonction qui vérifie si l'e-mail existe en base de données et si le mot de passe fourni correspond au mot de passe stocké en base de données.
     async login({email, password, generateToken}){
         try{
             const dataBDD = await this._emailExist(email) ;
@@ -50,9 +50,8 @@ class Users {
         } catch (err){
             return err;
         }
-            
     }
-    
+    // Fonction qui vérifie si l'e-mail existe en base de données
     async _emailExist(email){
         try {
             const sql = "SELECT * FROM admin WHERE email = ?";
@@ -111,7 +110,6 @@ class Users {
             console.log(err);
             return err;
         }
-        
     }
     
     async update({last_name, first_name, email, id}){
@@ -127,41 +125,40 @@ class Users {
     }
     
     async getAll(){
-        const sql = "SELECT * FROM admin"
+        const sql = "SELECT * FROM admin";
         
         try{
-            const result = await this.asyncQuery(sql)
-            return {result}
+            const result = await this.asyncQuery(sql);
+            return {result};
         } catch(err){
-            console.log(err)
-            return err
+            console.log(err);
+            return err;
         }
     }
     
     async getById({id}){
-        const sql = "SELECT * FROM admin WHERE id = ?"
+        const sql = "SELECT * FROM admin WHERE id = ?";
         
         try{
-            const result = await this.asyncQuery(sql,[id])
-            return {result}
+            const result = await this.asyncQuery(sql,[id]);
+            return {result};
         } catch(err){
-            console.log(err)
-            return err
+            console.log(err);
+            return err;
         }
     }
     
     async deleted({id}){
-        const sql = "DELETE FROM admin WHERE id = ?"
+        const sql = "DELETE FROM admin WHERE id = ?";
         
         try{
-            const result = await this.asyncQuery(sql,[id])
-            return {result:result, response:"Elément supprimé"}
+            const result = await this.asyncQuery(sql,[id]);
+            return {result:result, response:"Elément supprimé"};
         } catch(err){
-            console.log(err)
-            return err
+            console.log(err);
+            return err;
         }
     }
-    
 }
 
 export default Users;

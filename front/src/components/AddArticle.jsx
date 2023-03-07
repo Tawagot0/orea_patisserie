@@ -11,23 +11,25 @@ const AddArticle = () => {
     };
     const [userData, setUserData] = useState(initialValue);
     
+    // Fonction pour modifier l'état messageLogin et vider celui-ci après 2 secondes
     const messageFn = (msg) => {
         setMessagelogin(msg);
         setTimeout(() => {
             setMessagelogin("");
         },2000);
     };
-
+    
+    // Fonction pour mettre à jour l'état userData lorsqu'un champ du formulaire est modifié
     const handleChange = (e) => {
         const {name, value} = e.target;
         setUserData({...userData,[name]:value});
     };
     
     const submit = (e) => {
-        e.preventDefault();
+        e.preventDefault(); // empêche la soumission par défaut du formulaire
         
-        const dataFile = new FormData();
-        const files = Object.values(e.target.img.files);
+        const dataFile = new FormData();// crée une instance de FormData pour stocker les données de formulaire
+        const files = Object.values(e.target.img.files);// récupère le fichier sélectionné dans le formulaire
 
         if(userData.name === "" || userData.description === ""){
             messageFn("Veuillez remplir tous les champs");
@@ -38,15 +40,14 @@ const AddArticle = () => {
             return;
         }
         
-        dataFile.append('files', files[0], files[0].name);
-        
-        dataFile.append('title', userData.title);
-        dataFile.append('description', userData.description);
+        dataFile.append('files', files[0], files[0].name); // ajoute le premier fichier sélectionné à l'instance FormData
+        dataFile.append('title', userData.title); // ajoute le titre de l'article à l'instance FormData
+        dataFile.append('description', userData.description); // ajoute la description de l'article à l'instance FormData
 
-        axios.post(`${BASE_URL}/addArticle`, dataFile)
+        axios.post(`${BASE_URL}/addArticle`, dataFile)// envoie une requête POST à l'URL BASE_URL/addArticle avec l'instance FormData en tant que données
         .then(res => messageFn(res.data.data.response))
         .catch(err => console.log(err));
-        setUserData(initialValue);
+        setUserData(initialValue);// réinitialise l'état userData avec les valeurs init
     };
    
     return(

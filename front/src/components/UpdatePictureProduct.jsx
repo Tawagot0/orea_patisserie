@@ -9,14 +9,14 @@ const UpdatePictureProduct = () => {
     const [messageLogin, setMessagelogin] = useState("");
     const [picture, setPicture] = useState(null);
     const {id} = useParams();
-    
+    // Fonction qui gère l'affichage des messages d'alerte
     const messageFn = (msg) => {
         setMessagelogin(msg);
         setTimeout(() => {
             setMessagelogin("");
         },2000);
     };
-    
+    // Utilisation de useEffect pour récupérer l'image à partir de son id
     useEffect(() => {
         axios.post(`${BASE_URL}/getPictureProductById`,{id})
             .then(res => setPicture(res.data.data.result[0]))
@@ -25,7 +25,7 @@ const UpdatePictureProduct = () => {
     
     const submit = (e) =>{
         e.preventDefault();
-        
+        // Création d'un objet FormData pour envoyer les données
         const dataFile = new FormData();
         const files = Object.values(e.target.img.files);
         
@@ -33,7 +33,7 @@ const UpdatePictureProduct = () => {
             messageFn("Veuillez sélectionner un fichier");
             return;
         }
-        
+        // Ajout des données à envoyer à l'objet FormData
         dataFile.append('files', files[0], files[0].name);
         dataFile.append('caption', picture.caption);
         dataFile.append('product_id', picture.product_id);
