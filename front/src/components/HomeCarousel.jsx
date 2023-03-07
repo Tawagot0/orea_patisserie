@@ -1,4 +1,4 @@
-import {Pagination, EffectCoverflow, Autoplay, Navigation } from 'swiper';
+import {EffectCoverflow, Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -12,7 +12,7 @@ import img3 from "../images/des3.jpg";
 const HomeCarousel =() => {
     return (
         <Swiper
-            modules={[EffectCoverflow, Pagination, Autoplay, Navigation]}
+            modules={[EffectCoverflow, Autoplay, Navigation]}
             speed={1500}
             autoplay={{
                 delay: 2500,
@@ -37,9 +37,6 @@ const HomeCarousel =() => {
                 depth: 50,
                 modifier: 1,
                 slideShadows: true
-            }}
-            pagination={{
-                type: "progressbar"
             }}
             navigation={true}
             className="mySwiper"

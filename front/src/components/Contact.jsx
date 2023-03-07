@@ -67,7 +67,7 @@ const Contact = () => {
                 	    <h3>Nos coordonnées : </h3>
                 		<p><span className="days">Mail : </span><a href="mailto:oreapatisserie@gmail.com" rel="noreferrer" target="_blank">oreapatisserie@gmail.com</a></p>
                 		<p><span className="days">Téléphone : </span><a href="tel:+336675360419" rel="noreferrer" target="_blank">06 75 36 04 19</a></p>
-                		<p><span className="days">Adresse : </span>La Verdinière 448810 HERIC</p>
+                		<p><span className="days">Adresse : </span>507 La Verdinière 44810 HERIC</p>
                     </address>
                 </div>
                 <div className="location-market">

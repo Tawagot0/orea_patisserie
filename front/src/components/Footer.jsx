@@ -6,7 +6,7 @@ const Footer = () => {
             	<address>
             		<p><span className="first-word">Mail : </span><a href="mailto:oreapatisserie@gmail.com" rel="noreferrer" target="_blank">oreapatisserie@gmail.com</a></p>
             		<p><span className="first-word">Téléphone : </span><a href="tel:+336675360419" rel="noreferrer" target="_blank">06 75 36 04 19</a></p>
-            		<p><span className="first-word">Adresse : </span>La Verdinière 448810 HERIC</p>
+            		<p><span className="first-word">Adresse : </span>507 La Verdinière 44810 HERIC</p>
                 </address>
             </div>
             <div className="foot market">
