@@ -27,7 +27,6 @@ const Login = () => {
         window.localStorage.removeItem('jwtToken');
         delete axios.defaults.headers.common['Authorization'];
         dispatch({type:"LOGOUT"});
-        messageFn("Vous êtes déconnecter");
     };
     
     const submit = (e) => {

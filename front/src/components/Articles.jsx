@@ -21,10 +21,16 @@ const Articles = () => {
             <div>
                 {articles.map((article,i) => {
                     return(
-                        <div key={i} className="modif">
-                            <p>Titre de l'article:{article.title}</p>
-                            <p>description:{article.description}</p>
-                            <img src={`${BASE_IMG}/${article.url}`} alt={article.caption}/>
+                        <div key={i} className="actualite">
+                            <h3>{article.title}</h3>
+                            <div>
+                                <div>
+                                    <p>{article.description}</p>
+                                </div>
+                                <div>
+                                    <img src={`${BASE_IMG}/${article.url}`} alt={article.caption}/>
+                                </div>
+                            </div>
                         </div>
                     );
                 })}

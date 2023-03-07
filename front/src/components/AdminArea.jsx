@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 const AdminArea = () => {
 
     return(
-        <div className="container admin-area">
+        <div className="admin-area">
             <h2>Votre espace admin</h2>
             <ul>
                 <li>
