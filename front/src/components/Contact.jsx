@@ -89,7 +89,7 @@ const Contact = () => {
                 </div>
             </div>
             <h2 className="title-product">Nous Contacter</h2>
-            <div className = "login contact contact-us">
+            <div className = "login contact contact-us" id="contact">
                 <div className="msgAlert"><h3>{messageLogin}</h3></div>
                 <form className="login-form" onSubmit={submit} method="post" action="">
                     <div className="form-item">

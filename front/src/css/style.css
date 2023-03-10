@@ -96,16 +96,25 @@ header {
     border-radius:0.5em;
 }
 /******************************Accueuil carousel***************************/
+.presentation{
+    text-align:center;
+}
+.presentation a{
+    color:#000000;
+    font-weight:bold;
+    text-decoration:underline;
+}
 .swiper{
     background-color:transparent;
 }
-
+.swiper-wrapper{
+    display:flex;
+    align-items:center;
+}
 .swiper-slide {
   background-position: center;
   background-size: cover;
-  /*width: 350px;*/
-  /*height: 450px;*/
-  padding:1.2em 0 1.7em
+  margin:1.5em 0;
 }
 .swiper-slide img {
   display: block;
@@ -205,7 +214,30 @@ header {
     height:100%;
 }
 /******************nos services entreprises****************************/
-
+.services a,.services a:visited{
+    color:#000000;
+    font-weight:bold;
+    text-decoration:underline;
+}
+.services img{
+    width:47%;
+}
+.service-pro div, .service-particulier div{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    flex-wrap:wrap;
+}
+.service-particulier div{
+    flex-direction:row-reverse;
+}
+.service-pro div div, .service-particulier div div{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    width:47%;
+}
 /******************origine des matières premières**********************/
 .origin-matter{
     display:flex;
@@ -321,6 +353,24 @@ header {
     margin-top:0;
     padding-top:0;
 }
+#contact .login-form{
+    background-color:#fff;
+}
+#contact input,#contact textarea{
+    border:solid 1px #000000;
+}
+#contact textarea::placeholder, #contact input::placeholder,#contact form label,#contact form textarea, #contact form input{
+    color:#000000;
+}
+#contact .submit{
+    border:solid 2px #000000;
+    background-color:#fff;
+    color:#000000;
+}
+#contact .submit:hover{
+    background-color:#000000;
+    color:#fff;
+}
 /******************************FOOTER*************************************/
 footer{
     padding:0.5em;
@@ -339,6 +389,7 @@ footer{
 	  padding:1em;
 	  font-size:0.7em;
 	  margin:0.2em;
+	  text-align:center;
 }
 .foot h3{
     font-family: 'Coneria Script Demo', cursive;
@@ -564,8 +615,6 @@ input::-o-outer-spin-button {
 .contact-us .form-item{
     width:45%;
 }
-
-
 /*******************************admin area****************************************/
 .admin-area h2{
     background-color:#000000;
@@ -884,6 +933,27 @@ z-index:99;
     align-items:center;
     margin:auto;
 }
+/**********************services***********************************/
+.service-pro div, .service-particulier div,.service-pro div div, .service-particulier div div{
+    display:block;
+    width:100%;
+}
+.service-pro img{
+    float:left;
+    width:60vw;
+    margin-right:1.2em;
+}
+.service-pro, .service-particulier{
+    text-align:justify;
+}
+.service-particulier img{
+    float:right;
+    margin-left:1.2em;
+    width:40vw;
+}
+.clear{
+    clear:both;
+}
 /**********************origine des matières premières**********************/
 .origin-matter{
     flex-direction:column;
@@ -930,6 +1000,18 @@ z-index:99;
 }
 .location-market{
     width:100%;
+}
+/****************servives********************************/
+.service-pro img, .service-particulier img{
+    float:none;
+    width:90vw;
+    margin:auto;
+}
+.service-pro, .service-particulier{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 }
 /****************origines des matieres premieres**********/
 .origin-matter div{

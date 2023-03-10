@@ -24,7 +24,7 @@ const HomeCarousel =() => {
                 slidesPerView: 1,
                 spaceBetween: 40,
                 },
-            1024: {
+            950: {
                 slidesPerView: 3,
                 spaceBetween: 50,
                 },
