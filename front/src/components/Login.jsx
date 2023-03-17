@@ -65,6 +65,7 @@ const Login = () => {
     return(
         <Fragment>
             {/*si connecter classe logged-in sinon logged-out*/}
+            
             <i className={`fa-regular fa-user ${state.user.isLogged ? 'logged-in' : 'logged-out'}`} onClick={state.user.isLogged ? handleLogout : () => setOpenformLogin(true)}>
               {state.user.isLogged ? ' Deconnexion' : ' Se connecter'}
             </i>
@@ -87,7 +88,7 @@ const Login = () => {
                         <label htmlFor="password"><i className="fa-solid fa-lock"></i>Mot de passe</label>
                         <input type="password" name="password" value={info.password} onChange={handleChange} placeholder="..." maxLength="100" required="required"/>
                     </div>
-                    <button className="submit" type="submit">VALIDER</button>
+                    <button className="submit submit-login" type="submit">VALIDER</button>
                     <span onClick={() => setOpenformLogin(false)} className = "close-button">Fermer X</span>
                 </form>
             </div>

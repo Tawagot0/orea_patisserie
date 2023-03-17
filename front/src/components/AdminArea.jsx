@@ -28,7 +28,7 @@ const AdminArea = () => {
                 </li>
                 <li>
                     <NavLink to="/listContact">
-                    Vos messages de la page contact
+                    Vos messages
                     </NavLink>
                 </li>
                 <li>
@@ -38,7 +38,7 @@ const AdminArea = () => {
                 </li>
                 <li>
                     <NavLink to="/createAccount">
-                    Créer un nouveau compte
+                    Créer un nouveau compte admin
                     </NavLink>
                 </li>
             </ul>

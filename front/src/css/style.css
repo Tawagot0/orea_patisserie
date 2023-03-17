@@ -53,11 +53,13 @@ header {
 }
 .logged-in {
     margin-left:0.5em;
-    color: #fff;
+    color:#fff;
+    text-shadow: #00ff0c 1px 0 10px;
 }
 .logged-out {
     margin-left:0.5em;
-    color: #fff;
+    color:#fff;
+    text-shadow: #ff0000 1px 0 10px;
 }
 .navbar .nav-links ul li a{
     color:#fff;
@@ -287,6 +289,9 @@ header {
     padding:1em;
     border-radius:2em;
 }
+.actualites-inline div{
+    max-width:70vw;
+}
 .actualite img{
     box-shadow: 10px 5px 5px #212121;
     width:90%;
@@ -353,8 +358,30 @@ header {
     margin-top:0;
     padding-top:0;
 }
+.contact-page .fa-tiktok,.contact-page .fa-linkedin-in{
+    color:#000000;
+}
+#contact{
+    width:70vw;
+    margin:0 auto;
+    border-radius:1em;
+    margin-bottom:1em;
+    background-image:inherit;
+    box-shadow:none;
+}
 #contact .login-form{
+    background-size: 140%;
+    width:95%;
+    background-position:center;
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+    border-radius:1em;
+    font-size:0.8em;
     background-color:#fff;
+}
+#contact .form-item{
+    width:45%;
 }
 #contact input,#contact textarea{
     border:solid 1px #000000;
@@ -405,8 +432,12 @@ footer{
 }
 .networks{
     display:flex;
-    justify-content:space-around;
+    flex-direction:column;
+    align-items:center;
     margin-top:0.5em;
+}
+.networks a{
+    margin:0.4em;
 }
 .foot a,.foot p{
     font-style:normal;
@@ -416,11 +447,10 @@ footer{
 }
 .fa-facebook-f{
     margin-top:0.5em;
-    color:blue;
+    color:#0c20ff;
 }
 .fa-instagram{
     margin-top:0.5em;
-    text-shadow:#ff008c;
     color:#ff008c;
 }
 /**************************les formulaires********************************/
@@ -504,6 +534,14 @@ i{
     color:#000000;
     background-color:#fff;
     transition:1s;
+}
+.submit-login{
+    background-color:#fff;
+    color:#001E62;
+}
+.submit-login:hover{
+    background-color:#001E62;
+    color:#fff;
 }
 .create-count{
     display:flex;
@@ -595,25 +633,6 @@ input::-o-outer-spin-button {
   color: #fff;
   font-size: 1em;
   padding:0.5em;
-}
-.contact-us{
-    width:70vw;
-    margin:0 auto;
-    border-radius:1em;
-    margin-bottom:1em;
-}
-.contact-us .login-form{
-    background-size: 140%;
-    width:95%;
-    background-position:center;
-    display:flex;
-    flex-wrap:wrap;
-    flex-direction:row;
-    border-radius:1em;
-    font-size:0.8em;
-}
-.contact-us .form-item{
-    width:45%;
 }
 /*******************************admin area****************************************/
 .admin-area h2{
