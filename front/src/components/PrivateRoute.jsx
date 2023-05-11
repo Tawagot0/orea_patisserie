@@ -5,13 +5,10 @@ import {useEffect, useContext, useState} from 'react';
 import axios from 'axios';
 
 const PrivateRoute = ({children, auth = null}) => {
-    // permet de recuperer le pathname ex: http://charlyricoul.ide.3wa.io:3000/ => /
+    //on récupère le pathname : http://charlyricoul.ide.3wa.io:3000/ => /
     const location = useLocation().pathname;
     const [loading, setLoading] = useState(true);
-    /** 
-    * On recuperer user qui se trouve dans notre state 
-    * du reducer grace au destructuring
-    **/
+    // on récupère le user
     const [{user}, dispatch] = useContext(StoreContext);
     
     useEffect(() => {
@@ -23,7 +20,7 @@ const PrivateRoute = ({children, auth = null}) => {
           if (jwtToken) {
             // on met le token 
             axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
-            // vérif du token puis sauvegarde dans le reducer
+            // on sauvegarde dans le reducer
             axios.get(`${BASE_URL}/relogged`)
             .then(res => dispatch({type:"LOGIN", payload:res.data.result}))
             .catch(e => console.log(e));
@@ -31,14 +28,13 @@ const PrivateRoute = ({children, auth = null}) => {
         }
     },[dispatch,user.id]);
   
-    // permet de bloquer le chargement des composent si l'utilisateur n'est pas connecter ou que la route est securisée
+    // permet de bloquer le chargement si l'utilisateur n'est pas connecter ou que la route est securisée
     useEffect(() => { if (user.id || !auth) setLoading(false) },[user, location, auth]);
     
-    // On recupere les variable qui permette de savoir si l'utilisateur est connecter et/ou admin
     const {isAdmin, isLogged} = user;
     // Vérifier si route admin
     const isLimitedToAdmin = auth === "admin";
-    // On verrifie si a route est reserver à l'utilisateur connecter
+    // On verifie si route utilisateur
     const isLimitedToConnected = auth === "user";
     
     // si il n'y a pas de restriction sur cette route

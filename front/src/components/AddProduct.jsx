@@ -31,7 +31,7 @@ const AddProduct = () => {
         
         // Création d'un objet FormData pour envoyer les données
         const dataFile = new FormData();
-        //object.values permet d'obtenir un tableau d'objets et récupère le fichier sélectionné dans le formulaire
+        // permet d'obtenir un tableau d'objets et récupère le fichier sélectionné dans le formulaire
         const files = Object.values(e.target.img.files);
         if(userData.name === "" || userData.description === "" || userData.price === "" ){
             messageFn("Veuillez remplir tous les champs");

@@ -183,7 +183,7 @@ header {
     font-size:1.2em;
 }
 .product-info p{
-    margin:0.4em;
+    margin:0.4em 0.6em;
     font-size:0.7em;
     text-align:center;
 }
@@ -536,12 +536,13 @@ i{
     transition:1s;
 }
 .submit-login{
-    background-color:#fff;
-    color:#001E62;
-}
-.submit-login:hover{
     background-color:#001E62;
     color:#fff;
+    border:solid 2px #fff;
+}
+.submit-login:hover{
+    background-color:#fff;
+    color:#001E62;
 }
 .create-count{
     display:flex;

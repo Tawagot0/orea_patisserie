@@ -9,7 +9,7 @@ const Nav = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   /*etat à false quand le menu est fermé*/
   const location = useLocation();
-  //Permet à l'utilisateur connecté de continuer à naviguer sur le site sans avoir à se reconnecter à chaque nouvelle page, tant que le token est valide et non expiré.
+  //Permet à l'utilisateur connecté de continuer à naviguer sur le site sans avoir à se reconnecter à chaque nouvelle page
   useEffect(() => {
     if(!axios.defaults.headers.common['Authorization']){
       const token = window.localStorage.getItem("jwtToken");
@@ -32,7 +32,7 @@ const Nav = () => {
               </li>
               <li>
                 <NavLink onClick={() => setMobileMenuOpen(false)} to="/boutique" className={location.pathname === '/boutique' ? 'active-link' : ''}>
-                  Boutique
+                  Produits
                 </NavLink>
               </li>
               <li>

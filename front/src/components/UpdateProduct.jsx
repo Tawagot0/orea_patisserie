@@ -27,7 +27,7 @@ const UpdateProduct = () => {
     
     const handleChange = (e) => {
         const {name, value} = e.target;
-        //  la fonction setProduct est appelée avec un nouvel objet qui est créé en fusionnant l'objet product existant avec un objet qui contient la propriété name mise à jour avec la nouvelle value.
+        //  on met à jour avec les nouvelles valeurs
         setProduct({...product, [name]: value});
     };
     

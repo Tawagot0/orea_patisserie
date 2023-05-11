@@ -33,7 +33,7 @@ const ArticlesAdmin = () => {
     };
     // Cette fonction est appelée lorsque l'utilisateur clique sur le bouton supprimer
     const confirmDeleteArticle = (article) => {
-        // On stocke l'article à supprimer dans notre état articleToDelete
+        // On stocke l'article à supprimer dans articleToDelete
         setArticleToDelete(article);
         // On affiche la fenêtre de confirmation de suppression
         setShowConfirmModal(true);

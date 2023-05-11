@@ -17,7 +17,7 @@ const form = formidable({
 const checkAcceptedExtensions = (file) => {
     const type = file.mimetype.split('/').pop();
     return allowedExtensions.includes(type);
-}
+};
 
 export default async (req, res, next) => {
     form.parse(req, async (err, fields, files) => {

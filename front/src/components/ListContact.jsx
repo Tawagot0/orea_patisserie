@@ -58,7 +58,7 @@ const ListContact = () => {
                             <p><span>Message :</span> {contact.message} </p>
                         </div>
                         <div className="update-product">
-                        <p onClick={() => confirmDeleteContact(contact)}>Supprimer le contact</p>
+                        <p onClick={() => confirmDeleteContact(contact)}>Supprimer le message</p>
                         </div>
                     </div>
                 );

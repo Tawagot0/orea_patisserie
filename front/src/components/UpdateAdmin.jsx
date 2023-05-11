@@ -27,7 +27,7 @@ const UpdateAdmin = () => {
     
     const handleChange = (e) => {
         const {name, value} = e.target;
-        //  la fonction setAdmin est appelée avec un nouvel objet qui est créé en fusionnant l'objet admin existant avec un objet qui contient la propriété name mise à jour avec la nouvelle value.
+        //  on met à jour avec les nouvelles valeurs
         setAdmin({...admin, [name]: value});
     };
     
