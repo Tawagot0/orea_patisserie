@@ -85,7 +85,7 @@ const Contact = () => {
                     <div className="networks">
                         <div>
                             <a href="https://www.facebook.com/profile.php?id=100082526761298" rel="noreferrer" target="_blank"><i className="fa-brands fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/orea.patisserie/?hl=fr" target="_blank" rel="noreferrer"><i className="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://www.linkedin.com/in/oréa-pâtisserie-4b436a276/" target="_blank" rel="noreferrer"><i className="fa-brands fa-linkedin-in"></i></a>
                         </div>
                         <div>
                             <a href="https://www.instagram.com/orea.patisserie/?hl=fr" target="_blank" rel="noreferrer"><i className="fa-brands fa-tiktok"></i></a>

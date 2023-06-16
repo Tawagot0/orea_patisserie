@@ -1,6 +1,8 @@
 {
   "name": "front",
+  "homepage": "http://149.100.157.233",
   "version": "0.1.0",
+  "description": "my react application",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
