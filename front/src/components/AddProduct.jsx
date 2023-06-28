@@ -41,10 +41,10 @@ const AddProduct = () => {
             messageFn("Veuillez sélectionner un fichier");
             return;
         }
-        else if(isNaN(userData.price)){
-            messageFn("Veuillez mettre un chiffre au prix svp");
-            return;
-        }
+        // else if(isNaN(userData.price)){
+        //     messageFn("Veuillez mettre un chiffre au prix svp");
+        //     return;
+        // }
         
         dataFile.append('files', files[0], files[0].name);// ajoute le premier fichier sélectionné à l'instance FormData
         dataFile.append('description', userData.description);// ajoute la description de l'article à l'instance FormData...
@@ -72,8 +72,8 @@ const AddProduct = () => {
                     <input type="text" name="description" placeholder="..." onChange={handleChange} value={userData.description} maxLength="2000"/>
                 </div>
                 <div className="form-item">
-                    <label htmlFor="price">Prix du produit</label>
-                    <input type="number" name="price" placeholder="..." onChange={handleChange} value={userData.price} />
+                    <label htmlFor="price">Les allergènes</label>
+                    <input type="text" name="price" placeholder="..." onChange={handleChange} value={userData.price} />
                 </div>
                 <div className="form-item">
                     <input className=" input-file" id="file-upload" type='file' name='img'/>

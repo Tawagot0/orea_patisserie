@@ -12,9 +12,9 @@ class Product {
             if (name.length > 255 || description.length > 2000){
               return {response:'Utiliser moins de 250 caractères pour le titre'};
             }
-            else if (isNaN(price)){
-              return {response:'Mettre un nombre pour le prix'};
-            }
+            // else if (isNaN(price)){
+            //   return {response:'Mettre un nombre pour le prix'};
+            // }
             const result = await this.asyncQuery(sql,paramsSql);
             return {result:result, response:'Votre produit à bien été ajouter'};
         } catch(err){

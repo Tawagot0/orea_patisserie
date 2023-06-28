@@ -3,6 +3,7 @@ import { NavLink} from "react-router-dom";
 import axios from "axios";
 import {BASE_URL} from "../tools/constante.js";
 import {StoreContext} from "../tools/context.js";
+import img1 from "../images/favicon-32x32.png";
 
 const Login = () => {
     const [openformLogin, setOpenformLogin] = useState(false);
@@ -66,9 +67,9 @@ const Login = () => {
         <Fragment>
             {/*si connecter classe logged-in sinon logged-out*/}
             
-            <i className={`fa-regular fa-user ${state.user.isLogged ? 'logged-in' : 'logged-out'}`} onClick={state.user.isLogged ? handleLogout : () => setOpenformLogin(true)}>
-              {state.user.isLogged ? ' Deconnexion' : ' Se connecter'}
-            </i>
+            <img id="log" src={img1} alt="login" onClick={state.user.isLogged ? handleLogout : () => setOpenformLogin(true)}>
+              
+            </img>
             {/*si connecter on affiche espace admin*/}
             {state.user.isLogged  && (
             <li className="link-admin">

@@ -51,15 +51,18 @@ header {
     font-size: 1.2em; 
     font-family: 'Coneria Script Demo', cursive;
 }
-.logged-in {
-    margin-left:0.5em;
-    color:#fff;
-    text-shadow: #00ff0c 1px 0 10px;
-}
-.logged-out {
-    margin-left:0.5em;
-    color:#fff;
-    text-shadow: #ff0000 1px 0 10px;
+/*.logged-in {*/
+/*    margin-left:0.5em;*/
+/*    color:#fff;*/
+/*    text-shadow: #00ff0c 1px 0 10px;*/
+/*}*/
+/*.logged-out {*/
+/*    margin-left:0.5em;*/
+/*    color:#fff;*/
+/*    text-shadow: #ff0000 1px 0 10px;*/
+/*}*/
+#log{
+    margin : 0.7em 0 0 1em;
 }
 .navbar .nav-links ul li a{
     color:#fff;
@@ -187,10 +190,10 @@ header {
     font-size:0.7em;
     text-align:center;
 }
-.product-info p:last-child{
-    font-weight:bold;
-    font-size:1em;
-}
+/*.product-info p:last-child{*/
+/*    font-weight:bold;*/
+/*    font-size:1em;*/
+/*}*/
 .product-info:hover{
     opacity:0.7;
     transition:1s;

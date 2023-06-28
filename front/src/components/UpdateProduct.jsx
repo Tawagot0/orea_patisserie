@@ -38,10 +38,10 @@ const UpdateProduct = () => {
             messageFn("Veuillez remplir tous les champs");
             return;
         }
-        else if(isNaN(product.price)){
-            messageFn("Veuillez mettre un chiffre au prix svp");
-            return;
-        }
+        // else if(isNaN(product.price)){
+        //     messageFn("Veuillez mettre un chiffre au prix svp");
+        //     return;
+        // }
         //opérateur de décomposition (...). Cela signifie que toutes les propriétés de l'objet product sont étalées dans un nouvel objet qui est utilisé pour la requête.
         axios.post(`${BASE_URL}/updateProduct`,{...product})
         .then(res => messageFn(res.data.data.response))
@@ -65,8 +65,8 @@ const UpdateProduct = () => {
                             <input type="text" name="description" placeholder="..." onChange={handleChange} value={product.description} maxLength="2000" />
                         </div>
                         <div className="form-item">
-                            <label htmlFor="price">Prix</label>
-                            <input type="text" name="price" placeholder="..." onChange={handleChange} value={product.price} maxLength="100"/>
+                            <label htmlFor="price">Allergènes</label>
+                            <input type="text" name="price" placeholder="..." onChange={handleChange} value={product.price} maxLength="2000"/>
                         </div>
                         <button className="submit" type="submit">VALIDER</button>
                     </form>
