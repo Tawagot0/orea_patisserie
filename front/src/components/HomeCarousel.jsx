@@ -5,9 +5,11 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import "swiper/css/navigation";
 import img from "../images/cookies.jpg";
-import img1 from "../images/des1.jpg";
-import img2 from "../images/des2.jpg";
-import img3 from "../images/des3.jpg";
+import img1 from "../images/brownies.jpg";
+import img2 from "../images/Tarte.jpg";
+import img3 from "../images/Entremets.jpg";
+import img4 from "../images/Number cake.jpg";
+import img5 from "../images/Réducs.jpg";
 
 const HomeCarousel =() => {
     return (
@@ -42,22 +44,22 @@ const HomeCarousel =() => {
             className="mySwiper"
             >
             <SwiperSlide>
-                <img src={img} alt="dessert"/>
+                <img src={img2} alt="Tarte"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img src={img1} alt="dessert"/>
+                <img src={img} alt="cookies"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img src={img2} alt="dessert"/>
+                <img src={img3} alt="entremets"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img src={img3} alt="dessert"/>
+                <img src={img1} alt="brownies"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img src={img} alt="dessert"/>
+                <img src={img4} alt="cake"/>
             </SwiperSlide>
             <SwiperSlide>
-                <img src={img1} alt="dessert"/>
+                <img src={img5} alt="réducs"/>
             </SwiperSlide>
         </Swiper>
     );

@@ -17,7 +17,6 @@ const Articles = () => {
     
         return(
         <Fragment>    
-            <h2 className="title-product">Les dernières actualités d'OREA Pâtisserie</h2>    
             <div className="actualites-inline">
             {/* On utilise la méthode map() pour itérer sur chaque élément du tableau articles et retourner un élément pour chaque article */}
                 {articles.map((article,i) => {

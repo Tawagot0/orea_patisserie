@@ -2,6 +2,7 @@ import Error404 from "../components/Error404.jsx";
 import Home from "../components/Home.jsx";
 import Services from "../components/Services.jsx";
 import Origine from "../components/Origine.jsx";
+import Qui from "../components/Qui.jsx";
 import CreateAccount from "../components/CreateAccount.jsx";
 import Products from "../components/Products.jsx";
 import ProductsAdmin from "../components/ProductsAdmin.jsx";
@@ -25,6 +26,7 @@ const routes = [
     {path:"/boutique", component:<Products />},
     {path:"/services", component:<Services />},
     {path:"/origine", component:<Origine />},
+    {path:"/me", component:<Qui />},
     {path:"/productsAdmin", component:<ProductsAdmin />, auth:"admin"},
     {path:"/addProduct", component:<AddProduct />, auth:"admin"},
     {path:"/updateProduct/:id", component:<UpdateProduct />, auth:"admin"},

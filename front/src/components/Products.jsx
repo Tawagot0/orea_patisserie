@@ -18,7 +18,6 @@ const Products = () => {
         
     return(
         <Fragment>
-            <h2 className="title-product">Découvrer nos produits disponibles sur les marchés</h2>
             <div className="container_products">
             {/* On utilise la méthode map() pour itérer sur chaque élément du tableau products et retourner un élément pour chaque produit */}
                 {products.map((product,i) => {
@@ -30,6 +29,7 @@ const Products = () => {
                             <div className="product-info">
                                 <h3>{product.name}</h3>
                                 <p>{product.description}</p>
+                                <h4>Allergènes</h4>
                                 <p>{product.price}</p>
                             </div>
                         </div>

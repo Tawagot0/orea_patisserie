@@ -37,12 +37,17 @@ const Nav = () => {
               </li>
               <li>
                 <NavLink onClick={() => setMobileMenuOpen(false)} to="/services" className={location.pathname === '/services' ? 'active-link' : ''}>
-                  Nos services entreprises
+                  Prestations
                 </NavLink>
               </li>
               <li>
                 <NavLink onClick={() => setMobileMenuOpen(false)} to="/origine" className={location.pathname === '/origine' ? 'active-link' : ''}>
-                  Origines des matières premières
+                  Matières premières
+                </NavLink>
+              </li>
+              <li>
+                <NavLink onClick={() => setMobileMenuOpen(false)} to="/me" className={location.pathname === '/me' ? 'active-link' : ''}>
+                  Qui suis-je ?
                 </NavLink>
               </li>
               <li>

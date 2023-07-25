@@ -1,5 +1,5 @@
-import business from "../images/business.png";
-import wedding from "../images/wed.png";
+import business from "../images/Réducs.jpg";
+import wedding from "../images/Number cake.jpg";
 import { NavLink} from "react-router-dom";
 
 const Services = () => {
@@ -10,18 +10,24 @@ const Services = () => {
             <main className="container">
                 <div className="service-pro">
                     <div>
-                        <img src={business} alt="business"/>
+                        <img src={business} alt="coffrets cadeaux pâtisseries"/>
                         <div>
                             <p>
-                            Notre entreprise est passionnée par la création de desserts exquis et originaux pour tous vos événements professionnels. Que vous organisiez une réunion d'entreprise, un séminaire ou une soirée de gala, nos desserts sauront émerveiller vos invités.
+                            Coffrets fin d’année (cookies, pot de caramel, macarons, bonbons chocolat …)
                             </p>
                             
                             <p>
-                            Nous proposons une large sélection de gâteaux, tartes, cupcakes et autres desserts, tous confectionnés à partir d'ingrédients de qualité supérieure. Nous sommes en mesure de personnaliser nos créations pour répondre à vos besoins et à vos goûts spécifiques.
+                            Cocktail (réductions sucrées, macarons)
+                            </p>
+                            <p>
+                            Evènements d’entreprise (anniversaire, départ en retraite …)
+                            </p>
+                            <p>
+                            Prestations sur mesure et personnalisées
                             </p>
                             
                             <p>
-                            Si vous cherchez à ajouter une touche sucrée à votre prochain événement professionnel, n'hésitez pas à <NavLink to="/contact">nous contacter</NavLink>. Nous serons ravis de vous aider à créer un menu de desserts qui laissera une impression durable sur vos invités.
+                            <NavLink to="/contact">Me contacter</NavLink>
                             </p>
                         </div>
                     </div>
@@ -30,18 +36,25 @@ const Services = () => {
                 <h2 className="title-product">Pour les particuliers</h2>
                 <div className="service-particulier">
                     <div>
-                        <img src={wedding} alt="wedding cake"/>
+                        <img src={wedding} alt="gâteau de mariage"/>
                         <div>
                             <p>
-                            Que vous célébriez un mariage, un anniversaire ou toute autre occasion spéciale, nos desserts sauront ajouter une touche sucrée inoubliable à votre fête. De plus nous nous efforçons de créer des desserts qui ne sont pas seulement délicieux, mais aussi visuellement attrayants.
+                            Anniversaire
                             </p>
-                            
                             <p>
-                            Que vous souhaitiez un gâteau de mariage élégant et sophistiqué, des cupcakes colorés pour une fête d'anniversaire, ou tout autre type de dessert, nous pouvons créer quelque chose de spécial pour votre événement. Nous comprenons à quel point les événements spéciaux sont importants, c'est pourquoi nous nous efforçons de faire de chaque dessert que nous créons un véritable chef-d'œuvre.
+                            Mariage
                             </p>
-                            
                             <p>
-                             <NavLink to="/contact">Contactez-nous</NavLink> pour discuter de vos besoins en matière de pâtisserie pour votre prochain événement, nous sommes impatients de faire de votre occasion spéciale un moment sucré inoubliable.
+                            Number cake
+                            </p>
+                            <p>
+                            Pièces montées
+                            </p>
+                            <p>
+                            Prestations sur mesure et personnalisées
+                            </p>
+                            <p>
+                             <NavLink to="/contact">Me contacter</NavLink>
                             </p>
                         </div>
                     </div>

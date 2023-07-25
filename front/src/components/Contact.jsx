@@ -60,7 +60,7 @@ const Contact = () => {
     
     return(
         <Fragment>
-            <h2 className="title-product">Nous trouver</h2>
+            <h2 className="title-product">Où me retrouver ?</h2>
             <div className="contact-page">
                 <div>
                 	<address>
@@ -86,15 +86,12 @@ const Contact = () => {
                         <div>
                             <a href="https://www.facebook.com/profile.php?id=100082526761298" rel="noreferrer" target="_blank"><i className="fa-brands fa-facebook-f"></i></a>
                             <a href="https://www.linkedin.com/in/oréa-pâtisserie-4b436a276/" target="_blank" rel="noreferrer"><i className="fa-brands fa-linkedin-in"></i></a>
-                        </div>
-                        <div>
-                            <a href="https://www.instagram.com/orea.patisserie/?hl=fr" target="_blank" rel="noreferrer"><i className="fa-brands fa-tiktok"></i></a>
                             <a href="https://www.instagram.com/orea.patisserie/?hl=fr" target="_blank" rel="noreferrer"><i className="fa-brands fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <h2 className="title-product">Nous Contacter</h2>
+            <h2 className="title-product">Pour me contacter :</h2>
             <div className = "login contact" id="contact">
                 <div className="msgAlert"><h3>{messageLogin}</h3></div>
                 <form className="login-form" onSubmit={submit} method="post" action="">

@@ -1,6 +1,6 @@
 {
   "name": "front",
-  "homepage": ".",
+  "homepage": "http://charlyricoul.ide.3wa.io:3000",
   "version": "0.1.0",
   "description": "my react application",
   "private": true,
